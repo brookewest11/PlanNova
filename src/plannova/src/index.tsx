@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import MonthCal from "./modules/MonthCal";
-import WeekCal from "./modules/WeekCal";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLLIElement
 );
@@ -11,10 +10,7 @@ root.render(
     <div className="home-page">
       <div>
         <div className="logo">Assuming this is where the logo will go</div>
-        <div className="week">
-          current week schedule
-          <WeekCal />
-        </div>
+        <div className="week">current week schedule</div>
         <div className="year">Current Year goes here </div>
         <div className="calendar">
           <MonthCal />
