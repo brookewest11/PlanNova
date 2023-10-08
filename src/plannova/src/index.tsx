@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import MonthCal from "./modules/MonthCal";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLLIElement
 );
@@ -9,9 +10,9 @@ root.render(
   <React.StrictMode>
     <div className="home-page">
       <div>
-        <div className="logo">Assuming this is where the logo will go</div>
-        <div className="week">current week schedule</div>
-        <div className="year">Current Year goes here </div>
+        <div className="logo">PlanNova</div>
+        <div className="week">weekly schedule</div>
+        <div className="year">current date </div>
         <div className="calendar">
           <MonthCal />
         </div>
@@ -24,8 +25,11 @@ root.render(
           <button className="buttons button"> logout</button>
         </div>
         <div className="daily-calendar">daily calendar</div>
-        <div className="pinned-list">pinned list</div>
+        <input className="firstText"type='text' />
+        <div className="pinned-list">pinned lists</div>
+        <input className="secondText"type='text' />
         <div className="notes">notes</div>
+        <input className="thirdText"type='text' />
       </div>
     </div>
   </React.StrictMode>
