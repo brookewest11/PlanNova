@@ -8,12 +8,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("background.png")
+
 }
 
 .home-page {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  background-color: #374a67;
+  /* background-color: #374a67; */
   height: 100vh;
   width: 100%;
   padding: 10px;
