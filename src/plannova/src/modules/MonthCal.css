@@ -91,3 +91,22 @@
   color: #61dafb;
 }
 
+table{
+  border: 1px solid;
+}
+
+
+input[type="text"]
+{
+  width: 75px;
+  font-size: 14px;
+}
+
+
+p{
+  font-size: 15px;
+}
+
+th, td {
+  border: 1px solid;
+}
