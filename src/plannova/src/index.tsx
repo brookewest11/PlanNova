@@ -10,7 +10,7 @@ root.render(
   <React.StrictMode>
     <div className="home-page">
       <div>
-        <div className="logo">PlanNova</div>
+        <div className="logo"> ★ PlanNova</div>
         <div className="week">weekly schedule</div>
         <div className="year">current date </div>
         <div className="calendar">
