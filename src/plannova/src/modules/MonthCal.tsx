@@ -14,7 +14,7 @@ function MonthCal() {
         onChange={setDate}
         value={date}
         defaultValue="month"
-        calendarType="US"
+        calendarType="gregory"
         showNavigation={false}
         prev2Label={null}
         prevLabel={null}
