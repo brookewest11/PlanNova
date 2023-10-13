@@ -12,12 +12,106 @@ body {
 
 }
 
+.logopic
+{
+    height:30px;
+    width:30px;
+}
 .logo {
     height: 30%;
     width: 100%;
-    padding: 10px;
+    padding: 0px;
     font-size: 100px;
-    margin-left: 0px;
+    margin: 0px;
     font-family: 'Ranchers',sans-serif; 
     color: #d9d9d9
 }
+nav-buttons {
+    height: 10%;
+    width: 150%;
+    margin: 10px 20% 50px -20%;
+    font-family: 'Outfit';
+    align-items: center;
+    color: #374A67;
+  }
+  .links{
+      font-family: 'Outfit';
+      color: black;
+      text-decoration: none;
+      padding: 20px;
+  }
+  .links:hover {
+    color: #cb9cf2
+  }
+  .buttons {
+    background-color: transparent;
+    color: black;
+    border: none;
+    padding: 20px;
+    
+  }
+  
+  .button:hover {
+    border: 1px;
+    border-radius: 3px;
+    background: #cb9cf2
+  }
+  .grid-container {
+    display: flex;
+    justify-content: space-between;
+    /* You can also add properties like padding, width, and other styles as needed */
+  }
+  .grid-container2 {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    grid-gap: 0;
+    /* You can also add properties like padding, width, and other styles as needed */
+  }
+  
+  .grid-item {
+    /* You can add styling for the grid items here */
+  }
+  
+  /* Additional styles for the inner divs (optional) */
+  .grid-item > div {
+    text-align: center;
+  
+  }
+  .grid-item2 > div {
+    text-align: center;
+    margin: 10px;
+  
+  }
+  .title
+  {
+    font-family: "Outfit";
+    color: #01204E;
+    font-size: 45px;
+    margin-left: 20px;
+
+  }
+  .mealbox
+  {
+    padding: 0px;
+    border: 2px solid #a6d2f4;
+    border-radius: 10px;
+    width: 180px;
+    height: 400px;
+    background-color: rgba(220, 194, 251, .3);
+    color:azure;
+    font-family: "Outfit";
+    
+  }
+  .input
+  {
+    position: static;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 170px;
+    background-color: rgba(220, 194, 251, .3);
+    font-family: "Outfit";
+  }
+  
