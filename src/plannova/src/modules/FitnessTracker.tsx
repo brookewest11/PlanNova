@@ -1,6 +1,7 @@
 import React from 'react';
 import "./FitnessTracker.css";
 import { Link } from 'react-router-dom';
+import MonthCal from "./MonthCal";
 
 function FitnessTracker(){
     return(
