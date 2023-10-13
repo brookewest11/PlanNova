@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+
 .App {
   text-align: center;
 }
@@ -14,22 +16,24 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgba(255, 0, 0, 0);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-family: "Outfit";
   color: white;
 }
 
 .react-calendar {
-  width: flex;
-  height: flex;
-  background-color: #374a67;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(255, 0, 0, 0);
   border: none;
   padding: 10px;
+  font-family: "Outfit";
 }
 
 .react-calendar__navigation__label {
@@ -45,23 +49,23 @@
   padding: 10px 6.6667px;
   background: none;
   text-align: center;
-  line-height: 16px;
+  line-height: 50px;
   border: 2px solid black;
 }
 
 .react-calendar__month-view__days {
-  border: 1px solid #d9d9d9;
-  background-color: #374a67;
+  border: 1px solid #cb9cf2;
+  background-color: rgba(255, 0, 0, 0);
 }
 
 .react-calendar button {
-  border: .5px solid #d9d9d9;
+  border: .5px solid #028391;
 }
 
 
 .react-calendar__month-view__days__day--neighboringMonth {
     opacity: 0.4;
-    background-color: #d9d9d9;
+    background-color: white
   }
 .react-calendar__month-view__days__day--weekend,
 .react-calendar__month-view__days__day {
@@ -69,12 +73,13 @@
     
   }
 .react-calendar__tile--now {
-    background: #d9d9d9;
+    background:  #1d85ab
   }
 .react-calendar__month-view__weekdays__weekday {
     padding: 0.5em;
     color: #cb9cf2;
-    background-color: #374a67;
+    background-color:rgba(255, 0, 0, 0);
+    font-family:"Outfit"
 
   }
 
@@ -89,5 +94,10 @@
 
 .App-link {
   color: #616283;
+}
+.react-calendar__tile:hover {
+  background-color: #cb9cf2; 
+  color: #cb9cf2;
+  border: 2px, #342bd9;
 }
 
