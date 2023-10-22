@@ -12,11 +12,12 @@ body {
 
 }
 
-.logopic
-{
-    height:30px;
-    width:30px;
+.logopic {
+    height:100px;
+    position: relative;
+    top: 17px; left: 9px;
 }
+
 .logo {
     height: 30%;
     width: 100%;
@@ -68,6 +69,10 @@ nav-buttons {
     grid-gap: 0;
     /* You can also add properties like padding, width, and other styles as needed */
   }
+  .grid-container3 {
+    display: flex;
+    justify-content: start;
+  }
   
   .grid-item {
     /* You can add styling for the grid items here */
@@ -111,7 +116,12 @@ nav-buttons {
     margin-top: 20px;
     margin-bottom: 10px;
     width: 170px;
-    background-color: rgba(220, 194, 251, .3);
+    background-color: rgba(220, 194, 251, 0);
     font-family: "Outfit";
+    color: #01204E;
+  }
+
+  .input::placeholder {
+    color: #01204E;
   }
   
