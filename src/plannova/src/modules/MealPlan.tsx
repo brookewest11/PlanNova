@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import "./MealPlan.css";
 import { Link } from 'react-router-dom';
+import logopic from './logostars.png';
 
+declare module '*.png';
 
 function MealPlan() {
 
@@ -21,7 +23,10 @@ function MealPlan() {
           <>
           <div className="grid-container">
           <div className="grid-item">
-              <h1 className='logo'> ★ PlanNova</h1>
+          <div className="grid-container3">
+            <img src={logopic} alt="Logo" className="logopic" />
+            <h1 className='logo'>PlanNova</h1>
+          </div>
           </div>
           <div className="grid-item">
               <div className="nav-buttons">
