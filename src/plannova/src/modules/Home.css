@@ -32,8 +32,8 @@ body {
 }
 
 .week {
-  height: 150px;
-  width: 650px;
+  flex:auto;
+  width: 700px;
   background-color: rgba(251, 194, 241, 0.3);
   padding: 10px;
   margin-top:30px;
@@ -42,6 +42,12 @@ body {
   font-weight:bold;
   position:relative; left:25px; top:-130px;
   color: #3A4A65
+}
+
+.week:table {
+  font-family: "Outfit";
+  font-size:10px;
+  width: 100px;
 }
 
 .year {
@@ -135,7 +141,7 @@ body {
   color: #d9d9d9
 }
 
-input {
+.firstText {
   width: 100%;
   border: none;
   background-color: #0E1116;

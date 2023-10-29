@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./Home.css";
 import MonthCal from "./MonthCal";
+import WeeklySchedule from "./Weekly";
 import { CiCircleList, CiCalendar, CiPen } from "react-icons/ci";
+import logopic from './logostars.png';
 
+declare module '*.png';
 
 function Home(){
 
@@ -18,8 +21,8 @@ function Home(){
     return(
         <div className="home-page" >
         <div>
-          <div className="logo"> ★ PlanNova</div>
-          <div className="week">weekly schedule</div>
+          <div className="logo">PlanNova</div>
+          <div className="week">weekly schedule <WeeklySchedule /></div>
           <div className="calendar">
             <div className="date-title">{formattedDate}</div>
             <MonthCal />

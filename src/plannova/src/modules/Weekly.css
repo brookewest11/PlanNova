@@ -1,0 +1,48 @@
+table{
+    border: 1px solid;
+    width: 700px;
+    height: 150px;
+  }
+  
+  .weekText
+  {
+    font-size: 12px;
+    width: 50px;
+  border: none;
+  background-color: transparent;
+    color: black;
+  height: 30px;
+  }
+  
+  ::placeholder
+  {
+    color: black;
+  }
+
+  .addBtn
+  {
+    border: none;
+    height: 20px;
+    color: #0E1116;
+    background-color: #c7c6c6;
+
+  }
+
+  .deleteBtn
+  {
+    border: none;
+    background-color: #0E1116;
+    color: #a7a6a6;
+  }
+  
+  
+  p{
+    font-size: 15px;
+  }
+  
+  
+  th, td {
+    width: 100px;
+    border: 1px solid;
+  }
+  
