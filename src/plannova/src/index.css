@@ -99,7 +99,7 @@ body {
   color: #d9d9d9
 }
 
-input {
+.firstText {
   width: 100%;
   border: none;
   background-color: #0E1116;
