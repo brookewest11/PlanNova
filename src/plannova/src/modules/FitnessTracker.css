@@ -21,3 +21,77 @@ body {
     font-family: 'Ranchers',sans-serif; 
     color: #d9d9d9
 }
+
+
+.track
+{
+    font-family: "Outfit";
+    font-weight:bold;
+    color: rgba(244, 243, 239, 0.855);
+    font-size: 70px;
+    position:relative; left:80px; top:10px;
+}
+
+.textbox-container1 {
+    display: flex;
+    flex-direction: column;
+    position:relative; left:80px; top:20px;
+    gap: 0px; /* Adjust the gap to your preference */
+  }
+
+
+  .textbox-container2 {
+    display: flex;
+    flex-direction: column;
+    position:relative; left:310px; top:-222px;
+    gap: 0px; /* Adjust the gap to your preference */
+  }
+
+  .textbox-container3 {
+    display: flex;
+    flex-direction: column;
+    position:relative; left:540px; top:-463px;
+    gap: 0px; /* Adjust the gap to your preference */
+  }
+  
+  .textbox-container4 {
+    display: flex;
+    flex-direction: column;
+    position:relative; left:770px; top:-703px;
+    gap: 0px; /* Adjust the gap to your preference */
+  }
+
+  .textbox-label {
+    font-family: "Outfit";
+    font-weight:bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #9e7b9b; /* Example background color for the label */
+    padding: 5px;
+    width: 200px;
+  }
+  
+  .textbox-input {
+    border: 1px solid transparent;
+    background-color: #9e7b9b;
+    width: 199px;
+    height: 200px;
+    padding: 5px;
+    flex-grow: 1; /* Allow the input fields to expand and fill available space */
+    vertical-align: top;
+    color: black;
+  }
+
+
+
+p
+{
+    font-size: 30px;
+}
+
+
+.search-bar
+{
+    font-size: 25px;
+    position:relative; left:1150px; bottom:600px;
+}
