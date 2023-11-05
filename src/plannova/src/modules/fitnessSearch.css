@@ -1,3 +1,6 @@
+/*this whole file is in charge of designing, resizing, and formatting the different components of the html in fitnessSearch.tsx */
+
+
 .search-input {
     /* Add more styles as needed */
     background-color: rgba(57, 51, 63, 0.3);
