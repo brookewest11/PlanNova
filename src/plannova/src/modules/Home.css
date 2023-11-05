@@ -44,7 +44,7 @@ body {
   color: #3A4A65
 }
 
-.week:table {
+table.week {
   font-family: "Outfit";
   font-size:10px;
   width: 100px;

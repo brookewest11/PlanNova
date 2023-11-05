@@ -5,7 +5,7 @@ import "./Weekly.css";
 
 function WeeklySchedule() {
 
-    const [task1, setTask1] = useState<string>('');
+  const [task1, setTask1] = useState<string>('');
   const [todos1, setTodos1] = useState<string[]>([]);
   const [task2, setTask2] = useState<string>('');
   const [todos2, setTodos2] = useState<string[]>([]);
@@ -37,9 +37,9 @@ function WeeklySchedule() {
 
   
     return (
-<div>
+<div className= "weekly">
       <table>
-        <tr>
+        <tr className="tr-names">
           <th>Monday</th>
           <th>Tuesday</th>
           <th>Wednesday</th>
@@ -48,9 +48,9 @@ function WeeklySchedule() {
           <th>Saturday</th>
           <th>Sunday</th>
         </tr>
-        <tr>
+        <tr className="tr-week">
           {[task1, task2, task3, task4, task5, task6, task7].map((task, dayIndex) => (
-            <td key={dayIndex}>
+            <td key={dayIndex} className="td-week">
               <p></p>
               <div className="newheader">
                 <input
@@ -119,15 +119,7 @@ function WeeklySchedule() {
                 </button>
               </div>
               <ul>
-                {[
-                  todos1,
-                  todos2,
-                  todos3,
-                  todos4,
-                  todos5,
-                  todos6,
-                  todos7,
-                ][dayIndex].map((todo, index) => (
+                {[todos1,todos2,todos3,todos4,todos5,todos6,todos7,][dayIndex].map((todo, index) => (
                   <li key={index}>
                     {todo}
                     <button className="deleteBtn"
