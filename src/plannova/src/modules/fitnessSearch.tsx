@@ -5,7 +5,8 @@ import "./fitnessSearch.css";
 //This whole file is in charge of creating the search bar which will then be used in the FitnessTracker page
 
 //SearchBar function (React.FC just brings in functional component from react)
-const SearchBar: React.FC = () => {
+//creates the function used to create a weekly schedule using typescript jsx and react use states
+function SearchBar(){
 
   //initializes the state of the search bar specifically the input portion which would be the text bar
   //it originally sets it as an empty string 
@@ -41,6 +42,7 @@ const SearchBar: React.FC = () => {
         className="search-input"
         // this part below creates the table with all of our values from the workouts array that we created above
         //and then uses the filteredWorkouts function 
+        //if the length is greater than zero then we add each workout into the table that matches the search input
         />
         {filteredWorkouts.length > 0 ? (
         <table className="tbl">
