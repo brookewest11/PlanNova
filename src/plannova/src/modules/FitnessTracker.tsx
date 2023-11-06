@@ -1,3 +1,6 @@
+//Fitness Tracker component 
+
+//Needed imports 
 import React from 'react';
 import "./FitnessTracker.css";
 import { Link } from 'react-router-dom';
@@ -6,7 +9,7 @@ import {useState} from 'react'
 import SearchBar from "./fitnessSearch";
 import logopic from './logostars.png';
 
-declare module '*.png';
+declare module '*.png'; //needed for logo 
 
 
 //creates the function FitnessTracker which when we run the app will be in charge of the fitness tracker page set up and UI

@@ -1,20 +1,24 @@
+//Meal Planning page
+
+//Needed imports 
 import React, { useState } from "react";
 import "./MealPlan.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
 
-declare module "*.png";
+declare module "*.png"; //needed for logo 
 
-function MealPlan() {
-  const numberOfInputBoxes = 21;
+function MealPlan() {  //creates MealPlan function 
+  const numberOfInputBoxes = 21; // 3 meals a day * 7 days a week 
   const initialInputValues = Array.from(
     { length: numberOfInputBoxes },
     () => ""
-  );
+  ); //intialized with an array of empty strings (size 21)
 
-  const [inputValues, setInputValues] = useState(initialInputValues);
+  const [inputValues, setInputValues] = useState(initialInputValues); //useState hook to setInput values for meal boxes 
 
-  const handleInputChange = (
+  const handleInputChange = ( //on change of input the following code will run 
+  //the input text box value will be changed to what is 
     e: React.ChangeEvent<HTMLInputElement>,
     index: number
   ) => {
@@ -33,7 +37,8 @@ function MealPlan() {
           </div>
         </div>
         <div className="grid-item">
-          <div className="nav-buttons">
+          {/* sets up navigation bar for this page  */}
+          <div className="nav-buttons"> 
             <Link to="/list" className="links">
               lists
             </Link>
@@ -51,6 +56,7 @@ function MealPlan() {
         </div>
       </div>
       <div>
+        {/* heading and creates 7 meal boxes (each meal box has 3 input text boxes that change as you type in them and hold their value) */}
         <h2 className="title">yourname's meals </h2>
       </div>
       <div className="grid-container2">
