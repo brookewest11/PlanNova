@@ -1,8 +1,8 @@
 import React from 'react';
 import "./FitnessTracker.css";
 import { Link } from 'react-router-dom';
+import Stopwatch from "./Stopwatch";
 import {useState} from 'react'
-import MonthCal from "./MonthCal";
 import SearchBar from "./fitnessSearch";
 
 import logopic from './logostars.png';
@@ -31,6 +31,7 @@ function FitnessTracker(){
           </div>
       </div>
       </div>
+
   <div className="track">
     <p>track a workout</p>
   </div>
@@ -57,8 +58,11 @@ function FitnessTracker(){
   <div className="search-bar">
   <SearchBar />
   </div>
+  <div className="stopwatch-container">
+       <Stopwatch />
+  </div>
   </>
-    )
+  )
 
 }
 

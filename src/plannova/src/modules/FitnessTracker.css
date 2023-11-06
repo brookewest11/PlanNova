@@ -81,9 +81,6 @@ body {
     vertical-align: top;
     color: black;
   }
-
-
-
 p
 {
     font-size: 30px;
@@ -94,4 +91,14 @@ p
 {
     font-size: 25px;
     position:relative; left:1150px; bottom:600px;
+}
+
+.stopwatch-container
+{
+  font-size: 25px;
+  position:relative; left:1150px; bottom:1300px;
+  margin-left: -25px;
+  justify-content: center;
+  align-items: center;
+  color: #d9d9d9
 }
