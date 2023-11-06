@@ -1,0 +1,53 @@
+/*
+CSS File for the Stopwatch Component
+*/
+
+.stopwatch /*css for .stopwatch element*/
+{
+    font-family: "Outfit";
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px; /*rounded corners*/
+    color: rgba(244, 243, 239, 0.855); /*transparency*/
+  }
+  
+  .display /*stopwatch display area*/
+  {
+    font-size: 2px;
+    margin: 20px;
+  }
+  
+  .controls /*controls section*/
+  {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .controls button /*buttons within controls*/
+  {
+    font-size: 15px;
+    padding: 5px 10px;
+    margin: 40px;
+    cursor: pointer;
+    background-color: #0074d9;
+    color: #d9d9d9;;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .controls button:disabled /*css for disabled buttons*/
+  {
+    background-color: #d9d9d9;
+    cursor: not-allowed;
+  }
+  
+  h2 /*stype for h2 "stopwatch"*/
+  {
+    color: #d9d9d9;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  

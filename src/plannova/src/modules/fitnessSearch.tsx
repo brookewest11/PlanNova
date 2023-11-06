@@ -23,6 +23,7 @@ function SearchBar(){
     setSearchInput(inputEvent.target.value);
   };
 
+
   //checks if the user input string length is greater than 0 (which would mean they didn't enter an input)
   //if it is greater than zero then we filter through the workouts array to find the specific workour name that matches
   //if it does match then the search bar will display every value in the workouts array that matches the input
