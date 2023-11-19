@@ -1,49 +1,60 @@
-/*this whole file is in charge of designing, resizing, and formatting the different components of the html in Weekly.tsx */
+.weekly table{
+  border: 1px solid;
+  width: 700px;
+  height: 150px;
+}
 
-.weekly.table{
-    border: 1px solid;
-    width: 700px;
-    height: 150px;
-  }
-  
-  .weekText
-  {
-    font-size: 12px;
-    width: 50px;
+.weekText
+{
+  font-size: 12px;
+  width: 50px;
   border: none;
   background-color: transparent;
-    color: black;
+  color: black;
   height: 30px;
-  }
-  
-  .weekText::placeholder
-  {
-    color: black;
-  }
+}
 
-  .addBtn
-  {
-    border: none;
-    height: 20px;
-    color: #0E1116;
-    background-color: #c7c6c6;
 
-  }
+.weekText::placeholder
+{
+  color: black;
+}
 
-  .deleteBtn
-  {
-    border: none;
-    background-color: #0E1116;
-    color: #a7a6a6;
-  }
+.addBtn
+{
+  border: none;
+  height: 20px;
+  color: #0E1116;
+  background-color: #c7c6c6;
+
+}
+
+.deleteBtn
+{
+  border: none;
+  background-color: #0E1116;
+  color: #a7a6a6;
+}
+
+
+p{
+  font-size: 15px;
+}
+
+
+.weekly th{    
+  width: 100px;
+  border: 1px solid;} 
   
-  
-  p{
-    font-size: 15px;
-  }
-  
-  
-  th.weekly, td.weekly {
-    width: 100px;
-    border: 1px solid;
-  }
+.weekly td{
+  width: 100px;
+  border: 1px solid;
+}
+
+
+
+/* Style for the input and button inside the cells */
+.WeeklySchedule .newheader {
+display: flex;
+align-items: flex-start; /* Align items to the top */
+}
