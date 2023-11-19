@@ -8,7 +8,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url("background.png")
+    background-image: url("background.png");
 
 }
 
@@ -57,9 +57,9 @@ body {
 
 .grid-container2 {
     display: flex;
-    gap: 0;
+    gap: 0px;
     justify-content: center;
-    grid-gap: 0;
+    grid-gap: 30px;
     /* You can also add properties like padding, width, and other styles as needed */
 }
 
@@ -74,10 +74,25 @@ body {
   padding: 0px;
   border: 2px solid #a6d2f4;
   border-radius: 10px;
-  width: 180px;
-  height: 400px;
+  width: 240px;
+  height: 550px;
   background-color: rgba(220, 194, 251, .3);
   color:azure;
   font-family: "Outfit";
   
+}
+
+.list-title {
+    font-size: 36px;
+}
+
+.list-items {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    
+}
+.list-text {
+    text-align: left;
+    font-size: 18px;
 }
