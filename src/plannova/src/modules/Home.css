@@ -46,10 +46,19 @@ body {
   color: #3A4A65
 }
 
-table.week {
+.week table {
   font-family: "Outfit";
-  font-size:10px;
+  font-size:15px;
   width: 100px;
+  border-radius: 10px;
+}
+
+
+.week th, .week td {
+  border: 1px solid;
+  width: 50px;
+  border-radius: 10px;
+  border-color: rgba(57, 51, 63, 0.3);
 }
 
 .year {
@@ -86,6 +95,7 @@ table.week {
 .links:hover {
   color: #cb9cf2
 }
+
 .buttons {
   background-color: transparent;
   color: black;
@@ -187,6 +197,7 @@ code {
   color: white;
   font-size: 40px;
 }
+
 .icons
 {
   color:white;
