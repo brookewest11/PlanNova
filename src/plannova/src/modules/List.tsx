@@ -1,9 +1,12 @@
+//List component 
+
+//needed imports 
 import React, { useState } from "react";
 import "./List.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
 
-declare module "*.png";
+declare module "*.png"; //needed for logos
 
 function List() {
   const [List1, setList1] = useState(["cheese", "milk", "bread", "apples"]);
@@ -26,6 +29,7 @@ function List() {
           </div>
         </div>
         <div className="grid-item">
+          {/* navigation bar for this page  */}
           <div className="nav-buttons">
             <Link to="/list" className="links">
               lists
@@ -44,6 +48,7 @@ function List() {
         </div>
       </div>
       <div className="grid-container">
+        {/* heading and create new list button  */}
         <h1 className="title">List Planner</h1>
         <button
           className="button-list"
@@ -63,6 +68,7 @@ function List() {
         <div className="grid-item2">
           <div className="List">
             <div className="list-title">Groceries</div>
+
             <div>
               {List1.map((item, index) => (
                 <div key={index}>

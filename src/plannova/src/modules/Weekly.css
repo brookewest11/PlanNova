@@ -1,4 +1,6 @@
-table{
+/*this whole file is in charge of designing, resizing, and formatting the different components of the html in Weekly.tsx */
+
+.weekly.table{
     border: 1px solid;
     width: 700px;
     height: 150px;
@@ -14,7 +16,7 @@ table{
   height: 30px;
   }
   
-  ::placeholder
+  .weekText::placeholder
   {
     color: black;
   }
@@ -41,8 +43,7 @@ table{
   }
   
   
-  th, td {
+  th.weekly, td.weekly {
     width: 100px;
     border: 1px solid;
   }
-  
