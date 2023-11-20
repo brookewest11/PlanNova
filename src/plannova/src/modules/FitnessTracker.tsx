@@ -55,6 +55,7 @@ function FitnessTracker(){
   <div className="track">
     <p>track a workout</p>
   </div>
+
   {/* This creates the input box for the type of workout the user did */}
   <div className="textbox-container1">
         <label className="textbox-label" htmlFor="textbox1">type:</label>
@@ -95,7 +96,6 @@ function FitnessTracker(){
       <textarea id="textbox4" className="textbox-input" />
     </div>
 
-
     {/* This imports the search bar that we created in fitnessSearch.tsx */}
     <div className="search-bar">
         <SearchBar onSelectWorkout={handleSelectedWorkout} />
@@ -105,6 +105,15 @@ function FitnessTracker(){
   <div className="stopwatch-container">
        <Stopwatch />
   </div>
+
+  <p className="past-text">past workouts</p>
+
+
+  <div className="past-workouts"></div>
+
+
+
+
   </>
   )
 
