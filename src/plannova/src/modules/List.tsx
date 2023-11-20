@@ -9,9 +9,14 @@ import logopic from "./logostars.png";
 declare module "*.png"; //needed for logos
 
 function List() {
-  const [List1, setList1] = useState("groceries"); //use state for each list 
-  const [List2, setList2] = useState("Chores");
-  const [List3, setList3] = useState("EXTRA");
+  const [List1, setList1] = useState(["cheese", "milk", "bread", "apples"]);
+  const [List2, setList2] = useState([
+    "581-project",
+    "665-project",
+    "660-studying",
+    "565-studying",
+  ]);
+  const [List3, setList3] = useState(["EXTRA"]);
   const [numOfBoxes, setnumOfBoxes] = useState(5);
 
   return (
@@ -45,7 +50,16 @@ function List() {
       <div className="grid-container">
         {/* heading and create new list button  */}
         <h1 className="title">List Planner</h1>
-        <button className="button-list"> +create new list</button>
+        <button
+          className="button-list"
+          onClick={() =>
+            alert(
+              "not implemented yet, need to figure out how the database will be setup."
+            )
+          }
+        >
+          +create new list
+        </button>
       </div>
       <div>
         <h2 className="sub-title">Current Lists:</h2>
@@ -53,35 +67,42 @@ function List() {
       <div className="grid-container2">
         <div className="grid-item2">
           <div className="List">
-            {/* creates input checkboxes for each list created  */}
-            {List1}
+            <div className="list-title">Groceries</div>
+
             <div>
-              <tr>
-                <input type="checkbox" />
-                in the code list1 and list2 are rendered slightly differently
-              </tr>
-              <tr>
-                <input type="checkbox" />
-                {List1}
-              </tr>
+              {List1.map((item, index) => (
+                <div key={index}>
+                  <input type="checkbox" className="list-items" />
+                  <div className="list-text">{item}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="grid-item2">
           <div className="List">
-            {List2}
+            <div className="list-title">Homework</div>
             <div>
-              <div>
-                <input type="checkbox" />
-                example
-              </div>
+              {List2.map((item, index) => (
+                <div key={index}>
+                  <input type="checkbox" className="list-items" />
+                  <div className="list-text">{item}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="grid-item2">
           <div className="List">
-            {List3}
-            <div>RENDER CHECKBOXES HERE</div>
+            <div className="list-title">Other</div>
+            <div>
+              {List3.map((item, index) => (
+                <div key={index}>
+                  <input type="checkbox" className="list-items" />
+                  <div className="list-text">{item}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
