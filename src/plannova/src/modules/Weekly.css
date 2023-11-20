@@ -4,6 +4,83 @@
   height: 150px;
 }
 
+.weekly.table{
+    border: 1px solid;
+    width: 700px;
+    height: 150px;
+    margin-top: 10px;
+  }
+
+  .weekly {
+    width: 700px;
+    height: 200px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .th-day {
+    width: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .editButtonContainer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+
+
+.view_edit_button {
+  padding: 5px 10px;
+  font-size: 15px;
+  font-family: "Outfit";
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #d9d9d9;
+  color: #3A4A65;
+  border: none;
+  border-radius: 3px;
+  opacity: 0.8;
+}
+  
+  .weekText
+  {
+    font-size: 12px;
+    width: 80px;
+    border: none;
+    background-color: transparent;
+    color: black;
+    height: 30px;
+  }
+  
+  .weekText::placeholder
+  {
+    color: black;
+  }
+
+  .addBtn
+  {
+    border: none;
+    height: 20px;
+    color: #0E1116;
+    background-color: #c7c6c6;
+
+  }
+
+  .deleteBtn
+  {
+    border: none;
+    background-color: #0E1116;
+    color: #a7a6a6;
+  }
+  
+  
+  p{
+    font-size: 15px;
+  }
+  
+/*
 .weekText
 {
   font-size: 12px;
@@ -44,7 +121,7 @@ p{
 
 .weekly th{    
   width: 100px;
-  border: 1px solid;} 
+  border: 1px solid;}  */
   
 .weekly td{
   width: 100px;

@@ -25,11 +25,15 @@ function Home(){  //intitalizes a home component function
       //following sets up the homepage styling, logo, weekly schedule, and montly calendar
         <div className="home-page" > 
         <div>
-          <div className="logo">★PlanNova</div>
+          {/* handles title and logo image */}
+          <div className="logo_container_home">
+            <img src={logopic} className="logopic_home" />
+            <div className="logo_home">PlanNova</div>
+          </div>
           <div className="week">weekly schedule <WeeklySchedule /></div>
           <div className="calendar">
             <div className="date-title">{formattedDate}</div>
-            <MonthCal />
+              <MonthCal />
           </div>
         </div>
         <div>
@@ -42,12 +46,12 @@ function Home(){  //intitalizes a home component function
           </div>
           {/* daily calendar and subsections  */}
           <div className="daily-calendar"><CiCalendar className="icons"/>today's schedule</div>
-          <input className="firstText"type='text' />
+          {/* <input className="firstText"type='text' /> */}
           <div className="pinned-list"> <Link to="/list" ><CiCircleList className="icons"/></Link>pinned lists
           </div>
-          <input className="secondText"type='text' />
+          {/* <input className="secondText"type='text' /> */}
           <div className="notes"><CiPen className="icons"/>notes</div>
-          <input className="thirdText"type='text' />
+          {/* <input className="thirdText"type='text' /> */}
         </div>
       </div>
     )
