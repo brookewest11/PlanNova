@@ -56,7 +56,9 @@ function FitnessTracker(){
     <p>track a workout</p>
   </div>
 
+  <div className="wrapper">
   {/* This creates the input box for the type of workout the user did */}
+  <div className="three">
   <div className="textbox-container1">
         <label className="textbox-label" htmlFor="textbox1">type:</label>
         <textarea
@@ -66,14 +68,18 @@ function FitnessTracker(){
           readOnly  // Make the input read-only as the value will be managed by the SearchBar, or else there would really be no point in including the search bar haha
         />
       </div>
+      </div>
 
   {/* This creates the input box for the time and date of workout the user did */}
+  <div className="two">
     <div className="textbox-container2">
       <label className="textbox-label" htmlFor="textbox2">time/date:</label>
       <textarea id="textbox2" className="textbox-input" />
     </div>
+    </div>
 
 {/* This creates the input box for the stats of workout the user did */}
+<div className="four">
 <div className="textbox-container3">
   <label className="textbox-label" htmlFor="textbox3">stats:</label>
   <textarea
@@ -89,28 +95,36 @@ function FitnessTracker(){
     }}
   />
 </div>
+</div>
 
   {/* This creates the input box for the info of workout the user did */}
+  <div className="five">
     <div className="textbox-container4">
       <label className="textbox-label" htmlFor="textbox4">info:</label>
       <textarea id="textbox4" className="textbox-input" />
     </div>
+    </div>
 
     {/* This imports the search bar that we created in fitnessSearch.tsx */}
+    <div className="seven">
     <div className="search-bar">
         <SearchBar onSelectWorkout={handleSelectedWorkout} />
     </div>
+    </div>
 
    {/* This imports the stop watch that we created in Stopwatch.tsx */}
+  <div className="six">
   <div className="stopwatch-container">
        <Stopwatch />
   </div>
+  </div>
 
+
+  <div className="eight">
   <p className="past-text">past workouts</p>
-
-
   <div className="past-workouts"></div>
-
+  </div>
+  </div>
 
 
 
