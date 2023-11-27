@@ -26,7 +26,7 @@ const Login = (props: any) => {
     const onButtonClick = () => {
         (async () => {
             try {
-              const response = await fetch("http://localhost:3000/", {
+              const response = await fetch("http://localhost:5000/login", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
