@@ -94,7 +94,6 @@ const Login = (props: any) => {
                         <br />
                         <div className={"inputContainer"}>
                             {/* <div className="nav"><Link to="/home" className="links">login</Link></div> */}
-                            {/* we will need this to implement on click functionality  */}
                             <input
                                 className={"inputButton"}
                                 type="button"

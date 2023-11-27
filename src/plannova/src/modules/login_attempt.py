@@ -2,28 +2,33 @@
 from flask import Flask, request, jsonify
 # handle Cross-Origin HTTP requests, react and flask backend running on different domains
 from flask_cors import CORS
+from flask_cors import cross_origin
 # pymongo: MongoDB driver for python
 from pymongo import MongoClient
 # helps with JSON serialization for MongoDB documents
 from bson import json_util
 # hash passwords
 from flask_bcrypt import Bcrypt
+from pymongo.server_api import ServerApi
 
 # creates flask application instance, __name__ = name of current python module
 app = Flask(__name__)
 # enable CORES for flask app, allows frontend (react) to make requests to the backend (flask)
-CORS(app)
+# CORS(app)
 
 # user = plannova_user, password = PlanNova!333
 mongo_uri = "mongodb+srv://plannova_user:PlanNova333@plannova.2teaqsx.mongodb.net/?retryWrites=true&w=majority"
 # connect mongodb server to connection string
 client = MongoClient(mongo_uri, tlsAllowInvalidCertificates=True)
+# uri = "mongodb+srv://plannova.2teaqsx.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
+# client = MongoClient(uri, tlsAllowInvalidCertificates=True)
 # define db and collection
 db = client["user_authentication"]
 collection = db["login_page"]
 
 
 @app.route("/login", methods=["POST"])
+@cross_origin()
 def login():
     # get json data from request
     data = request.get_json()
