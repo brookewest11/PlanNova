@@ -42,7 +42,7 @@ function Home(){  //intitalizes a home component function
             <Link to="/list" className="links">lists</Link>
             <Link to="/meal-planning" className="links">meal planning</Link>
             <Link to="/fitness-tracker" className="links">fitness tracker</Link>
-            <button className="buttons button"> logout</button>
+            <Link to="/" className="links">logout</Link>
           </div>
           {/* daily calendar and subsections  */}
           <div className="daily-calendar"><CiCalendar className="icons"/>today's schedule</div>
