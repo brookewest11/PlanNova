@@ -3,26 +3,49 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./MonthCal.css";
 
-function tileContent({}) {}
+interface Event {
+  date: Date;
+  content: string;
+}
 
-function MonthCal() {
-  const [date, setDate] = useState<any>(new Date());
+interface CalendarProps {
+  events: Event[];
+}
+
+const MonthCal: React.FC<CalendarProps> = ({ events }) => {
+  const [activeDate, setActiveDate] = useState(new Date());
+
+  const tileContent = ({
+    date,
+    view,
+  }: {
+    date: Date;
+    view: string;
+  }): React.ReactNode => {
+    const eventForDate = events.find(
+      (event) => event.date.toDateString() === date.toDateString()
+    );
+
+    if (view === "month" && eventForDate) {
+      return <p className="small">{eventForDate.content}</p>;
+    }
+
+    return null;
+  };
+
+  const onDateChange = (date: Date) => {
+    setActiveDate(date);
+  };
 
   return (
     <div>
       <Calendar
-        onChange={setDate}
-        value={date}
-        defaultValue="month"
-        calendarType="gregory"
+        onChange={() => onDateChange}
+        value={activeDate}
+        tileContent={tileContent}
         showNavigation={false}
-        prev2Label={null}
-        prevLabel={null}
-        nextLabel={null}
-        next2Label={null}
       />
     </div>
   );
-}
-
+};
 export default MonthCal;
