@@ -68,7 +68,6 @@ function Home() {
         </div>
         {/* <input className="firstText"type='text' /> */}
         <div className="pinned-list">
-          {" "}
           <Link to="/list">
             <CiCircleList className="icons" />
           </Link>
