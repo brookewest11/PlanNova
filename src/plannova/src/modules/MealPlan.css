@@ -13,21 +13,27 @@ body {
 
 }
 
-.logopic {
-    height:100px;
-    position: relative;
-    top: 17px; left: 9px;
+.logo_container_meal {
+  /* using flex container to handle the title and logo image*/
+  display: flex;
+  align-items: center;
 }
 
-.logo {
-    height: 30%;
-    width: 100%;
-    padding: 0px;
-    font-size: 100px;
-    margin: 0px;
-    font-family: 'Ranchers',sans-serif; 
-    color: #d9d9d9
+.logopic_meal {
+  margin-right: 10px; /* Add some margin between the image and text */
+  margin-top: 10px;
+  height: 40px;
+  width: auto;
 }
+
+.logo_meal {
+  font-family: 'Ranchers', sans-serif;
+  color: #d9d9d9;
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+
 nav-buttons {
     height: 10%;
     width: 150%;

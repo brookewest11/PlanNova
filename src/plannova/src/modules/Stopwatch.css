@@ -9,13 +9,14 @@ CSS File for the Stopwatch Component
     margin: 20px;
     padding: 10px;
     border-radius: 10px; /*rounded corners*/
-    color: rgba(244, 243, 239, 0.855); /*transparency*/
+    padding: 0;
   }
   
   .display /*stopwatch display area*/
   {
     font-size: 2px;
     margin: 20px;
+    text-align: center;
   }
   
   .controls /*controls section*/
@@ -23,6 +24,7 @@ CSS File for the Stopwatch Component
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    text-align: center;
   }
   
   .controls button /*buttons within controls*/

@@ -34,11 +34,11 @@ function FitnessTracker(){
       <>
       <div className="grid-container">
       <div className="grid-item">
-      <div className="grid-container3">
-        {/* Sets up logo and name at top of the page */}
-        <img src={logopic} alt="Logo" className="logopic" />
-        <h1 className='logo'>PlanNova</h1>
-      </div>
+          {/* handles title and logo image */}
+          <div className="logo_container_fitness">
+          <img src={logopic} className="logopic_fitness" />
+          <div className="logo_fitness">PlanNova</div>
+        </div>
       </div>
       {/* Sets up the links between each page in case if the user wants to go to another page */}
       <div className="grid-item">
@@ -52,9 +52,11 @@ function FitnessTracker(){
       </div>
       </div>
 
-  <div className="track">
-    <p>track a workout</p>
+  <div className="track" >
+  <p className = "tracker-title">Fitness Tracker</p>
+  <p className = "track-text" >track a workout</p>
   </div>
+
 
   <div className="wrapper">
   {/* This creates the input box for the type of workout the user did */}
