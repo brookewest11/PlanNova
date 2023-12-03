@@ -1,22 +1,57 @@
-
 import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
 import { useNavigate } from "react-router-dom";
+import { any } from "prop-types";
 
 declare module "*.png"; //needed for logo 
 
+// functional component that takes props as argument
 const Login = (props: any) => {
+    // const [state, setState] = useState("")
+        // state = variable to access current state
+        // setState = function to update state
+        // useState("") inital state
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [emailError, setEmailError] = useState("")
     const [passwordError, setPasswordError] = useState("")
+    const [loginSuccess, setLoginSuccess] = useState(false);
     
+    // navigate to diff routes 
     const navigate = useNavigate();
         
+    // handle when login button is clicked
     const onButtonClick = () => {
-        // You'll update this function later...
+        (async () => {
+            try {
+              const response = await fetch("http://localhost:5000/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ user: email, password: password }),
+              });
+      
+              const data = await response.json();
+      
+              if (data.success) {
+                // login successful
+                setLoginSuccess(true);
+                // redirect to home page
+                navigate("/home");
+              } else {
+                // login failed
+                setLoginSuccess(false);
+              }
+
+                // Log the response from the server
+                console.log("Server Response:", data);
+            } catch (error) {
+              console.error("An error occurred:", error);
+            }
+          })();
     }
 
     return <><div className="logo_container_login">
@@ -34,6 +69,11 @@ const Login = (props: any) => {
                     </div>
                         <br />
                         <div className={"inputContainer"}>
+                            {/* bound to email state variable
+                                onChange triggered when user types into the input field
+                                    set to setEmail that updates the email state with the current value of the input field (ev.target.value)
+                                errorLabel: display error messages related to the email input field
+                            */}
                             <input
                                 value={email}
                                 placeholder="Enter your email here"
@@ -53,13 +93,12 @@ const Login = (props: any) => {
                         </div>
                         <br />
                         <div className={"inputContainer"}>
-                            <div className="nav"><Link to="/home" className="links">login</Link></div>
-                            {/* we will need this to implement on click functionality  */}
-                            {/* <input
+                            {/* <div className="nav"><Link to="/home" className="links">login</Link></div> */}
+                            <input
                                 className={"inputButton"}
                                 type="button"
                                 onClick={onButtonClick}
-                                value={"Log in"} /> */}
+                                value={"Log in"} />
                         </div> 
                        
                         
