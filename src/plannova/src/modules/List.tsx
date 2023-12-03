@@ -23,9 +23,10 @@ function List() {
     <>
       <div className="grid-container">
         <div className="grid-item">
-          <div className="grid-container3">
-            <img src={logopic} alt="Logo" className="logopic" />
-            <h1 className="logo">PlanNova</h1>
+          {/* handles title and logo image */}
+          <div className="logo_container_list">
+            <img src={logopic} className="logopic_list" />
+            <div className="logo_list">PlanNova</div>
           </div>
         </div>
         <div className="grid-item">

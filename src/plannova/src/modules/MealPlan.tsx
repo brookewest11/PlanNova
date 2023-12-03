@@ -31,10 +31,12 @@ function MealPlan() {  //creates MealPlan function
     <>
       <div className="grid-container">
         <div className="grid-item">
-          <div className="grid-container3">
-            <img src={logopic} alt="Logo" className="logopic" />
-            <h1 className="logo">PlanNova</h1>
+        <div>
+      <div className="logo_container_meal">
+            <img src={logopic} className="logopic_meal" />
+            <div className="logo_meal">PlanNova</div>
           </div>
+        </div>
         </div>
         <div className="grid-item">
           {/* sets up navigation bar for this page  */}
