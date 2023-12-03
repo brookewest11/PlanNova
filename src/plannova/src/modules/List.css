@@ -13,15 +13,25 @@ body {
 
 }
 
-.logo {
-    height: 30%;
-    width: 100%;
-    padding: 10px;
-    font-size: 100px;
-    margin: 0px;
-    font-family: 'Ranchers',sans-serif; 
-    color: #d9d9d9
-}
+.logo_container_list {
+    /* using flex container to handle the title and logo image*/
+    display: flex;
+    align-items: center;
+  }
+  
+.logopic_list {
+    margin-right: 10px; /* Add some margin between the image and text */
+    margin-top: 10px;
+    height: 40px;
+    width: auto;
+  }
+  
+.logo_list {
+    font-family: 'Ranchers', sans-serif;
+    color: #d9d9d9;
+    font-size: 40px;
+    margin-top: 10px;
+  }
 
 .title
 {

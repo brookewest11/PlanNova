@@ -51,12 +51,12 @@ function Stopwatch()
   };
   //stopwatch component
     return (
-        <div style={{ backgroundColor: "#0E1116", padding: "20px", borderRadius: "20px", width: "350px", height: "275px", marginTop: "20px" }}>
+        <div style={{ backgroundColor: "rgba(251, 194, 241, 0.3)", padding: "20px", borderRadius: "20px", width: "350px", height: "250px", marginTop:"-5px", marginLeft: "50px" }}>
           <div className="stopwatch">
-            <h2>stopwatch</h2>
-            <div className="display">{formatTime(time)}</div>
-            <div className="controls">
-              <button onClick={startTimer} disabled={isRunning}>
+            <h2 style={{textAlign: "center"}}>stopwatch</h2>
+            <div style={{textAlign: "center"}} className="display">{formatTime(time)}</div>
+            <div style={{textAlign: "center", marginTop: "30px"}}className="controls">
+              <button  onClick={startTimer} disabled={isRunning}>
                 start
               </button>
               <button onClick={stopTimer} disabled={!isRunning}>
