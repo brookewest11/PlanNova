@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./NewUser.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { any } from "prop-types";
 declare module "*.png"; //needed for logo 
 
 // functional component that takes props as argument
-const Login = (props: any) => {
+const NewUser = (props: any) => {
     // const [state, setState] = useState("")
         // state = variable to access current state
         // setState = function to update state
@@ -57,7 +57,7 @@ const Login = (props: any) => {
     // handle when register button is clicked
     const onRegisterClick = () => {
         // Redirect to registration page
-        navigate("/new-user");
+        navigate("/register");
     };
 
     return <><div className="logo_container_login">
@@ -71,7 +71,7 @@ const Login = (props: any) => {
             <div className={"mainContainer"}>
                 <div className="login-card">
                     <div className={"titleContainer"}>
-                        <div>LOGIN</div>
+                        <div>SIGN UP</div>
                     </div>
                         <br />
                         <div className={"inputContainer1"}>
@@ -98,24 +98,16 @@ const Login = (props: any) => {
                             <label className="errorLabel">{passwordError}</label>
                         </div>
                         <br />
-                        <div className={"inputButton"}>
-                            {/* <div className="nav"><Link to="/home" className="links">login</Link></div> */}
-                            <input
-                                className={"inputButton"}
-                                type="button"
-                                onClick={onButtonClick}
-                                value={"Log in"} />
-                        </div> 
                         <div className={"NewUserButton"}>
                             <input
                                 className={"RegisterButton"}
                                 type="button"
                                 onClick={onRegisterClick}
-                                value={"New User"} />
+                                value={"Submit"} />
                         </div>
                         
                 </div>
             </div></>
 }
 
-export default Login
+export default NewUser
