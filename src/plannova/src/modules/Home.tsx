@@ -10,6 +10,7 @@ import { CiCircleList, CiCalendar, CiPen } from "react-icons/ci";
 import logopic from './logostars.png';
 
 declare module '*.png';
+// hi
 
 function Home(){  //intitalizes a home component function 
 
