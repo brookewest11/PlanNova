@@ -101,3 +101,11 @@
   border: 2px, #616283;
 }
 
+.react-calendar__navigation {
+  display: none;
+}
+
+
+.small {
+  font-size: 18px;
+}
