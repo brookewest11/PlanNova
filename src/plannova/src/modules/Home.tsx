@@ -11,6 +11,7 @@ import logopic from "./logostars.png";
 
 declare module "*.png";
 
+
 function Home() {
   //intitalizes a home component function
 

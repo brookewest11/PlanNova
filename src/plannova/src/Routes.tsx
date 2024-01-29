@@ -5,7 +5,8 @@ import Home from './modules/Home';
 import MealPlan from './modules/MealPlan';
 import List from './modules/List';
 import FitnessTracker from './modules/FitnessTracker';
-import Login from './modules/Login'
+import Login from './modules/Login';
+import NewUser from './modules/NewUser';
 
 function AppRoutes() {
 return (
@@ -15,6 +16,7 @@ return (
         <Route path="/meal-planning" element={<MealPlan />} /> 
         <Route path="/list" element={<List />} /> 
         <Route path="/fitness-tracker" element={<FitnessTracker />} /> 
+        <Route path="/new-user" element={<NewUser />} /> 
     </Routes>
     );
 }

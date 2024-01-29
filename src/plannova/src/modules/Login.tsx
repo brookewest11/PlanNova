@@ -5,7 +5,7 @@ import logopic from "./logostars.png";
 import { useNavigate } from "react-router-dom";
 import { any } from "prop-types";
 
-declare module "*.png"; //needed for logo 
+declare module "*.png"; //needed for logo
 
 // functional component that takes props as argument
 const Login = (props: any) => {
@@ -54,6 +54,12 @@ const Login = (props: any) => {
           })();
     }
 
+    // handle when register button is clicked
+    const onRegisterClick = () => {
+        // Redirect to registration page
+        navigate("/new-user");
+    };
+
     return <><div className="logo_container_login">
         <img src={logopic} className="logopic_login" />
         <div className="logo_login">PlanNova</div>
@@ -68,7 +74,7 @@ const Login = (props: any) => {
                         <div>LOGIN</div>
                     </div>
                         <br />
-                        <div className={"inputContainer"}>
+                        <div className={"inputContainer1"}>
                             {/* bound to email state variable
                                 onChange triggered when user types into the input field
                                     set to setEmail that updates the email state with the current value of the input field (ev.target.value)
@@ -82,7 +88,7 @@ const Login = (props: any) => {
                             <label className="errorLabel">{emailError}</label>
                         </div>
                         <br />
-                        <div className={"inputContainer"}>
+                        <div className={"inputContainer2"}>
                             <input
                                 value={password}
                                 type="password"
@@ -92,7 +98,7 @@ const Login = (props: any) => {
                             <label className="errorLabel">{passwordError}</label>
                         </div>
                         <br />
-                        <div className={"inputContainer"}>
+                        <div className={"inputButton"}>
                             {/* <div className="nav"><Link to="/home" className="links">login</Link></div> */}
                             <input
                                 className={"inputButton"}
@@ -100,7 +106,13 @@ const Login = (props: any) => {
                                 onClick={onButtonClick}
                                 value={"Log in"} />
                         </div> 
-                       
+                        <div className={"NewUserButton"}>
+                            <input
+                                className={"RegisterButton"}
+                                type="button"
+                                onClick={onRegisterClick}
+                                value={"New User"} />
+                        </div>
                         
                 </div>
             </div></>
