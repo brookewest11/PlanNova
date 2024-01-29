@@ -14,7 +14,7 @@ from pymongo.server_api import ServerApi
 # creates flask application instance, __name__ = name of current python module
 app = Flask(__name__)
 # enable CORES for flask app, allows frontend (react) to make requests to the backend (flask)
-# CORS(app)
+CORS(app)
 
 # user = plannova_user, password = PlanNova!333
 mongo_uri = "mongodb+srv://plannova_user:PlanNova333@plannova.2teaqsx.mongodb.net/?retryWrites=true&w=majority"

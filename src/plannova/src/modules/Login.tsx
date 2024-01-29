@@ -5,7 +5,7 @@ import logopic from "./logostars.png";
 import { useNavigate } from "react-router-dom";
 import { any } from "prop-types";
 
-declare module "*.png"; //needed for logo 
+declare module "*.png"; //needed for logo
 
 // functional component that takes props as argument
 const Login = (props: any) => {

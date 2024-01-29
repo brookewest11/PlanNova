@@ -23,10 +23,10 @@ const NewUser = (props: any) => {
     const navigate = useNavigate();
         
     // handle when login button is clicked
-    const onButtonClick = () => {
+    const onRegisterClick = () => {
         (async () => {
             try {
-              const response = await fetch("http://localhost:5000/login", {
+              const response = await fetch("http://localhost:5000/register", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -53,12 +53,6 @@ const NewUser = (props: any) => {
             }
           })();
     }
-
-    // handle when register button is clicked
-    const onRegisterClick = () => {
-        // Redirect to registration page
-        navigate("/register");
-    };
 
     return <><div className="logo_container_login">
         <img src={logopic} className="logopic_login" />
