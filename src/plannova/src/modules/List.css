@@ -10,6 +10,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image: url("background.png");
+    background-size: cover;
 
 }
 
@@ -17,6 +18,7 @@ body {
     /* using flex container to handle the title and logo image*/
     display: flex;
     align-items: center;
+    margin-left: 10px
   }
   
 .logopic_list {
@@ -38,32 +40,68 @@ body {
   font-family: "Outfit";
   color: #01204E;
   font-size: 45px;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-top: 70px;
 
 }
 .sub-title{
     font-family: "Outfit";
     color: #01204E;
     font-size: 20px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
-.button-list {
+.create-list-button {
     border-radius: 15px;
     height: 25px;
-    background-color: #616283;
     transform: translateX(-50%), translateY(-50%);
-    color: white;
-    margin: 50px;
     border: none;
+    background-color: #d9d9d9;
+    color: #616283;
     padding-left: 10px;
     padding-right: 10px;
+    position: absolute;
+    top: 50px; /* Adjust top position as needed */
+    right: 20px; 
+}
+
+.delete-list-button{
+  border-radius: 15px;
+  height: 25px;
+  background-color: #d9d9d9;
+  color: #616283;
+  transform: translateX(-50%), translateY(-50%);
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  top: 90px; /* Adjust top position as needed */
+  right: 20px; 
+}
+
+.edit-list-items-button{
+  border-radius: 15px;
+  height: 25px;
+  background-color: #d9d9d9;
+  color: #616283;
+  transform: translateX(-50%), translateY(-50%);
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  top: 130px; /* Adjust top position as needed */
+  right: 20px; 
+}
+
+.grid-item {
+  margin-right: 20px;
 }
 
 .grid-container {
     display: flex;
     justify-content: space-between;
-    /* You can also add properties like padding, width, and other styles as needed */
+    /* background-color: #ad9176;
+    height: 75px; */
   }
 
 .grid-container2 {
@@ -71,7 +109,7 @@ body {
     gap: 0px;
     justify-content: center;
     grid-gap: 30px;
-    /* You can also add properties like padding, width, and other styles as needed */
+    margin-top: 100px;
 }
 
 .grid-item2 > div {
@@ -79,7 +117,6 @@ body {
     margin: 10px;
   
 }
-
 .List
 {
   padding: 0px;
@@ -93,8 +130,12 @@ body {
   
 }
 
+
 .list-title {
     font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .list-items {
@@ -106,4 +147,68 @@ body {
 .list-text {
     text-align: left;
     font-size: 18px;
+}
+
+/* Add this to your List.css file */
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.popup input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.create-list {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.delete-list {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.add-to-list {
+  background-color: #616283;
+  color: white;
+}
+
+.delete-from-list {
+  background-color: #616283;
+  color: white;
 }
