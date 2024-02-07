@@ -22,6 +22,10 @@ function List() {
 
   const [showDeleteListPopup, setShowDeleteListPopup] = useState(false);
 
+  const handleListItemClick = (listIndex: number) => {
+    setSelectedListIndex(listIndex); // Set the selected list index
+  };
+
   useEffect(() => {
     fetchUserLists();
   }, []);
@@ -142,6 +146,7 @@ function List() {
         setLists(updatedLists); // Update the local state with the new list
         setShowPopup(false);
         setNewListName("");
+        console.log("Server Response:", data);
       } else {
         console.error("Failed to create new list:", data.error);
       }
@@ -172,6 +177,7 @@ function List() {
         setLists(updatedLists); // Update the local state with the deleted list
         setSelectedListIndex("");
         setShowDeleteListPopup(false);
+        console.log("Server Response:", data);
       } else {
         console.error("Failed to delete list:", data.error);
       }
@@ -194,39 +200,41 @@ function List() {
          <div className="grid-item">
            {/* navigation bar for this page  */}
            <div className="nav-buttons">
-             <Link to="/list" className="links">
-               lists
-             </Link>
-             <Link to="/meal-planning" className="links">
-               meal planning
-             </Link>
-             <Link to="/fitness-tracker" className="links">
-               fitness tracker
-             </Link>
-             <Link to="/home" className="links">
+            <Link to="/home" className="links" style={{ color: '#633a7d' }}>
                home
              </Link>
-             <Link to="/" className="links">
+             <Link to="/list" className="links" style={{ color: '#7c3ba5' }}>
+               lists
+             </Link>
+             <Link to="/meal-planning" className="links" style={{ color: '#8c4fb3' }}>
+               meal planning
+             </Link>
+             <Link to="/fitness-tracker" className="links" style={{ color: '#be83e3' }}>
+               fitness tracker
+             </Link>
+             <Link to="/" className="links" style={{ color: '#cda2e8' }}>
                logout
              </Link>
            </div>
          </div>
        </div>
+       <hr className="line" />
+       <div className="list-name">Lists</div>
        <button className="create-list-button" onClick={() => setShowPopup(true)}>
         + Create List
       </button>
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
-            <h2>Enter List Name</h2>
+            <div className="enter-list-name-title">Enter List Name</div>
             <input
               type="text"
               placeholder="List Name"
               value={newListName}
               onChange={(e) => setNewListName(e.target.value)}
             />
-            <button className="cancel" onClick={() => setShowPopup(false)}>Cancel</button>
             <button className="create-list" onClick={handleCreateNewList}>Create List</button>
+            <button className="cancel" onClick={() => setShowPopup(false)}>Cancel</button>
           </div>
         </div>
       )}
@@ -236,46 +244,19 @@ function List() {
       {showDeleteListPopup && (
         <div className="popup">
           <div className="popup-content">
-            <h2>Delete List</h2>
+            <div className="delete-list-title">Delete List</div>
             <select
               value={selectedListIndex}
               onChange={(e) => setSelectedListIndex(e.target.value)}
+              className="dropdown"
             >
               <option value="">Select List</option>
               {lists.map((list, index) => (
                 <option key={index} value={index}>{list.title}</option>
               ))}
             </select>
-            <button className="cancel" onClick={() => setShowDeleteListPopup(false)}>Cancel</button>
             <button className="delete-list" onClick={handleDeleteList}>Delete List</button>
-          </div>
-        </div>
-      )}
-    <button className="edit-list-items-button" onClick={() => setListPopup(true)}>
-        Edit List Items
-      </button>
-      {showListPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>add or delete items from list</h2>
-            <input
-              type="text"
-              placeholder="Item Name"
-              value={item}
-              onChange={(e) => setItem(e.target.value)}
-            />
-            <select
-              value={selectedListIndex}
-              onChange={(e) => setSelectedListIndex(e.target.value)}
-            >
-              <option value="">Select List</option>
-              {lists.map((list, index) => (
-                <option key={index} value={index}>{list.title}</option>
-              ))}
-            </select>
-            <button className="add-to-list" onClick={handleAddToList}>Add to List</button>
-            <button className="delete-from-list" onClick={handleDeleteFromList}>Delete from List</button>
-            <button className="cancel" onClick={() => setListPopup(false)}>Cancel</button>
+            <button className="cancel" onClick={() => setShowDeleteListPopup(false)}>Cancel</button>
           </div>
         </div>
       )}
@@ -283,8 +264,8 @@ function List() {
       {/* Render new lists */}
       {lists.map((list, index) => (
         <div key={index} className="grid-item2">
-          <div className="List">
-            <div className="list-title">{list.title}</div>
+          <div className="List" onClick={() => handleListItemClick(index)}>
+            <div className="list-text1">{list.title}</div>
             <div>
               {list.items.map((item, itemIndex) => (
                 <div key={itemIndex}>
@@ -297,6 +278,22 @@ function List() {
         </div>
       ))}
       </div>
+      {selectedListIndex !== "" && !showDeleteListPopup && (
+      <div className="popup"> {/* Add your popup styling */}
+        <div className="popup-content">
+          <h2>add or delete items from list</h2>
+          <input
+            type="text"
+            placeholder="Item Name"
+            value={item}
+            onChange={(e) => setItem(e.target.value)}
+          />
+          <button className="add-to-list" onClick={handleAddToList}>Add to List</button>
+          <button className="delete-from-list" onClick={handleDeleteFromList}>Delete from List</button>
+          <button className="cancel" onClick={() => setSelectedListIndex("")}>Cancel</button>
+        </div>
+      </div>
+    )}
     </>
   );
 }
