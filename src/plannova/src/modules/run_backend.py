@@ -15,7 +15,7 @@ from flask_session import Session
 # creates flask application instance, __name__ = name of current python module
 app = Flask(__name__)
 # enable CORES for flask app, allows frontend (react) to make requests to the backend (flask)
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins='http://localhost:3000')
 app.secret_key = 'your_secret_key'
 app.config['SESSION_COOKIE_SECURE'] = True
 
@@ -79,7 +79,11 @@ def register():
 
     # Insert new user into the database
     new_user = {"username": user, "password": password}
-    authentication_collection.insert_one(new_user)
+    insert_result = authentication_collection.insert_one(new_user)
+    user_id = insert_result.inserted_id
+    session['user_id'] = str(user_id)
+    user_id = session['user_id']
+    print(f"register user id: {user_id}")
 
     return jsonify({"success": True, "message": "User created successfully."}), 201
 
@@ -99,6 +103,22 @@ def update_lists():
     list_collection.replace_one({"_id": user_id}, {"lists": updated_lists}, upsert=True)
 
     return jsonify({"success": True, "message": "Lists updated successfully."}), 200
+
+@app.route("/get-user-lists", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_user_lists():
+    user_id = session['user_id']
+    print(f"load list user id: {user_id}")
+    if not user_id:
+        return jsonify({"error": "User not logged in."}), 401
+
+    # Retrieve user's lists from the database
+    user_lists = list_collection.find_one({"_id": user_id})
+
+    if not user_lists:
+        return jsonify({"error": "User lists not found."}), 404
+
+    return jsonify({"lists": user_lists["lists"]}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)

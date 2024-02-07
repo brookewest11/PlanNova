@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./List.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
@@ -22,13 +22,18 @@ function List() {
 
   const [showDeleteListPopup, setShowDeleteListPopup] = useState(false);
 
+  useEffect(() => {
+    fetchUserLists();
+  }, []);
+
   const fetchUserLists = async () => {
     try {
-      const response = await fetch("/user-lists", {
+      const response = await fetch("http://localhost:5000/get-user-lists", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: 'include',
       });
       const data = await response.json();
       if (response.ok) {
@@ -75,47 +80,104 @@ function List() {
     }
   };
 
-
-  // const handleAddToList = () => {
-  //   // Add itemToAdd to the selected list (selectedListIndex)
-  //   if (selectedListIndex !== "" && item.trim() !== "") {
-  //       const updatedLists = [...lists];
-  //       updatedLists[Number(selectedListIndex)].items.push(item); // Cast selectedListIndex to a number here
-  //       setLists(updatedLists);
-  //       setListPopup(false);
-  //       setItem("");
-  //       setSelectedListIndex("");
-  //   }
-  // };
-
-  const handleDeleteFromList = () => {
+  const handleDeleteFromList = async () => {
     if (selectedListIndex !== "" && item.trim() !== "") {
-      const updatedLists = [...lists];
-      const listIndex = Number(selectedListIndex);
-      const updatedItems = updatedLists[listIndex].items.filter(listItem => listItem !== item); // Rename variable here
-      updatedLists[listIndex].items = updatedItems;
-      setLists(updatedLists);
-      setListPopup(false);
-      setItem("");
-      setSelectedListIndex("");
+      try {
+        const updatedLists = [...lists];
+        const listIndex = Number(selectedListIndex);
+        const updatedItems = updatedLists[listIndex].items.filter(listItem => listItem !== item); // Rename variable here
+        updatedLists[listIndex].items = updatedItems;
+
+        // Send the updated list to the backend
+        const response = await fetch("http://localhost:5000/update-lists", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ lists: updatedLists }),
+          credentials: 'include',
+        });
+
+        const data = await response.json();
+
+        // Reset state variables
+        setLists(updatedLists);
+        setListPopup(false);
+        setItem("");
+        setSelectedListIndex("");
+        
+
+        console.log("Server Response:", data);
+      } catch (error) {
+        console.error("Error deleting item to list:", error);
+      }
     }
   };
 
-  const handleCreateNewList = () => {
+  const handleCreateNewList = async () => {
+    if (lists.length >= 4) {
+      // Display a warning notification to the user
+      alert("You can only create a maximum of four lists.");
+      return; // Exit the function
+    }
+
     if (newListName.trim() !== "") {
       const newList = { title: newListName, items: [] };
-      setLists([...lists, newList]);
-      setShowPopup(false);
-      setNewListName("");
+    const updatedLists = [...lists, newList];
+
+    try {
+      // Send the updated list to the backend
+      const response = await fetch("http://localhost:5000/update-lists", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ lists: updatedLists }),
+        credentials: 'include',
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setLists(updatedLists); // Update the local state with the new list
+        setShowPopup(false);
+        setNewListName("");
+      } else {
+        console.error("Failed to create new list:", data.error);
+      }
+    } catch (error) {
+      console.error("Error creating new list:", error);
+    }
     }
   };
 
-  const handleDeleteList = () => {
+  const handleDeleteList = async () => {
     if (selectedListIndex !== "") {
       const updatedLists = lists.filter((_, index) => index !== Number(selectedListIndex));
-      setLists(updatedLists);
-      setSelectedListIndex("");
-      setShowDeleteListPopup(false);
+
+    try {
+      // Send the updated list to the backend
+      const response = await fetch("http://localhost:5000/update-lists", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ lists: updatedLists }),
+        credentials: 'include',
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setLists(updatedLists); // Update the local state with the deleted list
+        setSelectedListIndex("");
+        setShowDeleteListPopup(false);
+      } else {
+        console.error("Failed to delete list:", data.error);
+      }
+    } catch (error) {
+      console.error("Error deleting list:", error);
+    }
     }
   };
 

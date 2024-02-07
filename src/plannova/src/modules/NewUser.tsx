@@ -30,6 +30,7 @@ const NewUser = (props: any) => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ user: email, password: password }),
+                credentials: 'include',
               });
       
               const data = await response.json();
