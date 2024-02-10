@@ -11,25 +11,32 @@ interface ListItem {
 }
 
 function List() {
-  const [lists, setLists] = useState<ListItem[]>([]); // Explicitly annotate the type here
-  const [numOfBoxes, setnumOfBoxes] = useState(5);
-  const [showPopup, setShowPopup] = useState(false);
+  // hold the list content
+  const [lists, setLists] = useState<ListItem[]>([]);
+  // popup for creating list
+  const [showCreatePopup, setShowCreatePopup] = useState(false);
+  // handles setting a new list with associated name
   const [newListName, setNewListName] = useState("");
-
+  // handles popup for editing list items
   const [showListPopup, setListPopup] = useState(false);
+  // holds list item
   const [item, setItem] = useState("");
+  // holds current list index
   const [selectedListIndex, setSelectedListIndex] = useState<string | number>("");
-
+  // handles popup for deleting a list
   const [showDeleteListPopup, setShowDeleteListPopup] = useState(false);
 
+  // called if a list item is clicked
   const handleListItemClick = (listIndex: number) => {
-    setSelectedListIndex(listIndex); // Set the selected list index
+    setSelectedListIndex(listIndex);
   };
 
+  // fetches specific user lists based on user
   useEffect(() => {
     fetchUserLists();
   }, []);
 
+  // function for fetching specific user lists based on user
   const fetchUserLists = async () => {
     try {
       const response = await fetch("http://localhost:5000/get-user-lists", {
@@ -40,7 +47,9 @@ function List() {
         credentials: 'include',
       });
       const data = await response.json();
+      // if success
       if (response.ok) {
+        // set the current list with list stored in backend for user
         setLists(data.lists);
       } else {
         // Handle error
@@ -51,15 +60,18 @@ function List() {
     }
   };
 
+  // adds item to a list and updates backend
   const handleAddToList = async () => {
-    // Add itemToAdd to the selected list (selectedListIndex)
     if (selectedListIndex !== "" && item.trim() !== "") {
         try {
+            // grabs the current list
             const updatedLists = [...lists];
-            updatedLists[Number(selectedListIndex)].items.push(item); // Cast selectedListIndex to a number here
+            // pushes the new item to specific list
+            updatedLists[Number(selectedListIndex)].items.push(item);
+            // updates lists
             setLists(updatedLists);
 
-            // Send the updated list to the backend
+            // send the updated list to the backend
             const response = await fetch("http://localhost:5000/update-lists", {
                 method: "POST",
                 headers: {
@@ -71,12 +83,10 @@ function List() {
 
             const data = await response.json();
 
-            // Reset state variables
             setListPopup(false);
             setItem("");
             setSelectedListIndex("");
 
-            // Log the response from the server
             console.log("Server Response:", data);
         } catch (error) {
             console.error("Error adding item to list:", error);
@@ -84,15 +94,17 @@ function List() {
     }
   };
 
+  // deletes item from a list
   const handleDeleteFromList = async () => {
     if (selectedListIndex !== "" && item.trim() !== "") {
       try {
+        // gets current list, gets list index, removes item from list, and updates lists
         const updatedLists = [...lists];
         const listIndex = Number(selectedListIndex);
-        const updatedItems = updatedLists[listIndex].items.filter(listItem => listItem !== item); // Rename variable here
+        const updatedItems = updatedLists[listIndex].items.filter(listItem => listItem !== item); 
         updatedLists[listIndex].items = updatedItems;
 
-        // Send the updated list to the backend
+        // send the updated list to the backend
         const response = await fetch("http://localhost:5000/update-lists", {
           method: "POST",
           headers: {
@@ -104,7 +116,6 @@ function List() {
 
         const data = await response.json();
 
-        // Reset state variables
         setLists(updatedLists);
         setListPopup(false);
         setItem("");
@@ -118,19 +129,21 @@ function List() {
     }
   };
 
+  // creates a new list
   const handleCreateNewList = async () => {
+    // only allow user to create four lists
     if (lists.length >= 4) {
-      // Display a warning notification to the user
       alert("You can only create a maximum of four lists.");
-      return; // Exit the function
+      return;
     }
 
+    // adds a new list and list title to current lists
     if (newListName.trim() !== "") {
       const newList = { title: newListName, items: [] };
     const updatedLists = [...lists, newList];
 
     try {
-      // Send the updated list to the backend
+      // send the updated list to the backend
       const response = await fetch("http://localhost:5000/update-lists", {
         method: "POST",
         headers: {
@@ -143,8 +156,8 @@ function List() {
       const data = await response.json();
 
       if (response.ok) {
-        setLists(updatedLists); // Update the local state with the new list
-        setShowPopup(false);
+        setLists(updatedLists);
+        setShowCreatePopup(false);
         setNewListName("");
         console.log("Server Response:", data);
       } else {
@@ -156,12 +169,13 @@ function List() {
     }
   };
 
+  // deletes a specific list
   const handleDeleteList = async () => {
     if (selectedListIndex !== "") {
       const updatedLists = lists.filter((_, index) => index !== Number(selectedListIndex));
 
     try {
-      // Send the updated list to the backend
+      // send the updated list to the backend
       const response = await fetch("http://localhost:5000/update-lists", {
         method: "POST",
         headers: {
@@ -174,7 +188,7 @@ function List() {
       const data = await response.json();
 
       if (response.ok) {
-        setLists(updatedLists); // Update the local state with the deleted list
+        setLists(updatedLists);
         setSelectedListIndex("");
         setShowDeleteListPopup(false);
         console.log("Server Response:", data);
@@ -198,7 +212,7 @@ function List() {
            </div>
          </div>
          <div className="grid-item">
-           {/* navigation bar for this page  */}
+           {/* navigation bar */}
            <div className="nav-buttons">
             <Link to="/home" className="links" style={{ color: '#633a7d' }}>
                home
@@ -220,10 +234,11 @@ function List() {
        </div>
        <hr className="line" />
        <div className="list-name">Lists</div>
-       <button className="create-list-button" onClick={() => setShowPopup(true)}>
+       {/* create list button and popup functionality */}
+       <button className="create-list-button" onClick={() => setShowCreatePopup(true)}>
         + Create List
       </button>
-      {showPopup && (
+      {showCreatePopup && (
         <div className="popup">
           <div className="popup-content">
             <div className="enter-list-name-title">Enter List Name</div>
@@ -234,11 +249,12 @@ function List() {
               onChange={(e) => setNewListName(e.target.value)}
             />
             <button className="create-list" onClick={handleCreateNewList}>Create List</button>
-            <button className="cancel" onClick={() => setShowPopup(false)}>Cancel</button>
+            <button className="cancel" onClick={() => setShowCreatePopup(false)}>Cancel</button>
           </div>
         </div>
       )}
-    <button className="delete-list-button" onClick={() => setShowDeleteListPopup(true)}>
+      {/* delete list button and popup functionality */}
+      <button className="delete-list-button" onClick={() => setShowDeleteListPopup(true)}>
         - Delete List
       </button>
       {showDeleteListPopup && (
@@ -261,15 +277,15 @@ function List() {
         </div>
       )}
       <div className="grid-container2">
-      {/* Render new lists */}
+      {/* renders lists */}
       {lists.map((list, index) => (
         <div key={index} className="grid-item2">
           <div className="List" onClick={() => handleListItemClick(index)}>
-            <div className="list-text1">{list.title}</div>
+            <div className="list-title">{list.title}</div>
             <div>
               {list.items.map((item, itemIndex) => (
-                <div key={itemIndex}>
-                  <input type="checkbox" className="list-items" />
+                <div key={itemIndex} className="total-list-text1">
+                  <div className="bullet"></div>
                   <div className="list-text">{item}</div>
                 </div>
               ))}
@@ -278,10 +294,11 @@ function List() {
         </div>
       ))}
       </div>
+      {/* edit list items functionality */}
       {selectedListIndex !== "" && !showDeleteListPopup && (
-      <div className="popup"> {/* Add your popup styling */}
+      <div className="popup">
         <div className="popup-content">
-          <h2>add or delete items from list</h2>
+          <div className="edit-list-items-text"> Edit List Items</div>
           <input
             type="text"
             placeholder="Item Name"
