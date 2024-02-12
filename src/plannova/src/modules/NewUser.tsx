@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./NewUser.css";
-import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
 import { useNavigate } from "react-router-dom";
-import { any } from "prop-types";
 
 declare module "*.png"; //needed for logo 
 
@@ -32,6 +30,7 @@ const NewUser = (props: any) => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ user: email, password: password }),
+                credentials: 'include',
               });
       
               const data = await response.json();
