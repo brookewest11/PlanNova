@@ -41,10 +41,12 @@ function List() {
             <Link to="/fitness-tracker" className="links">
               fitness tracker
             </Link>
-            <Link to="/" className="links">
+            <Link to="/home" className="links">
               home
             </Link>
-            <button className="buttons button"> logout</button>
+            <Link to="/" className="links">
+              logout
+            </Link>
           </div>
         </div>
       </div>

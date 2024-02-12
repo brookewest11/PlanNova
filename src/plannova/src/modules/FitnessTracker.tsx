@@ -46,8 +46,12 @@ function FitnessTracker(){
               <Link to="/list" className="links">lists</Link>
               <Link to="/meal-planning" className="links">meal planning</Link>
               <Link to="/fitness-tracker" className="links">fitness tracker</Link>
-              <Link to="/" className="links">home</Link>
-              <button className="buttons button"> logout</button>
+              <Link to="/home" className="links">
+              home
+            </Link>
+            <Link to="/" className="links">
+              logout
+            </Link>
           </div>
       </div>
       </div>

@@ -8,8 +8,20 @@ import MonthCal from "./MonthCal";
 import WeeklySchedule from "./Weekly";
 import { CiCircleList, CiCalendar, CiPen } from "react-icons/ci";
 import logopic from "./logostars.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 declare module "*.png";
+
+// Notification function
+interface NotificationProps {
+  message: string;
+}
+
+const notify = ({ message }: NotificationProps) => {
+  toast(message);
+};
+
 
 
 function Home() {

@@ -76,7 +76,7 @@ const NewUser = (props: any) => {
                             */}
                             <input
                                 value={email}
-                                placeholder="Enter your email here"
+                                placeholder="Enter your username here"
                                 onChange={ev => setEmail(ev.target.value)}
                                 className={"inputBox"} />
                             <label className="errorLabel">{emailError}</label>
