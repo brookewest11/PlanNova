@@ -171,8 +171,9 @@ body {
 }
 
 .grid-item2 > div {
-    text-align: center;
+    /* text-align: center; */
     margin: 10px;
+    flex-direction: column;
 
 }
 .List
