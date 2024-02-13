@@ -67,37 +67,48 @@ nav-buttons {
     border-radius: 3px;
     background: #cb9cf2
   }
+
+  .grid-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .grid-container {
     display: flex;
     justify-content: space-between;
-    /* You can also add properties like padding, width, and other styles as needed */
+    
   }
-  .grid-container2 {
+  .meal-grid-container2 {
+    margin: 90px;
+    flex-wrap: wrap;
     display: flex;
-    gap: 0;
-    justify-content: center;
-    grid-gap: 0;
-    /* You can also add properties like padding, width, and other styles as needed */
+    
   }
+  .grid-container-top-row
+  {
+    
+    text-align: center;
+    margin: 50px;
+    display: justify;
+  }
+
+  
   .grid-container3 {
     display: flex;
     justify-content: start;
   }
   
-  .grid-item {
-    /* You can add styling for the grid items here */
-  }
   
-  /* Additional styles for the inner divs (optional) */
   .grid-item > div {
     text-align: center;
   
   }
   .grid-item2 > div {
     text-align: center;
-    margin: 10px;
+    padding: 0px;
   
   }
+
   .title
   {
     font-family: "Outfit";
@@ -111,8 +122,8 @@ nav-buttons {
     padding: 0px;
     border: 2px solid #a6d2f4;
     border-radius: 10px;
-    width: 180px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background-color: rgba(220, 194, 251, .3);
     color:azure;
     font-family: "Outfit";
