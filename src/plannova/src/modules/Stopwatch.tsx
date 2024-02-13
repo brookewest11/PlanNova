@@ -51,7 +51,7 @@ function Stopwatch()
   };
   //stopwatch component
     return (
-        <div style={{ backgroundColor: "rgba(251, 194, 241, 0.3)", padding: "20px", borderRadius: "20px", width: "350px", height: "250px", marginTop:"-5px", marginLeft: "50px" }}>
+        <div style={{ backgroundColor: "#7c7f65", padding: "20px", borderRadius: "20px", width: "350px", height: "250px", marginTop:"-5px", marginLeft: "50px" }}>
           <div className="stopwatch">
             <h2 style={{textAlign: "center"}}>stopwatch</h2>
             <div style={{textAlign: "center"}} className="display">{formatTime(time)}</div>

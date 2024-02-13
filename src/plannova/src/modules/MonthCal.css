@@ -24,7 +24,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   font-family: "Outfit";
-  color: white;
+  color: #000435;
 }
 
 .react-calendar {
@@ -54,7 +54,7 @@
 }
 
 .react-calendar__month-view__days {
-  border: 1px solid #cb9cf2;
+  border: 1px solid #000435;
   background-color: rgba(255, 0, 0, 0);
 }
 
@@ -65,11 +65,11 @@
 
 .react-calendar__month-view__days__day--neighboringMonth {
     opacity: 0.4;
-    background-color: white
+    background-color: #000435
   }
 .react-calendar__month-view__days__day--weekend,
 .react-calendar__month-view__days__day {
-    color: #cb9cf2;
+    color: #000435;
     
   }
 .react-calendar__tile--now {
@@ -77,7 +77,7 @@
   }
 .react-calendar__month-view__weekdays__weekday {
     padding: 0.5em;
-    color: #cb9cf2;
+    color: #000435;
     background-color:rgba(255, 0, 0, 0);
     font-family:"Outfit"
 
@@ -96,8 +96,8 @@
   color: #616283;
 }
 .react-calendar__tile:hover {
-  background-color: #cb9cf2; 
-  color: #cb9cf2;
+  background-color: #000435; 
+  color: #000435;
   border: 2px, #616283;
 }
 
@@ -116,7 +116,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 80px;
-  background-color: rgba(251, 194, 241, 0.3);
+  background-color: #000435;
   color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -139,5 +139,5 @@
 }
 
 .close-button:hover {
-  color: #3A4A65;
+  color: #ffffff;
 }
