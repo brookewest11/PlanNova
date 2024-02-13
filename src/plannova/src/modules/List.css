@@ -30,8 +30,8 @@ body {
   }
 
 .logo_list {
-    font-family: 'Outfit', sans-serif;
-    color: #633a7d;
+    font-family: 'Ranchers', sans-serif;
+    color: #d9d9d9;
     font-size: 40px;
     margin-top: 7px;
   }
@@ -39,7 +39,7 @@ body {
 .title
 {
   font-family: "Outfit";
-  color: #01204E;
+  color: #b298dc;
   font-size: 45px;
   margin-left: 10px;
   margin-top: 70px;
@@ -47,7 +47,7 @@ body {
 }
 .sub-title{
     font-family: "Outfit";
-    color: #01204E;
+    color: #b298dc;
     font-size: 20px;
     margin-left: 10px;
 }
@@ -58,7 +58,7 @@ body {
   margin-top: -15px;
   margin-left: 20px;
   font-weight: bolder;
-  color: #633a7d;
+  color: #b298dc;
 }
 
 .create-list-button {
@@ -73,7 +73,7 @@ body {
     font-family: 'Outfit';
     font-size: 20px;
     font-weight: bold;
-    color: #633a7d;
+    color: #b298dc;
     left: 15px;
     top: 170px;
     display: flex;
@@ -84,8 +84,8 @@ body {
 .create-list-button:hover {
   border: 1px;
   border-radius: 3px;
-  background: #d3cadb;
-    color: white;
+  background: #b298dc;
+  color: white;
 }
 
 .delete-list-button{
@@ -100,7 +100,7 @@ body {
   font-family: 'Outfit';
   font-size: 20px;
   font-weight: bold;
-  color: #633a7d;
+  color: #b298dc;
   top: 210px; /* Adjust top position as needed */
   left: 15px;
   display: flex; /* Use flexbox */
@@ -111,8 +111,8 @@ body {
 .delete-list-button:hover {
   border: 1px;
   border-radius: 3px;
-  background: #d3cadb;
-    color: white;
+  background: #b298dc;
+  color: white;
 }
 
 .edit-list-items-button{
@@ -127,7 +127,7 @@ body {
   font-family: 'Outfit';
   font-size: 20px;
   font-weight: bold;
-  color: #633a7d;
+  color: #b298dc;
   top: 250px;
   left: 15px; 
   display: flex; 
@@ -150,8 +150,8 @@ body {
   width: 100%;
   margin-top: 50px;
   border: none;
-  border-bottom: 2px solid #633a7d;
-  color: #633a7d;
+  border-bottom: 2px solid #b298dc;
+  color: #b298dc;
 }
 
 .nav-buttons {
@@ -171,8 +171,9 @@ body {
 }
 
 .grid-item2 > div {
-    text-align: center;
+    /* text-align: center; */
     margin: 10px;
+    flex-direction: column;
 
 }
 .List
@@ -254,28 +255,28 @@ body {
 }
 
 .create-list {
-  background-color: #633a7d;
+  background-color: #b298dc;
   color: white;
 }
 
 .delete-list {
-  background-color: #633a7d;
+  background-color: #b298dc;
   color: white;
 }
 
 .add-to-list {
-  background-color: #633a7d;
+  background-color: #b298dc;
   color: white;
 }
 
 .delete-from-list {
-  background-color: #633a7d;
+  background-color: #b298dc;
   color: white;
 }
 
 .enter-list-name-title {
   font-family: 'Outfit';
-  color:#633a7d;
+  color:#b298dc;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -283,7 +284,7 @@ body {
 
 .delete-list-title {
   font-family: 'Outfit';
-  color:#633a7d;
+  color:#b298dc;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;

@@ -1,32 +1,23 @@
-//Meal Planning page
-
-//Needed imports 
 import React, { useState } from "react";
 import "./MealPlan.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
 import { useUser } from "./User";
 
-declare module "*.png"; //needed for logo 
+declare module "*.png"; 
 
-//console.log("userName in MealPlan:", userName);
-
-function MealPlan() {  //creates MealPlan function
+function MealPlan() {  //creates MealPlan function 
+  const numberOfInputBoxes = 21; // 3 meals a day * 7 days a week 
   const { userName } = useUser();
   console.log('userName from useUser:', userName);
-  const numberOfInputBoxes = 21; // 3 meals a day * 7 days a week 
   const initialInputValues = Array.from(
     { length: numberOfInputBoxes },
     () => ""
   ); //intialized with an array of empty strings (size 21)
 
-  const [inputValues, setInputValues] = useState(initialInputValues); //useState hook to setInput values for meal boxes 
+  const [inputValues, setInputValues] = useState(initialInputValues);
 
-  const handleInputChange = ( //on change of input the following code will run 
-  //the input text box value will be changed to what is 
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newInputValues = [...inputValues];
     newInputValues[index] = e.target.value;
     setInputValues(newInputValues);
@@ -36,16 +27,15 @@ function MealPlan() {  //creates MealPlan function
     <>
       <div className="grid-container">
         <div className="grid-item">
-        <div>
-      <div className="logo_container_meal">
-            <img src={logopic} className="logopic_meal" />
-            <div className="logo_meal">PlanNova</div>
+          <div>
+            <div className="logo_container_meal">
+              <img src={logopic} className="logopic_meal" />
+              <div className="logo_meal">PlanNova</div>
+            </div>
           </div>
         </div>
-        </div>
         <div className="grid-item">
-          {/* sets up navigation bar for this page  */}
-          <div className="nav-buttons"> 
+          <div className="nav-buttons">
             <Link to="/list" className="links">
               lists
             </Link>
@@ -61,16 +51,17 @@ function MealPlan() {  //creates MealPlan function
           </div>
         </div>
       </div>
+      <hr className="mealline" />
       <div>
         {/* heading and creates 7 meal boxes (each meal box has 3 input text boxes that change as you type in them and hold their value) */}
         <h2 className="user-title">{`${userName}'s meals`}</h2>
       </div>
-      <div className="grid-container2">
+      <div className="meal-grid-container2">
+        {/* Monday */}
         <div className="grid-item2">
           <div className="mealbox">
-            {" "}
-            monday
-            <div>
+            <div style={{ fontSize: '30px' }}>Monday</div>
+            <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
               <div key={0}>
@@ -83,7 +74,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               lunch
-              <div key={0}>
+              <div key={1}>
                 <input
                   className="input"
                   type="text"
@@ -93,7 +84,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               dinner
-              <div key={0}>
+              <div key={2}>
                 <input
                   className="input"
                   type="text"
@@ -104,15 +95,13 @@ function MealPlan() {  //creates MealPlan function
               </div>
             </div>
           </div>
-        </div>
-        <div className="grid-item2">
+                {/* Tuesday */}
           <div className="mealbox">
-            {" "}
-            tuesday
-            <div>
+            <div style={{ fontSize: '30px' }}>Tuesday</div>
+            <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
-              <div key={0}>
+              <div key={3}>
                 <input
                   className="input"
                   type="text"
@@ -122,7 +111,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               lunch
-              <div key={0}>
+              <div key={4}>
                 <input
                   className="input"
                   type="text"
@@ -132,7 +121,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               dinner
-              <div key={0}>
+              <div key={5}>
                 <input
                   className="input"
                   type="text"
@@ -144,14 +133,14 @@ function MealPlan() {  //creates MealPlan function
             </div>
           </div>
         </div>
+        {/* Wednesday */}
         <div className="grid-item2">
           <div className="mealbox">
-            {" "}
-            wednesday
-            <div>
+            <div style={{ fontSize: '30px' }}>Wednesday</div>
+            <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
-              <div key={0}>
+              <div key={6}>
                 <input
                   className="input"
                   type="text"
@@ -161,7 +150,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               lunch
-              <div key={0}>
+              <div key={7}>
                 <input
                   className="input"
                   type="text"
@@ -171,7 +160,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               dinner
-              <div key={0}>
+              <div key={8}>
                 <input
                   className="input"
                   type="text"
@@ -181,16 +170,14 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
             </div>
-          </div>
         </div>
-        <div className="grid-item2">
+        {/* Thursday */}
           <div className="mealbox">
-            {" "}
-            thursday
-            <div>
+            <div style={{ fontSize: '30px' }}>Thursday</div>
+            <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
-              <div key={0}>
+              <div key={9}>
                 <input
                   className="input"
                   type="text"
@@ -200,7 +187,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               lunch
-              <div key={0}>
+              <div key={10}>
                 <input
                   className="input"
                   type="text"
@@ -210,7 +197,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               dinner
-              <div key={0}>
+              <div key={11}>
                 <input
                   className="input"
                   type="text"
@@ -220,16 +207,14 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
             </div>
-          </div>
         </div>
-        <div className="grid-item2">
+        {/* Friday */}
           <div className="mealbox">
-            {" "}
-            friday
-            <div>
+            <div style={{ fontSize: '30px' }}>Friday</div>
+            <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
-              <div key={0}>
+              <div key={12}>
                 <input
                   className="input"
                   type="text"
@@ -239,7 +224,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               lunch
-              <div key={0}>
+              <div key={13}>
                 <input
                   className="input"
                   type="text"
@@ -249,7 +234,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               dinner
-              <div key={0}>
+              <div key={14}>
                 <input
                   className="input"
                   type="text"
@@ -261,14 +246,14 @@ function MealPlan() {  //creates MealPlan function
             </div>
           </div>
         </div>
+        {/* Saturday */}
         <div className="grid-item2">
           <div className="mealbox">
-            {" "}
-            saturday
-            <div>
+            <div style={{ fontSize: '30px' }}>Saturday</div>
+            <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
-              <div key={0}>
+              <div key={15}>
                 <input
                   className="input"
                   type="text"
@@ -278,7 +263,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               lunch
-              <div key={0}>
+              <div key={16}>
                 <input
                   className="input"
                   type="text"
@@ -288,7 +273,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               dinner
-              <div key={0}>
+              <div key={17}>
                 <input
                   className="input"
                   type="text"
@@ -298,16 +283,14 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
             </div>
-          </div>
         </div>
-        <div className="grid-item2">
+        {/* Sunday */}
           <div className="mealbox">
-            {" "}
-            sunday
-            <div>
+            <div style={{ fontSize: '30px' }}>Sunday</div>
+            <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
-              <div key={0}>
+              <div key={18}>
                 <input
                   className="input"
                   type="text"
@@ -317,7 +300,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               lunch
-              <div key={0}>
+              <div key={19}>
                 <input
                   className="input"
                   type="text"
@@ -327,7 +310,7 @@ function MealPlan() {  //creates MealPlan function
                 />
               </div>
               dinner
-              <div key={0}>
+              <div key={20}>
                 <input
                   className="input"
                   type="text"
