@@ -72,36 +72,38 @@ nav-buttons {
     display: flex;
     justify-content: space-between;
     
-    /* You can also add properties like padding, width, and other styles as needed */
+    
   }
-  .grid-container2 {
+  .meal-grid-container2 {
+    margin-left: 80px;
+    flex-wrap: wrap;
     display: flex;
-    gap: 0;
-    justify-content: center;
-    grid-gap: 0;
-    /* You can also add properties like padding, width, and other styles as needed */
+    position: absolute;
+    flex-direction: row;
+    align-items: center;
+    
   }
+  .grid-item-top-row
+  {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+  }
+
+  
   .grid-container3 {
     display: flex;
     justify-content: start;
   }
-  
-  .grid-item {
-
-    /* You can add styling for the grid items here */
-  }
-  
-  /* Additional styles for the inner divs (optional) */
-  .grid-item > div {
-    text-align: center;
-  
-  }
   .grid-item2 > div {
-    text-align: center;
+    /* text-align: center; */
     margin: 10px;
-    
+    flex-direction: column;
+
+}
   
-  }
+  
+  
   .title
   {
     font-family: "Outfit";
@@ -112,12 +114,10 @@ nav-buttons {
   .mealbox
   {
     padding: 0px;
-    border: 2px solid #883955;
-    border-radius: 10px;
-    width: 180px;
+    width: 400px;
     height: 400px;
-    background-color: #883955;
-    color:azure;
+    background-color: #fadbe6;
+    color:883955;
     font-family: "Outfit";
     
   }
@@ -129,12 +129,31 @@ nav-buttons {
     margin-top: 20px;
     margin-bottom: 10px;
     width: 170px;
-    background-color: #883955;
+    background-color: #fadbe6;
     font-family: "Outfit";
     color: #883955;
+    border: 2px solid #fadbe6;
   }
 
   .input::placeholder {
-    color: #d9d9d9;
+    color: #883955;
+  }
+  .mealline {
+    width: 100%;
+    margin-top: 50px;
+    border: none;
+    border-bottom: 2px solid #883955;
+    color: #883955;
   }
   
+  .clear-button {
+    background-color: transparent; 
+    border: none; 
+    color: #883955;
+    padding: 10px 20px;
+    font-size: 16px; 
+    position: absolute; 
+    top: 100px; 
+    right: 20px;
+    cursor: pointer; 
+}
