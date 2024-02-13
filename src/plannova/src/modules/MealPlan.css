@@ -43,7 +43,7 @@ nav-buttons {
     margin: 10px 20% 50px -20%;
     font-family: 'Outfit';
     align-items: center;
-    color: #374A67;
+    color: #d9d9d9;
   }
   .links{
       font-family: 'Outfit';
@@ -52,7 +52,8 @@ nav-buttons {
       padding: 20px;
   }
   .links:hover {
-    color: #cb9cf2
+    
+    color: gray;
   }
   .buttons {
     background-color: transparent;
@@ -65,11 +66,12 @@ nav-buttons {
   .button:hover {
     border: 1px;
     border-radius: 3px;
-    background: #cb9cf2
+    background: #d9d9d9;
   }
   .grid-container {
     display: flex;
     justify-content: space-between;
+    
     /* You can also add properties like padding, width, and other styles as needed */
   }
   .grid-container2 {
@@ -85,6 +87,7 @@ nav-buttons {
   }
   
   .grid-item {
+
     /* You can add styling for the grid items here */
   }
   
@@ -96,12 +99,12 @@ nav-buttons {
   .grid-item2 > div {
     text-align: center;
     margin: 10px;
+    
   
   }
   .title
   {
     font-family: "Outfit";
-    color: #01204E;
     font-size: 45px;
     margin-left: 20px;
 
@@ -109,11 +112,11 @@ nav-buttons {
   .mealbox
   {
     padding: 0px;
-    border: 2px solid #a6d2f4;
+    border: 2px solid #883955;
     border-radius: 10px;
     width: 180px;
     height: 400px;
-    background-color: rgba(220, 194, 251, .3);
+    background-color: #883955;
     color:azure;
     font-family: "Outfit";
     
@@ -126,12 +129,12 @@ nav-buttons {
     margin-top: 20px;
     margin-bottom: 10px;
     width: 170px;
-    background-color: rgba(220, 194, 251, 0);
+    background-color: #883955;
     font-family: "Outfit";
-    color: #01204E;
+    color: #883955;
   }
 
   .input::placeholder {
-    color: #01204E;
+    color: #d9d9d9;
   }
   

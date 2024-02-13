@@ -59,7 +59,7 @@ function MealPlan() {  //creates MealPlan function
       </div>
       <div>
         {/* heading and creates 7 meal boxes (each meal box has 3 input text boxes that change as you type in them and hold their value) */}
-        <h2 className="title">yourname's meals </h2>
+        <h2 className="title" style={{ color: "#883955" }}>yourname's meals</h2>
       </div>
       <div className="grid-container2">
         <div className="grid-item2">
