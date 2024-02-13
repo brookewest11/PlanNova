@@ -49,9 +49,6 @@ function MealPlan() {  //creates MealPlan function
             <Link to="/list" className="links">
               lists
             </Link>
-            <Link to="/meal-planning" className="links">
-              meal planning
-            </Link>
             <Link to="/fitness-tracker" className="links">
               fitness tracker
             </Link>
@@ -66,7 +63,7 @@ function MealPlan() {  //creates MealPlan function
       </div>
       <div>
         {/* heading and creates 7 meal boxes (each meal box has 3 input text boxes that change as you type in them and hold their value) */}
-        <h2 className="title">{`${userName}'s meals`}</h2>
+        <h2 className="user-title">{`${userName}'s meals`}</h2>
       </div>
       <div className="grid-container2">
         <div className="grid-item2">

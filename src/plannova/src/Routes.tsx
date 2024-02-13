@@ -11,7 +11,7 @@ import NewUser from './modules/NewUser';
 function AppRoutes() {
 return (
     <Routes>
-         <Route path="/" element={<Home />} /> 
+         <Route path="/" element={<Login />} /> 
         <Route path="/home" element={<Home />} /> 
         <Route path="/meal-planning" element={<MealPlan />} /> 
         <Route path="/list" element={<List />} /> 

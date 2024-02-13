@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
@@ -14,6 +14,11 @@ const Login = (props: any) => {
         // state = variable to access current state
         // setState = function to update state
         // useState("") inital state
+
+        useEffect(() => {
+            // Request permission for notifications
+            Notification.requestPermission();
+          }, []);
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

@@ -79,6 +79,12 @@
   p{
     font-size: 15px;
   }
+
+  .notificationTime
+  {
+    color: #556e98;
+    border-color: #edeff3;
+  }
   
 /*
 .weekText

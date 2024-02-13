@@ -1,7 +1,7 @@
 //this code implements the PlanNova homepage component: logo, monthly calendar, weekly schedule, and more
 
 //imports React and needed components for the Home page
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import MonthCal from "./MonthCal";
@@ -23,9 +23,13 @@ const notify = ({ message }: NotificationProps) => {
 };
 
 
-
 function Home() {
   //intitalizes a home component function
+
+  useEffect(() => {
+    // Request permission for notifications
+    Notification.requestPermission();
+  }, []);
 
   const currentDate = new Date(); //sets date to current date (for monthly calendar)
   const options: Intl.DateTimeFormatOptions = {

@@ -86,6 +86,7 @@ nav-buttons {
   
   .grid-item {
     /* You can add styling for the grid items here */
+
   }
   
   /* Additional styles for the inner divs (optional) */
@@ -98,10 +99,11 @@ nav-buttons {
     margin: 10px;
   
   }
-  .title
+  
+  .user-title
   {
     font-family: "Outfit";
-    color: #01204E;
+    color: #b28feb;
     font-size: 45px;
     margin-left: 20px;
     margin-top: 80px;
@@ -126,7 +128,7 @@ nav-buttons {
     margin-top: 20px;
     margin-bottom: 10px;
     width: 170px;
-    background-color: rgba(220, 194, 251, 0);
+    background-color: rgba(226, 214, 244, 0);
     font-family: "Outfit";
     color: #01204E;
   }

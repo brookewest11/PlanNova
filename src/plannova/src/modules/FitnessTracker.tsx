@@ -45,7 +45,6 @@ function FitnessTracker(){
           <div className="nav-buttons">
               <Link to="/list" className="links">lists</Link>
               <Link to="/meal-planning" className="links">meal planning</Link>
-              <Link to="/fitness-tracker" className="links">fitness tracker</Link>
               <Link to="/home" className="links">
               home
             </Link>
@@ -131,8 +130,6 @@ function FitnessTracker(){
   <div className="past-workouts"></div>
   </div>
   </div>
-
-
 
   </>
   )
