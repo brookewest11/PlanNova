@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
 import { useNavigate } from "react-router-dom";
 import { any } from "prop-types";
+import { useUser } from "./User";
 
 declare module "*.png"; //needed for logo
 
@@ -13,11 +14,18 @@ const Login = (props: any) => {
         // state = variable to access current state
         // setState = function to update state
         // useState("") inital state
+
+        useEffect(() => {
+            // Request permission for notifications
+            Notification.requestPermission();
+          }, []);
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [emailError, setEmailError] = useState("")
     const [passwordError, setPasswordError] = useState("")
     const [loginSuccess, setLoginSuccess] = useState(false);
+    const { setUserName } = useUser();
     
     // navigate to diff routes 
     const navigate = useNavigate();
@@ -34,12 +42,17 @@ const Login = (props: any) => {
                 body: JSON.stringify({ user: email, password: password }),
                 credentials: 'include',
               });
-      
+            
+
               const data = await response.json();
       
               if (data.success) {
                 // login successful
                 setLoginSuccess(true);
+                console.log('userName from useUser:', email);
+                // pass the username to the Meal Plan page
+                setUserName(email);
+                //navigate("/meal-planning", { state: { userName : email } });
                 // redirect to home page
                 navigate("/home");
               } else {
@@ -83,7 +96,7 @@ const Login = (props: any) => {
                             */}
                             <input
                                 value={email}
-                                placeholder="Enter your email here"
+                                placeholder="Enter your username here"
                                 onChange={ev => setEmail(ev.target.value)}
                                 className={"inputBox"} />
                             <label className="errorLabel">{emailError}</label>
@@ -102,7 +115,7 @@ const Login = (props: any) => {
                         <div className={"inputButton"}>
                             {/* <div className="nav"><Link to="/home" className="links">login</Link></div> */}
                             <input
-                                className={"inputButton"}
+                                className={"loginButton"}
                                 type="button"
                                 onClick={onButtonClick}
                                 value={"Log in"} />

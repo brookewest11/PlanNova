@@ -135,6 +135,14 @@ nav-buttons {
     border: 2px solid #fadbe6;
   }
 
+  .user-title
+  {
+    font-family: "Outfit";
+    font-size: 45px;
+    margin-left: 20px;
+    color: #883955;
+  }
+
   .input::placeholder {
     color: #883955;
   }

@@ -1,19 +1,35 @@
 //this code implements the PlanNova homepage component: logo, monthly calendar, weekly schedule, and more
 
 //imports React and needed components for the Home page
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import MonthCal from "./MonthCal";
 import WeeklySchedule from "./Weekly";
 import { CiCircleList, CiCalendar, CiPen } from "react-icons/ci";
 import logopic from "./logostars.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 declare module "*.png";
+
+// Notification function
+interface NotificationProps {
+  message: string;
+}
+
+const notify = ({ message }: NotificationProps) => {
+  toast(message);
+};
 
 
 function Home() {
   //intitalizes a home component function
+
+  useEffect(() => {
+    // Request permission for notifications
+    Notification.requestPermission();
+  }, []);
 
   const currentDate = new Date(); //sets date to current date (for monthly calendar)
   const options: Intl.DateTimeFormatOptions = {

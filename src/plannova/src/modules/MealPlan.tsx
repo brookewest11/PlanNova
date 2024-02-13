@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import "./MealPlan.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
+import { useUser } from "./User";
 
-declare module "*.png";
+declare module "*.png"; 
 
-function MealPlan() {
-  const numberOfInputBoxes = 21;
-  const initialInputValues = Array.from({ length: numberOfInputBoxes }, () => "");
+function MealPlan() {  //creates MealPlan function 
+  const numberOfInputBoxes = 21; // 3 meals a day * 7 days a week 
+  const { userName } = useUser();
+  console.log('userName from useUser:', userName);
+  const initialInputValues = Array.from(
+    { length: numberOfInputBoxes },
+    () => ""
+  ); //intialized with an array of empty strings (size 21)
 
   const [inputValues, setInputValues] = useState(initialInputValues);
 
@@ -33,23 +39,22 @@ function MealPlan() {
             <Link to="/list" className="links">
               lists
             </Link>
-            <Link to="/meal-planning" className="links">
-              meal planning
-            </Link>
             <Link to="/fitness-tracker" className="links">
               fitness tracker
             </Link>
-            <Link to="/" className="links">
+            <Link to="/home" className="links">
               home
             </Link>
-            <button className="buttons button"> logout</button>
+            <Link to="/" className="links">
+              logout
+            </Link>
           </div>
         </div>
       </div>
       <hr className="mealline" />
       <div>
-        <h2 className="title" style={{ color: "#883955", fontSize: '75px' , margin: '10px'}}>Meal Planner</h2>
-        <button className="clear-button">Clear All Meals</button>
+        {/* heading and creates 7 meal boxes (each meal box has 3 input text boxes that change as you type in them and hold their value) */}
+        <h2 className="user-title">{`${userName}'s meals`}</h2>
       </div>
       <div className="meal-grid-container2">
         {/* Monday */}

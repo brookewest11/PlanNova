@@ -217,9 +217,6 @@ function List() {
             <Link to="/home" className="links" style={{ color: '#633a7d' }}>
                home
              </Link>
-             <Link to="/list" className="links" style={{ color: '#7c3ba5' }}>
-               lists
-             </Link>
              <Link to="/meal-planning" className="links" style={{ color: '#8c4fb3' }}>
                meal planning
              </Link>

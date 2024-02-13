@@ -98,6 +98,7 @@ body {
   flex-direction: row; /* Change to row layout */
   align-items: center;
   justify-content: center;
+  
 }
 
 .NewUserButton {
@@ -106,6 +107,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 10px;
+    
 }
   
   .inputContainer > .errorLabel {
@@ -161,4 +163,16 @@ body {
     align-items: center;
     display: flex;
     justify-content: center;
+}
+
+.loginButton
+{
+  background: #9e7b9b;
+color: white;
+border-style: outset;
+border-color:  #9e7b9b;
+height: 30px;
+width: 100px;
+font: bold 15px arial,sans-serif;
+text-shadow: none;
 }
