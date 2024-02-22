@@ -214,14 +214,14 @@ function List() {
          <div className="grid-item">
            {/* navigation bar */}
            <div className="nav-buttons">
-            <Link to="/home" className="links" style={{ color: '#633a7d' }}>
-               home
-             </Link>
              <Link to="/meal-planning" className="links" style={{ color: '#8c4fb3' }}>
                meal planning
              </Link>
              <Link to="/fitness-tracker" className="links" style={{ color: '#be83e3' }}>
                fitness tracker
+             </Link>
+             <Link to="/home" className="links" style={{ color: '#633a7d' }}>
+               home
              </Link>
              <Link to="/" className="links" style={{ color: '#cda2e8' }}>
                logout

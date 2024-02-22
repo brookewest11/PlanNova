@@ -5,14 +5,6 @@ import "./MonthCal.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Notification function
-interface NotificationProps {
-  message: string;
-}
-
-const notify = ({ message }: NotificationProps) => {
-  toast(message);
-};
 
 interface Event {
   //object to contain both the dates and events happening on the date.
@@ -105,13 +97,8 @@ const MonthCal: React.FC<CalendarProps> = ({ events }) => {
   };
   
 
-
   return (
     <div>
-      <ToastContainer />
-      <button onClick={() => notify({ message: 'You have nothing!' })}>
-        What's going on today...
-      </button>
       <Calendar
         onChange={() => {}}
         value={activeDate || new Date()} //set active date to the new date

@@ -50,13 +50,13 @@
     width: 80px;
     border: none;
     background-color: transparent;
-    color: black;
+    color: white;
     height: 30px;
   }
   
   .weekText::placeholder
   {
-    color: black;
+    color: #5b75a0;
   }
 
   .addBtn

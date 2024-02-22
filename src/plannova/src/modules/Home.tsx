@@ -13,15 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 declare module "*.png";
 
-// Notification function
-interface NotificationProps {
-  message: string;
-}
-
-const notify = ({ message }: NotificationProps) => {
-  toast(message);
-};
-
 
 function Home() {
   //intitalizes a home component function

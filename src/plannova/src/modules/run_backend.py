@@ -30,6 +30,9 @@ authentication_collection = authentication_db["login_page"]
 list_db = client["list_database"]
 list_collection = list_db["list_collection"]
 
+mealplan_db = client["meal_database"]
+mealplan_collection = mealplan_db["meal_collection"]
+
 @app.route("/login", methods=["POST"])
 @cross_origin(supports_credentials=True)
 def login():
@@ -119,6 +122,39 @@ def get_user_lists():
         return jsonify({"error": "User lists not found."}), 404
 
     return jsonify({"lists": user_lists["lists"]}), 200
+
+# Routing for saving meal plan information
+@app.route("/update-meals", methods=["POST"])
+@cross_origin(supports_credentials=True)
+def update_meals():
+    data = request.get_json()
+
+    user_id = session.get('user_id')  # Use get to avoid KeyError
+    if not user_id:
+        return jsonify({"success": False, "message": "User not logged in."}), 401
+
+    updated_meals = data.get("meals")
+
+    # Update or insert the meal plan for the user
+    mealplan_collection.replace_one({"user_id": user_id}, {"user_id": user_id, "meals": updated_meals}, upsert=True)
+
+    return jsonify({"success": True, "message": "Meals updated successfully."}), 200
+
+@app.route("/get-user-meals", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_user_meals():
+    user_id = session['user_id']
+    print(f"load list user id: {user_id}")
+    if not user_id:
+        return jsonify({"error": "User not logged in."}), 401
+
+    # Retrieve the meal plan from the database
+    meal_plan = mealplan_collection.find_one({"user_id": user_id})
+
+    if not meal_plan:
+        return jsonify({"success": False, "message": "Meal plan not found."}), 404
+
+    return jsonify({"success": True, "meals": meal_plan["meals"]}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -165,3 +165,17 @@ nav-buttons {
     right: 20px;
     cursor: pointer; 
 }
+
+.saveMeal
+{
+  border-radius: 25px;
+  background:  #883955;
+  font-size: 20px;
+  position: relative;
+  top: 100px; 
+  right: -180px;
+  width: 200px;
+  height: 50px;
+  color:  #fadbe6;
+  font-family: "Outfit";
+}
