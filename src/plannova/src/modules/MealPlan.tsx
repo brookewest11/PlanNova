@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MealPlan.css";
 import { Link } from "react-router-dom";
 import logopic from "./logostars.png";
@@ -9,7 +9,7 @@ declare module "*.png";
 function MealPlan() {  //creates MealPlan function 
   const numberOfInputBoxes = 21; // 3 meals a day * 7 days a week 
   const { userName } = useUser();
-  console.log('userName from useUser:', userName);
+  //console.log('userName from useUser:', userName);
   const initialInputValues = Array.from(
     { length: numberOfInputBoxes },
     () => ""
@@ -22,6 +22,74 @@ function MealPlan() {  //creates MealPlan function
     newInputValues[index] = e.target.value;
     setInputValues(newInputValues);
   };
+
+
+  //fetches specific user lists based on user
+  useEffect(() => {
+    fetchUserMeals();
+  }, []);
+
+  // function for fetching specific user lists based on user
+  const fetchUserMeals = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/get-user-meals", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',
+      });
+      const data = await response.json();
+      // if success
+      if (response.ok) {
+        // set the current list with list stored in backend for user
+        setInputValues(data.meals);
+      } else {
+        // Handle error
+        console.error("Failed to fetch user meals:", data.error);
+      }
+    } catch (error) {
+      console.error("Error fetching user meals:", error);
+    }
+  };
+
+
+  //function used for saving meal plans back to the backend
+  //input: nothing
+  //output: meal plan data saved to our mongoDB database
+  const saveMealPlan = async () => {
+    // saves mealPlanData as the inputVales array of strings which is used to input the different foods used in the meal plan
+    // this is just used to store the input values into the "meals" section in our database
+    const mealPlanData = {
+      meals: inputValues,
+    };
+
+    try {
+      // send the updated meal plan to the backend
+      const response = await fetch("http://localhost:5000/update-meals", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(mealPlanData),
+        credentials: 'include',
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Meal plan saved successfully:", data);
+        // Handle success if needed
+      } else {
+        console.error("Failed to save meal plan:", data.error);
+        // Handle failure if needed
+      }
+    } catch (error) {
+      console.error("Error saving meal plan:", error);
+      // Handle error if needed
+    }
+  };
+
 
   return (
     <>
@@ -323,6 +391,10 @@ function MealPlan() {  //creates MealPlan function
           </div>
         </div>
       </div>
+            {/* Button used to save the meal plan */}
+            <button className="saveMeal"
+            onClick={saveMealPlan}>Save Meal Plan
+            </button>
     </>
   );
 }
