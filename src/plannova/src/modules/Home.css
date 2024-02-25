@@ -393,6 +393,7 @@ body {
   width: 200px;
   height: 28px;
   border: 1px solid #365f86;
+}
 
 .add-class-input::placeholder {
   color: #365f86;
@@ -430,7 +431,3 @@ body {
 .end-date-input{
   outline: #365f86; 
 }
-
-
-
-
