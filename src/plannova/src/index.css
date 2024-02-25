@@ -50,13 +50,6 @@ body {
   color: #d9d9d9
 }
 
-.calendar {
-  height: 30%;
-  width: 100%;
-  position:relative; left:15px; top:75px;
-  padding: 20px;
-}
-
 .nav-buttons {
   height: 10%;
   width: 150%;
