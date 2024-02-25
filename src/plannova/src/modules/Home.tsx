@@ -14,17 +14,14 @@ declare module "*.png";
 const localizer = momentLocalizer(moment);
 
 function Home() {
-  useEffect(() => {
-    // Request permission for notifications
-    Notification.requestPermission();
-  }, []);
-
+  // class variables
   const [classes, setClasses] = useState<string[]>([]);
   const [showAddClassPopup, setShowAddClassPopup] = useState(false);
   const [newClassName, setNewClassName] = useState("");
   const [ShowDeleteClassPopup, setShowDeleteClassPopup] = useState(false);
   const [selectedClassIndex, setSelectedClassIndex] = useState<string | number>("");
 
+  // notes variables
   const [notes, setNotes] = useState<string[]>([]);
   const [noteText, setNoteText] = useState("");
   const [showAddNotePopup, setShowAddNotePopup] = useState(false);
@@ -65,10 +62,11 @@ function Home() {
       const selectedIndex = Number(selectedNoteIndex);
       const updatedNotes = notes.filter((_, index) => index !== selectedIndex);
       setNotes(updatedNotes);
-      setShowDeleteNotePopup(false); // Close the popup after deleting the note
+      setShowDeleteNotePopup(false);
     }
   };
-  // State variables
+  
+  // event variables
   const [events, setEvents] = useState<Event[]>([]);
   const [showAddEvent, setShowAddEvent] = useState(false);
   const [newEvent, setNewEvent] = useState({
@@ -77,8 +75,7 @@ function Home() {
     end: new Date()
   });
 
-  const currentDate = new Date();
-
+  // define Event and associated variables
   interface Event {
     id: number;
     title: string;
@@ -92,8 +89,8 @@ function Home() {
     const createdEvent = {
       id,
       title: newEvent.title,
-      start: new Date(newEvent.start), // Convert to Date object
-      end: new Date(newEvent.end)      // Convert to Date object
+      start: new Date(newEvent.start),
+      end: new Date(newEvent.end)
     };
     setEvents([...events, createdEvent]);
     setNewEvent({ title: "", start: new Date(), end: new Date() });
@@ -105,9 +102,9 @@ function Home() {
     setEvents((prevEvents) => {
       return prevEvents.map((event) => {
         if (event.id === editedEvent.id) {
-          return editedEvent; // Replace the old event with the edited event
+          return editedEvent;
         }
-        return event; // Keep other events unchanged
+        return event;
       });
     });
   };
@@ -146,7 +143,10 @@ function Home() {
            </div>
          </div>
        </div>
+
        <hr className="homepage-line" />
+
+      {/* add class popup */}
       {showAddClassPopup && (
         <div className="add-class-popup">
           <div className="add-class-popup-content">
@@ -163,6 +163,8 @@ function Home() {
           </div>
         </div>
       )}
+
+      {/* delete class popup */}
       {ShowDeleteClassPopup && (
         <div className="delete-class-popup">
           <div className="delete-class-popup-content">
@@ -187,7 +189,8 @@ function Home() {
           </div>
         </div>
       )}
-    {/* Popup for adding event */}
+
+    {/* add event popup */}
     {showAddEvent && (
         <div className="add-event-popup">
           <div className="add-event-popup-content">
@@ -216,6 +219,8 @@ function Home() {
           </div>
         </div>
       )}
+
+      {/* add note popup */}
       {showAddNotePopup && (
         <div className="homepage-popup">
           <div className="homepage-popup-content">
@@ -231,6 +236,8 @@ function Home() {
           </div>
         </div>
       )}
+
+      {/* delete note popup */}
       {ShowDeleteNotePopup && (
         <div className="delete-note-popup">
           <div className="delete-note-popup-content">
@@ -255,10 +262,14 @@ function Home() {
           </div>
         </div>
       )}
+
     <button className="add-event-button" onClick={() => setShowAddEvent(true)}>
       + Add event
     </button>
+
+    {/* contains the classes and notes text areas */}
     <div className='top-grid'>
+      {/* classes */}
       <div className="class-list-box">
             <div className="my-classes-title">My Classes</div>
             {classes.map((className, index) => (
@@ -270,6 +281,7 @@ function Home() {
             <button className="add-class-button" onClick={() => setShowAddClassPopup(true)}>+</button>
             <button className="delete-class-button" onClick={() => setShowDeleteClassPopup(true)}>-</button>
       </div>
+      {/* notes */}
       <div className="notes-box">
             <div className="my-notes-title">Notes</div>
             {notes.map((note, index) => (
@@ -281,6 +293,7 @@ function Home() {
             <button className="delete-note-button" onClick={() => setShowDeleteNotePopup(true)}>-</button>
       </div>
     </div>
+     {/* calendar */}
     <div className="calendar-page">
       <div>
         <div className="calendar">

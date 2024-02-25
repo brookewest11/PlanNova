@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const localizer = momentLocalizer(moment);
 
+// define Event and associated variables
 interface Event {
   id: number;
   title: string;
@@ -15,19 +16,23 @@ interface Event {
   end: Date;
 }
 
+// props calendar component recieves in home page
 interface CalendarComponentProps {
   events: Event[];
   onEventEdit: (editedEvent: Event) => void;
   onEventDelete: (eventId: number) => void;
 }
 
+// define calendar componet
 const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEdit, onEventDelete }) => {
+  // event variables
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [editedTitle, setEditedTitle] = useState<string>('');
   const [editedStart, setEditedStart] = useState<string>('');
   const [editedEnd, setEditedEnd] = useState<string>('');
   const [showEditEventPopup, setShowEditEventPopup] = useState(false);
 
+  // notifications
   useEffect(() => {
     events.forEach(event => scheduleNotification(event));
   }, [events]);
@@ -36,7 +41,7 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
   const handleEventClick = (event: Event) => {
     setSelectedEvent(event);
     setEditedTitle(event.title);
-    setEditedStart(event.start.toISOString().slice(0, 16)); // Format the start date as needed
+    setEditedStart(event.start.toISOString().slice(0, 16));
     setEditedEnd(event.end.toISOString().slice(0, 16)); 
     setShowEditEventPopup(true); 
   };
@@ -55,7 +60,7 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
         start: new Date(editedStart),
         end: new Date(editedEnd),
       };
-      onEventEdit(editedEvent); // Pass the edited event to the parent component
+      onEventEdit(editedEvent);
       setSelectedEvent(null);
       setShowEditEventPopup(false);
     }
@@ -64,11 +69,12 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
   // deletes an event
   const handleDeleteEvent = () => {
     if (selectedEvent) {
-      onEventDelete(selectedEvent.id); // Pass the event ID to the parent component for deletion
+      onEventDelete(selectedEvent.id); 
       setSelectedEvent(null);
     }
   };
 
+  // handles scheduling the notifications and formatting
   const scheduleNotification = (event: Event) => {
     const eventTime = new Date(event.start).getTime();
     const currentTime = new Date().getTime();
@@ -83,6 +89,7 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
 
   return (
     <div className="calendar-container">
+      {/* define calendar */}
       <Calendar
         localizer={localizer}
         events={events}
@@ -90,6 +97,8 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
         endAccessor="end"
         onSelectEvent={handleEventClick}
       />
+
+      {/* edit event popup */}
       {selectedEvent && showEditEventPopup &&(
         <div className="edit-event-popup">
           <div className="edit-event-popup-content">
@@ -122,6 +131,7 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
           </div>
         </div>
       )}
+      {/* notifications */}
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     </div>
   );
