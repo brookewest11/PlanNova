@@ -37,7 +37,7 @@ function Home() {
       <div>
         {/* handles title and logo image */}
         <div className="logo_container_home">
-          <img src={logopic} className="logopic_home" />
+        <img src={logopic} className="logopic_home" style={{ filter: 'brightness(50%) saturate(0%)' }} />
           <div className="logo_home">PlanNova</div>
         </div>
         <div className="week">

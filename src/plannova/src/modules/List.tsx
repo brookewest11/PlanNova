@@ -207,7 +207,7 @@ function List() {
          <div className="grid-item">
            {/* handles title and logo image */}
            <div className="logo_container_list">
-             <img src={logopic} className="logopic_list" />
+           <img src={logopic} className="logopic_home" style={{ filter: 'brightness(50%) saturate(0%)' }} />
              <div className="logo_list">PlanNova</div>
            </div>
          </div>
