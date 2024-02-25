@@ -74,9 +74,10 @@ const Login = (props: any) => {
         navigate("/new-user");
     };
 
-    return <><div className="logo_container_login">
-        <img src={logopic} className="logopic_login" />
-        <div className="logo_login">PlanNova</div>
+    return <>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={logopic} style={{ height: '80px', marginRight: '10px', filter: 'brightness(50%) saturate(0%)' }} />
+            <div style={{ fontFamily: 'Ranchers', color: '#696969', fontSize: '60px', marginTop: '10px' }}>PlanNova</div>
         </div>
 
         {/* code for title and logo above: ^  */}

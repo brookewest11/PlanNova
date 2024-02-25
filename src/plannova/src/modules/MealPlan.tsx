@@ -97,7 +97,7 @@ function MealPlan() {  //creates MealPlan function
         <div className="grid-item">
           <div>
             <div className="logo_container_meal">
-              <img src={logopic} className="logopic_meal" />
+            <img src={logopic} className="logopic_home" style={{ filter: 'brightness(50%) saturate(0%)' }} />
               <div className="logo_meal">PlanNova</div>
             </div>
           </div>

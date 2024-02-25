@@ -48,7 +48,7 @@ body {
     font-weight: bolder;
     align-items: center;
     justify-content: center;
-    color: #374a67;
+    color: #696969;
     margin-bottom: 20px;
     margin-top: 40px;
   }
@@ -131,20 +131,16 @@ body {
   }
   
   .logopic_login {
-    margin-right: 10px; /* Add some margin between the image and text */
-    margin-top: 10px;
-    height: 100px;
+    height: 80px; /* Adjust the height of the logo image */
     width: auto;
+    margin-right: 10px;
   }
   
   .logo_login {
-    font-family: 'Ranchers', sans-serif;
-    color: #d9d9d9;
-    font-size: 100px;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-family: 'Ranchers', sans-serif;
+  color: #d9d9d9;
+  font-size: 60px; /* Adjust the font size of the logo */
+  margin-top: 10px; /* Optional: adjust margin as needed */
 
   }
 
