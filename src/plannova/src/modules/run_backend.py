@@ -33,6 +33,9 @@ list_collection = list_db["list_collection"]
 mealplan_db = client["meal_database"]
 mealplan_collection = mealplan_db["meal_collection"]
 
+homepage_db = client["homepage_database"]
+homepage_collection = homepage_db["homepage_collection"]
+
 @app.route("/login", methods=["POST"])
 @cross_origin(supports_credentials=True)
 def login():
@@ -143,6 +146,9 @@ def update_meals():
 @app.route("/get-user-meals", methods=["GET"])
 @cross_origin(supports_credentials=True)
 def get_user_meals():
+
+    
+
     user_id = session['user_id']
     print(f"load list user id: {user_id}")
     if not user_id:
@@ -155,6 +161,42 @@ def get_user_meals():
         return jsonify({"success": False, "message": "Meal plan not found."}), 404
 
     return jsonify({"success": True, "meals": meal_plan["meals"]}), 200
+
+
+@app.route("/update-homepage", methods=["POST"])
+@cross_origin(supports_credentials=True)
+def update_homepage():
+    data = request.get_json()
+
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({"success": False, "message": "User not logged in."}), 401
+
+    updated_classes = data.get("classList")
+    updated_notes = data.get("notesTaken")
+    updated_events = data.get("eventsScheduled")
+
+    homepage_collection.replace_one({"user_id": user_id}, {"user_id": user_id, "classes": updated_classes, "notes": updated_notes, "events": updated_events}, upsert=True)
+
+    return jsonify({"sucess": True, "message": "Homepage updated Successfully."}), 200
+
+
+#@app.route("/get-user-homepage", method=["GET"])
+#@cross_origin(supports_credentials=True)
+#def get_user_homepage():
+#
+#    user_id = session['user_id']
+#    print(f"load user homepage: {user_id}")
+#    
+#    if not user_id:
+#        return jsonify({"error": "User not logged in."}), 401
+#
+#    homepage = homepage_collection.find_one({"user_id": user_id})
+#
+#    if not homepage:
+#        return jsonify({"success": False, "message": "Homepage data not found."}), 404
+#
+#    return jsonify({"success": True, "classes": homepage["classes"], "notes": homepage["notes"], "events": homepage["events"]}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
