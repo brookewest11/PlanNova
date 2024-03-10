@@ -94,32 +94,36 @@ function MealPlan() {  //creates MealPlan function
   return (
     <>
       <div className="grid-container">
-        <div className="grid-item">
-          <div>
-            <div className="logo_container_meal">
-            <img src={logopic} className="logopic_home" style={{ filter: 'brightness(50%) saturate(0%)' }} />
-              <div className="logo_meal">PlanNova</div>
-            </div>
-          </div>
-        </div>
-        <div className="grid-item">
-          <div className="nav-buttons">
-            <Link to="/list" className="links">
-              lists
-            </Link>
-            <Link to="/fitness-tracker" className="links">
-              fitness tracker
-            </Link>
-            <Link to="/home" className="links">
-              home
-            </Link>
-            <Link to="/" className="links">
-              logout
-            </Link>
-          </div>
-        </div>
-      </div>
-      <hr className="mealline" />
+         <div className="grid-item">
+           {/* handles title and logo image */}
+           <div className="logo_container_list">
+             <img src={logopic} className="logopic_list" />
+             <div className="plannnova" style={{ color: '#883955' }}>PlanNova</div>
+           </div>
+         </div>
+         <div className="grid-item">
+           {/* navigation bar */}
+           <div className="nav-buttons">
+             <Link to="/meal-planning" className="links" style={{ color: '#883955' }}>
+               meal planning
+             </Link>
+             <Link to="/fitness-tracker" className="links" style={{ color: '#883955' }}>
+               fitness tracker
+             </Link>
+             <Link to="/list" className="links" style={{ color: '#883955' }}>
+               lists
+             </Link>
+             <Link to="/home" className="links" style={{ color: '#883955' }}>
+               home
+             </Link>
+             <Link to="/" className="links" style={{ color: '#883955' }}>
+               logout
+             </Link>
+           </div>
+         </div>
+       </div>
+
+       <hr className="line" style={{ color: '#883955' }}/>
       <div>
         {/* heading and creates 7 meal boxes (each meal box has 3 input text boxes that change as you type in them and hold their value) */}
         <h2 className="user-title">{`${userName}'s meals`}</h2>

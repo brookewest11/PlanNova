@@ -207,29 +207,33 @@ function List() {
          <div className="grid-item">
            {/* handles title and logo image */}
            <div className="logo_container_list">
-           <img src={logopic} className="logopic_home" style={{ filter: 'brightness(50%) saturate(0%)' }} />
-             <div className="logo_list">PlanNova</div>
+             <img src={logopic} className="logopic_list" />
+             <div className="plannnova" style={{ color: '#633a7d' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">
            {/* navigation bar */}
            <div className="nav-buttons">
-              <Link to="/home" className="links" style={{ color: '#633a7d' }}>
-               home
-             </Link>
-             <Link to="/meal-planning" className="links" style={{ color: '#8c4fb3' }}>
+             <Link to="/meal-planning" className="links" style={{ color: '#633a7d' }}>
                meal planning
              </Link>
-             <Link to="/fitness-tracker" className="links" style={{ color: '#be83e3' }}>
+             <Link to="/fitness-tracker" className="links" style={{ color: '#633a7d' }}>
                fitness tracker
              </Link>
-             <Link to="/" className="links" style={{ color: '#cda2e8' }}>
+             <Link to="/list" className="links" style={{ color: '#633a7d' }}>
+               lists
+             </Link>
+             <Link to="/home" className="links" style={{ color: '#633a7d' }}>
+               home
+             </Link>
+             <Link to="/" className="links" style={{ color: '#633a7d' }}>
                logout
              </Link>
            </div>
          </div>
        </div>
-       <hr className="line" />
+
+       <hr className="line" style={{ color: '#633a7d' }} />
        <div className="list-name">Lists</div>
        {/* create list button and popup functionality */}
        <button className="create-list-button" onClick={() => setShowCreatePopup(true)}>

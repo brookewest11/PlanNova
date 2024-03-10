@@ -33,27 +33,36 @@ function FitnessTracker(){
   return(
       <>
       <div className="grid-container">
-      <div className="grid-item">
-          {/* handles title and logo image */}
-          <div className="logo_container_fitness">
-          <img src={logopic} className="logopic_home" style={{ filter: 'brightness(50%) saturate(0%)' }} />
-          <div className="logo_fitness">PlanNova</div>
-        </div>
-      </div>
-      {/* Sets up the links between each page in case if the user wants to go to another page */}
-      <div className="grid-item">
-          <div className="nav-buttons">
-              <Link to="/list" className="links">lists</Link>
-              <Link to="/meal-planning" className="links">meal planning</Link>
-              <Link to="/home" className="links">
-              home
-            </Link>
-            <Link to="/" className="links">
-              logout
-            </Link>
-          </div>
-      </div>
-      </div>
+         <div className="grid-item">
+           {/* handles title and logo image */}
+           <div className="logo_container_list">
+             <img src={logopic} className="logopic_list" />
+             <div className="plannnova" style={{ color: '#7c7f65' }}>PlanNova</div>
+           </div>
+         </div>
+         <div className="grid-item">
+           {/* navigation bar */}
+           <div className="nav-buttons">
+             <Link to="/meal-planning" className="links" style={{ color: '#7c7f65' }}>
+               meal planning
+             </Link>
+             <Link to="/fitness-tracker" className="links" style={{ color: '#7c7f65' }}>
+               fitness tracker
+             </Link>
+             <Link to="/list" className="links" style={{ color: '#7c7f65' }}>
+               lists
+             </Link>
+             <Link to="/home" className="links" style={{ color: '#7c7f65' }}>
+               home
+             </Link>
+             <Link to="/" className="links" style={{ color: '#7c7f65' }}>
+               logout
+             </Link>
+           </div>
+         </div>
+       </div>
+
+       <hr className="line" style={{ color: '#7c7f65' }}/>
 
   <div className="track" >
   <p className = "tracker-title">Fitness Tracker</p>
