@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import "./Home.css";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
@@ -32,10 +32,11 @@ function Home() {
     ""
   );
 
-  /*useEffect(() => {
+  useEffect(() => {
     fetchUserEvents();
   }, []);
 
+  // handles the initial call to get the homepage data
   const fetchUserEvents = async () => {
     try {
       const response = await fetch("http://localhost:5000/get-user-homepage", {
@@ -46,6 +47,7 @@ function Home() {
         credentials: "include",
       });
       const data = await response.json();
+      console.log(data);
 
       if (response.ok) {
         setClasses(data.classes);
@@ -58,7 +60,9 @@ function Home() {
       console.error("Error fetching users homepage data", error);
     }
   };
-  */
+
+  // handles the calls afterwards when updating the homepage, works for classes and notes at the moment, but struggles
+  //with events on the calendar
   const saveHomepage = async () => {
     const homePageData = {
       classList: classes,
@@ -160,6 +164,7 @@ function Home() {
       start: new Date(newEvent.start),
       end: new Date(newEvent.end),
     };
+
     setEvents([...events, createdEvent]);
     setNewEvent({ title: "", start: new Date(), end: new Date() });
     setShowAddEvent(false);

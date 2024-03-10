@@ -168,7 +168,7 @@ def get_user_meals():
 def update_homepage():
     data = request.get_json()
 
-    user_id = session.get('user_id')
+    user_id = session.get('user_id')  # Use get to avoid KeyError
     if not user_id:
         return jsonify({"success": False, "message": "User not logged in."}), 401
 
@@ -176,27 +176,31 @@ def update_homepage():
     updated_notes = data.get("notesTaken")
     updated_events = data.get("eventsScheduled")
 
+    # Update or insert the meal plan for the user
     homepage_collection.replace_one({"user_id": user_id}, {"user_id": user_id, "classes": updated_classes, "notes": updated_notes, "events": updated_events}, upsert=True)
 
     return jsonify({"sucess": True, "message": "Homepage updated Successfully."}), 200
 
 
-#@app.route("/get-user-homepage", method=["GET"])
-#@cross_origin(supports_credentials=True)
-#def get_user_homepage():
-#
-#    user_id = session['user_id']
-#    print(f"load user homepage: {user_id}")
-#    
-#    if not user_id:
-#        return jsonify({"error": "User not logged in."}), 401
-#
-#    homepage = homepage_collection.find_one({"user_id": user_id})
-#
-#    if not homepage:
-#        return jsonify({"success": False, "message": "Homepage data not found."}), 404
-#
-#    return jsonify({"success": True, "classes": homepage["classes"], "notes": homepage["notes"], "events": homepage["events"]}), 200
+@app.route("/get-user-homepage", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_user_homepage():
+
+    user_id = session['user_id']
+    print(f"load user homepage: {user_id}")
+    
+    if not user_id:
+        return jsonify({"error": "User not logged in."}), 401
+
+    # Retrieve the meal plan from the database
+    homepage = homepage_collection.find_one({"user_id": user_id})
+
+    if not homepage:
+        return jsonify({"success": False, "message": "Homepage data not found."}), 404
+
+    print(homepage)
+
+    return jsonify({"success": True, "classes": homepage["classes"], "notes": homepage["notes"], "events": homepage["events"]}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
