@@ -122,29 +122,32 @@ function Home() {
            {/* handles title and logo image */}
            <div className="logo_container_list">
              <img src={logopic} className="logopic_list" />
-             <div className="homepage-plannnova">PlanNova</div>
+             <div className="plannnova" style={{ color: '#374A67' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">
            {/* navigation bar */}
            <div className="nav-buttons">
-             <Link to="/meal-planning" className="homepage-links">
+             <Link to="/meal-planning" className="links" style={{ color: '#374A67' }}>
                meal planning
              </Link>
-             <Link to="/fitness-tracker" className="homepage-links">
+             <Link to="/fitness-tracker" className="links" style={{ color: '#374A67' }}>
                fitness tracker
              </Link>
-             <Link to="/list" className="homepage-links">
+             <Link to="/list" className="links" style={{ color: '#374A67' }}>
                lists
              </Link>
-             <Link to="/" className="homepage-links">
+             <Link to="/home" className="links" style={{ color: '#374A67' }}>
+               home
+             </Link>
+             <Link to="/" className="links" style={{ color: '#374A67' }}>
                logout
              </Link>
            </div>
          </div>
        </div>
 
-       <hr className="homepage-line" />
+       <hr className="line"  style={{ color: '#374A67' }}/>
 
       {/* add class popup */}
       {showAddClassPopup && (

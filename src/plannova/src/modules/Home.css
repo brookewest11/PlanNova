@@ -45,9 +45,8 @@ body {
   margin-top: 10px;
 }
 
-.homepage-plannnova {
+.plannnova {
   font-family: 'Outfit', sans-serif;
-  color: #374A67;
   font-size: 40px;
   margin-top: 7px;
   font-weight: bold;
@@ -59,24 +58,18 @@ body {
   margin-right: -95px;
   font-family: 'Outfit';
   align-items: center;
-  color: #374A67;
 }
-.homepage-links{
+.links{
     font-family: 'Outfit';
-    color: #365f86;
     text-decoration: none;
     padding: 20px;
-}
-.links:hover {
-  color: #365f86;
 }
 
 .line {
   width: 100%;
   margin-top: 50px;
   border: none;
-  border-bottom: 2px solid #b298dc;
-  color: #b298dc;
+  border-bottom: 2px solid;
 }
 
 .add-event-button {
@@ -149,15 +142,6 @@ body {
 .class-list-text:last-child {
   margin-bottom: 100px;
 }
-
-.homepage-line {
-  width: 100%;
-  margin-top: 50px;
-  border: none;
-  border-bottom: 2px solid #365f86;
-  color: #365f86;
-}
-
 
 .add-note-button {
   position: absolute;
