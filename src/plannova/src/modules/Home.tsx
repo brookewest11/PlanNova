@@ -195,34 +195,38 @@ function Home() {
 
   return (
     <>
-      <div className="grid-container">
-        <div className="grid-item">
-          {/* handles title and logo image */}
-          <div className="logo_container_list">
-            <img src={logopic} className="logopic_list" />
-            <div className="homepage-plannnova">PlanNova</div>
-          </div>
-        </div>
-        <div className="grid-item">
-          {/* navigation bar */}
-          <div className="nav-buttons">
-            <Link to="/meal-planning" className="homepage-links">
-              meal planning
-            </Link>
-            <Link to="/fitness-tracker" className="homepage-links">
-              fitness tracker
-            </Link>
-            <Link to="/list" className="homepage-links">
-              lists
-            </Link>
-            <Link to="/" className="homepage-links">
-              logout
-            </Link>
-          </div>
-        </div>
-      </div>
 
-      <hr className="homepage-line" />
+    <div className="grid-container">
+         <div className="grid-item">
+           {/* handles title and logo image */}
+           <div className="logo_container_list">
+             <img src={logopic} className="logopic_list" />
+             <div className="plannnova" style={{ color: '#374A67' }}>PlanNova</div>
+           </div>
+         </div>
+         <div className="grid-item">
+           {/* navigation bar */}
+           <div className="nav-buttons">
+             <Link to="/meal-planning" className="links" style={{ color: '#374A67' }}>
+               meal planning
+             </Link>
+             <Link to="/fitness-tracker" className="links" style={{ color: '#374A67' }}>
+               fitness tracker
+             </Link>
+             <Link to="/list" className="links" style={{ color: '#374A67' }}>
+               lists
+             </Link>
+             <Link to="/home" className="links" style={{ color: '#374A67' }}>
+               home
+             </Link>
+             <Link to="/" className="links" style={{ color: '#374A67' }}>
+               logout
+             </Link>
+           </div>
+         </div>
+       </div>
+
+       <hr className="line"  style={{ color: '#374A67' }}/>
 
       {/* add class popup */}
       {showAddClassPopup && (
