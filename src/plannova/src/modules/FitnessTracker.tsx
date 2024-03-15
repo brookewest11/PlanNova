@@ -37,32 +37,32 @@ function FitnessTracker(){
            {/* handles title and logo image */}
            <div className="logo_container_list">
              <img src={logopic} className="logopic_list" />
-             <div className="plannnova" style={{ color: '#7c7f65' }}>PlanNova</div>
+             <div className="plannnova" style={{ color: '#7BAB7A' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">
            {/* navigation bar */}
            <div className="nav-buttons">
-             <Link to="/meal-planning" className="links" style={{ color: '#7c7f65' }}>
+             <Link to="/meal-planning" className="links" style={{ color: '#7BAB7A' }}>
                meal planning
              </Link>
-             <Link to="/fitness-tracker" className="links" style={{ color: '#7c7f65' }}>
+             <Link to="/fitness-tracker" className="links" style={{ color: '#7BAB7A' }}>
                fitness tracker
              </Link>
-             <Link to="/list" className="links" style={{ color: '#7c7f65' }}>
+             <Link to="/list" className="links" style={{ color: '#7BAB7A' }}>
                lists
              </Link>
-             <Link to="/home" className="links" style={{ color: '#7c7f65' }}>
+             <Link to="/home" className="links" style={{ color: '#7BAB7A' }}>
                home
              </Link>
-             <Link to="/" className="links" style={{ color: '#7c7f65' }}>
+             <Link to="/" className="links" style={{ color: '#7BAB7A' }}>
                logout
              </Link>
            </div>
          </div>
        </div>
 
-       <hr className="line" style={{ color: '#7c7f65' }}/>
+       <hr className="line" style={{ color: '#7BAB7A' }}/>
 
   <div className="track" >
   <p className = "tracker-title">Fitness Tracker</p>
@@ -146,3 +146,4 @@ function FitnessTracker(){
 }
 
 export default FitnessTracker;
+
