@@ -13,6 +13,17 @@
 
 }
 
+.result
+{
+  flex:auto;
+  height: 40px;
+  width: 350px;
+  font-family: "Outfit";
+  font-weight:bold;
+  color: #7BAB7A;
+  margin-left: 10px;
+}
+
 .search-input {
     /* Add more styles as needed */
     background-color: #7BAB7A;
