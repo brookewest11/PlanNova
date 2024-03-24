@@ -14,6 +14,9 @@ declare module "*.png";
 const localizer = momentLocalizer(moment);
 
 function Home() {
+  const [toUpdate, setToUpdate] = useState(false);
+  const [firstTime, setFirstTime] = useState(true);
+
   // class variables
   const [classes, setClasses] = useState<string[]>([]);
   const [showAddClassPopup, setShowAddClassPopup] = useState(false);
@@ -33,8 +36,17 @@ function Home() {
   );
 
   useEffect(() => {
+    if (firstTime == true) {
+      fetchUserEvents();
+      setFirstTime(false);
+    }
     fetchUserEvents();
-  }, []);
+    if (toUpdate == true) {
+      console.log("made it here");
+      saveHomepage();
+      setToUpdate(false);
+    }
+  }, [toUpdate, firstTime]);
 
   // handles the initial call to get the homepage data
   const fetchUserEvents = async () => {
@@ -47,7 +59,6 @@ function Home() {
         credentials: "include",
       });
       const data = await response.json();
-      console.log(data);
 
       if (response.ok) {
         setClasses(data.classes);
@@ -70,8 +81,6 @@ function Home() {
       eventsScheduled: events,
     };
 
-    console.log(events);
-
     try {
       const response = await fetch("http://localhost:5000/update-homepage", {
         method: "POST",
@@ -81,6 +90,8 @@ function Home() {
         body: JSON.stringify(homePageData),
         credentials: "include",
       });
+
+      console.log(homePageData);
 
       const data = await response.json();
 
@@ -101,7 +112,7 @@ function Home() {
       setNewClassName("");
       setShowAddClassPopup(false);
     }
-    saveHomepage();
+    setToUpdate(true);
   };
 
   // Function to handle deleting a class
@@ -114,7 +125,7 @@ function Home() {
       setClasses(updatedClasses);
       setShowDeleteClassPopup(false);
     }
-    saveHomepage();
+    setToUpdate(true);
   };
 
   // Function to handle adding a new class
@@ -124,7 +135,7 @@ function Home() {
       setNoteText("");
       setShowAddNotePopup(false);
     }
-    saveHomepage();
+    setToUpdate(true);
   };
 
   // Function to handle deleting a class
@@ -135,7 +146,7 @@ function Home() {
       setNotes(updatedNotes);
       setShowDeleteNotePopup(false);
     }
-    saveHomepage();
+    setToUpdate(true);
   };
 
   // event variables
@@ -168,7 +179,7 @@ function Home() {
     setEvents([...events, createdEvent]);
     setNewEvent({ title: "", start: new Date(), end: new Date() });
     setShowAddEvent(false);
-    saveHomepage();
+    setToUpdate(true);
   };
 
   // Function to handle editing an event
@@ -181,7 +192,7 @@ function Home() {
         return event;
       });
     });
-    saveHomepage();
+    setToUpdate(true);
   };
 
   // Function to handle deleting an event
@@ -190,7 +201,7 @@ function Home() {
       prevEvents.filter((event) => event.id !== eventId)
     );
 
-    saveHomepage();
+    setToUpdate(true);
   };
 
   return (
