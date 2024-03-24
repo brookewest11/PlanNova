@@ -29,6 +29,8 @@ function SearchBar({ onSelectWorkout }: SearchBarProps) {
   //initializes the state of the selected workout to be an empty string so we aren't displaying any information that we don't
   //want to include
   const [selectedWorkout, setSelectedWorkout] = useState<string | null>(null);
+  //state that chooses whether or not an exercise is shown
+  const [showExercises, setShowExercises] = useState<boolean>(false);
 
 
   //initializes array called workouts and adds the corresponding name of the workout and then its component which includes
@@ -36,10 +38,24 @@ function SearchBar({ onSelectWorkout }: SearchBarProps) {
   const workouts = [
     { name: "running", component: "mileage: , pace: , run type: " },
     { name: "walking", component: "mileage: , pace: " },
-    { name: "biking", component: "mileage: , pace: " },
+    { name: "biking", component: "mileage: , speed: " },
     { name: "hiking", component: "mileage: , pace: " },
     { name: "swimming", component: "distance: , pace: " },
     { name: "lifting", component: "type: , reps: , notes: " },
+    { name: "yoga", component: "poses: , notes: " },
+    { name: "core", component: "exercises: , notes: " },
+    { name: "elliptical", component: "mileage: , pace: " },
+    { name: "pilates", component: "exercises: , intensity: " },
+    { name: "sport practice", component: "sport: , exercises: , notes: " },
+    { name: "skiing", component: "mileage: , difficulty: , notes: " },
+    { name: "snowboarding", component: "mileage: , difficulty: , notes: " },
+    { name: "iceskating", component: "mileage: , speed: , techniques: , notes: " },
+    { name: "rollerblading", component: "mileage: , speed: , notes: " },
+    { name: "rowing", component: "mileage: , speed: " },
+    { name: "martial arts", component: "techniques: , intensity: , notes: " },
+    { name: "kickboxing", component: "exercises: , intensity: , rounds: " },
+    { name: "dance", component: "choreography: , intensity: , notes: " },
+    { name: "rock climbing", component: "route(s): , difficulty: , techniques: " },
   ];
   
   // Replace each comma with a new line and remove trailing commas
@@ -53,6 +69,8 @@ function SearchBar({ onSelectWorkout }: SearchBarProps) {
     inputEvent.preventDefault();
     //our event we want to create is to set the search bar input value as a new value which would be the user's input
     setSearchInput(inputEvent.target.value);
+    //initializes show exercise as false so the exercise starts as not being shown which is what we want
+    setShowExercises(false);
   };
 
   //handles the event in which a workout is clicked so that it can be added into its corresponding textbox in the fitness tracker page
@@ -69,9 +87,8 @@ function SearchBar({ onSelectWorkout }: SearchBarProps) {
   //if it does match then the search bar will display every value in the workouts array that matches the input
   //if there is nothing that matches it will return no values 
   const filteredWorkouts = searchInput.length > 0
-    ? workouts.filter((workout) => workout.name.match(searchInput))
-    : workouts;
-
+    ? workouts.filter((workout) => workout.name.toLowerCase().startsWith(searchInput.toLowerCase()))
+    : [];
 
   //html code that sets up formatting of our page
   return (
@@ -85,31 +102,26 @@ function SearchBar({ onSelectWorkout }: SearchBarProps) {
         value={searchInput}
         className="search-input"
       />
-      {
-      // this part below creates the table with all of our values from the workouts array that we created above
-      //and then uses the filteredWorkouts function 
-      //if the length is greater than zero then we add each workout into the table that matches the search input  
+{
+        // Check if searchInput length is greater than 0 or showExercises is true
+        (searchInput.length > 0 || showExercises) && filteredWorkouts.length > 0 ? (
+          <table className="tbl">
+            <thead>
+              <tr></tr>
+            </thead>
+            <tbody>
+              {filteredWorkouts.map((workout, index) => (
+                <tr key={index} onClick={() => handleWorkoutClick(workout)}>
+                  <td>{workout.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          // Show "No results found" only if typing has started and there are no matches
+          searchInput.length > 0 && <p className="result">No results found.</p>
+        )
       }
-      {filteredWorkouts.length > 0 ? (
-        <table className="tbl">
-          <thead>
-            <tr></tr>
-          </thead>
-          <tbody>
-            {/* iterates over each workout, the key and index values are used to correctly update the values
-            being handled, the handleOnClick allows us to export the workout value to the textbox to be used
-            later to store past workouts */}
-            {filteredWorkouts.map((workout, index) => (
-              <tr key={index} onClick={() => handleWorkoutClick(workout)}>
-                <td>{workout.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        //if no results were found then we return "No results found."
-        <p>No results found.</p>
-      )}
     </div>
   );
 }
