@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import logopic from "./logostars.png";
+import logopic from "./logostars2.png";
 import { useNavigate } from "react-router-dom";
 import { any } from "prop-types";
 import { useUser } from "./User";
@@ -76,17 +76,17 @@ const Login = (props: any) => {
 
     return <>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={logopic} style={{ height: '80px', marginRight: '10px', filter: 'brightness(50%) saturate(0%)' }} />
-            <div style={{ fontFamily: 'Ranchers', color: '#696969', fontSize: '60px', marginTop: '10px' }}>PlanNova</div>
+            <img src={logopic} style={{ height: '35px', marginRight: '0px', marginTop: '10px', filter: 'brightness(50%) saturate(0%)' }} />
+            <div style={{ fontFamily: 'Outfit', color: 'black', fontSize: '40px', marginTop: '10px' }}>PlanNova</div>
         </div>
 
         {/* code for title and logo above: ^  */}
         {/* code for the login card below:  */}
             
             <div className={"mainContainer"}>
-                <div className="login-card">
+                <div className="card-layout">
                     <div className={"titleContainer"}>
-                        <div>LOGIN</div>
+                        <div className="login-title">Login</div>
                     </div>
                         <br />
                         <div className={"inputContainer1"}>
@@ -121,7 +121,7 @@ const Login = (props: any) => {
                                 onClick={onButtonClick}
                                 value={"Log in"} />
                         </div> 
-                        <div className={"NewUserButton"}>
+                        <div className={"inputButton"}>
                             <input
                                 className={"RegisterButton"}
                                 type="button"
