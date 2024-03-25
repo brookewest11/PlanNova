@@ -155,18 +155,6 @@ body {
     justify-content: center;
 }
 
-.RegisterButton
-{
-  background: #9e7b9b;
-color: white;
-border-style: outset;
-border-color:  #9e7b9b;
-height: 30px;
-width: 100px;
-font: bold 15px arial,sans-serif;
-text-shadow: none;
-}
-
 .submit-button{
   background: #9e7b9b;
   color: white;
