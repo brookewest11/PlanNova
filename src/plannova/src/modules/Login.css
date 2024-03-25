@@ -121,6 +121,7 @@ body {
     border-radius: 8px;
     border: 1px solid grey;
     padding-left: 8px;
+    outline: none;
   }
   .logo_container_login {
     /* using flex container to handle the title and logo image*/
