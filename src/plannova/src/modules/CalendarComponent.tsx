@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import './CalendarComponent.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState, useEffect } from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "./CalendarComponent.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const localizer = momentLocalizer(moment);
 
@@ -24,26 +24,32 @@ interface CalendarComponentProps {
 }
 
 // define calendar componet
-const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEdit, onEventDelete }) => {
+const CalendarComponent: React.FC<CalendarComponentProps> = ({
+  events,
+  onEventEdit,
+  onEventDelete,
+}) => {
   // event variables
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const [editedTitle, setEditedTitle] = useState<string>('');
-  const [editedStart, setEditedStart] = useState<string>('');
-  const [editedEnd, setEditedEnd] = useState<string>('');
+  const [editedTitle, setEditedTitle] = useState<string>("");
+  const [editedStart, setEditedStart] = useState<string>("");
+  const [editedEnd, setEditedEnd] = useState<string>("");
   const [showEditEventPopup, setShowEditEventPopup] = useState(false);
 
   // notifications
   useEffect(() => {
-    events.forEach(event => scheduleNotification(event));
+    events.forEach((event) => scheduleNotification(event));
   }, [events]);
 
   // handles setting the event when clicked
   const handleEventClick = (event: Event) => {
+    const dst = new Date(event.start);
+    const det = new Date(event.end);
     setSelectedEvent(event);
     setEditedTitle(event.title);
-    setEditedStart(event.start.toISOString().slice(0, 16));
-    setEditedEnd(event.end.toISOString().slice(0, 16)); 
-    setShowEditEventPopup(true); 
+    setEditedStart(dst.toISOString().slice(0, 16));
+    setEditedEnd(det.toISOString().slice(0, 16));
+    setShowEditEventPopup(true);
   };
 
   // handles closing the selected events popup
@@ -51,7 +57,7 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
     setSelectedEvent(null);
   };
 
-  // handles editing an event 
+  // handles editing an event
   const handleEditEvent = () => {
     if (selectedEvent) {
       const editedEvent: Event = {
@@ -69,7 +75,7 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
   // deletes an event
   const handleDeleteEvent = () => {
     if (selectedEvent) {
-      onEventDelete(selectedEvent.id); 
+      onEventDelete(selectedEvent.id);
       setSelectedEvent(null);
     }
   };
@@ -99,7 +105,7 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
       />
 
       {/* edit event popup */}
-      {selectedEvent && showEditEventPopup &&(
+      {selectedEvent && showEditEventPopup && (
         <div className="edit-event-popup">
           <div className="edit-event-popup-content">
             <div className="edit-event-title">Edit Event</div>
@@ -109,30 +115,55 @@ const CalendarComponent: React.FC<CalendarComponentProps> = ({ events, onEventEd
               placeholder="Title"
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
-              className='title-input'
+              className="title-input"
             />
             <input
               type="datetime-local"
               value={editedStart}
               onChange={(e) => setEditedStart(e.target.value)}
-              className='start-date-input'
+              className="start-date-input"
             />
             <input
               type="datetime-local"
               value={editedEnd}
               onChange={(e) => setEditedEnd(e.target.value)}
-              className='end-date-input'
+              className="end-date-input"
             />
             <div className="popup-buttons">
-              <button className='save-event-changes-button' onClick={handleEditEvent}>Save Changes</button>
-              <button className='delete-event-button' onClick={handleDeleteEvent}>Delete Event</button>
-              <button className='cancel-event-changes-button' onClick={handleClosePopup}>Cancel</button>
+              <button
+                className="save-event-changes-button"
+                onClick={handleEditEvent}
+              >
+                Save Changes
+              </button>
+              <button
+                className="delete-event-button"
+                onClick={handleDeleteEvent}
+              >
+                Delete Event
+              </button>
+              <button
+                className="cancel-event-changes-button"
+                onClick={handleClosePopup}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
       )}
       {/* notifications */}
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

@@ -106,7 +106,6 @@ body {
     flex-direction: row; /* Change to row layout */
     align-items: center;
     justify-content: center;
-    margin: 10px;
     
 }
   
@@ -122,6 +121,7 @@ body {
     border-radius: 8px;
     border: 1px solid grey;
     padding-left: 8px;
+    outline: none;
   }
   .logo_container_login {
     /* using flex container to handle the title and logo image*/
@@ -147,7 +147,8 @@ body {
 .login-card{
     width: 600px;
     height: 400px;
-    background-color: rgb(241, 238, 245);
+    /* background-color: rgb(241, 238, 245); */
+    background-color: white;
     border-radius: 5%;   
 }
 .nav
@@ -161,14 +162,48 @@ body {
     justify-content: center;
 }
 
-.loginButton
-{
+.loginButton {
   background: #9e7b9b;
-color: white;
-border-style: outset;
-border-color:  #9e7b9b;
-height: 30px;
-width: 100px;
-font: bold 15px arial,sans-serif;
-text-shadow: none;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  width: 300px;
+  font: bold 15px arial, sans-serif;
+  text-shadow: none;
+  padding: 10px 20px;
+}
+
+.RegisterButton {
+  background: #9e7b9b;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  width: 300px;
+  font: bold 15px arial, sans-serif;
+  text-shadow: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+.login-title{
+  color:black;
+  margin-top: -30px;
+  font-size: 50px;
+}
+
+.card-layout {
+  width: 352px;
+  -webkit-box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 24px;
+  border-radius: 8px;
+  margin: 0 auto;
+  background: var(--color-background-container, #fff);
+}
+
+.loginButton:hover,
+.RegisterButton:hover {
+  background: #7b5a7b;
 }

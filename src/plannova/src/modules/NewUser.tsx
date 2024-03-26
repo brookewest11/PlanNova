@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./NewUser.css";
-import logopic from "./logostars.png";
+import logopic from "./logostars2.png";
 import { useNavigate } from "react-router-dom";
 
 declare module "*.png"; //needed for logo 
@@ -53,18 +53,19 @@ const NewUser = (props: any) => {
           })();
     }
 
-    return <><div className="logo_container_login">
-        <img src={logopic} className="logopic_login" />
-        <div className="logo_login">PlanNova</div>
+    return <>
+         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={logopic} style={{ height: '35px', marginRight: '0px', marginTop: '10px', filter: 'brightness(50%) saturate(0%)' }} />
+            <div style={{ fontFamily: 'Outfit', color: 'black', fontSize: '40px', marginTop: '10px' }}>PlanNova</div>
         </div>
 
         {/* code for title and logo above: ^  */}
         {/* code for the login card below:  */}
             
             <div className={"mainContainer"}>
-                <div className="login-card">
+                <div className="card-layout">
                     <div className={"titleContainer"}>
-                        <div>SIGN UP</div>
+                        <div className='login-title'>Sign Up</div>
                     </div>
                         <br />
                         <div className={"inputContainer1"}>
@@ -91,9 +92,9 @@ const NewUser = (props: any) => {
                             <label className="errorLabel">{passwordError}</label>
                         </div>
                         <br />
-                        <div className={"NewUserButton"}>
+                        <div className={"inputButton"}>
                             <input
-                                className={"RegisterButton"}
+                                className={"submit-button"}
                                 type="button"
                                 onClick={onRegisterClick}
                                 value={"Submit"} />
