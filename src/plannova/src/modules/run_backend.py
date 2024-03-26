@@ -36,6 +36,9 @@ mealplan_collection = mealplan_db["meal_collection"]
 homepage_db = client["homepage_database"]
 homepage_collection = homepage_db["homepage_collection"]
 
+fitness_db = client["fitness_database"]
+fitness_collection = fitness_db["fitness_collection"]
+
 @app.route("/login", methods=["POST"])
 @cross_origin(supports_credentials=True)
 def login():
@@ -147,8 +150,6 @@ def update_meals():
 @cross_origin(supports_credentials=True)
 def get_user_meals():
 
-    
-
     user_id = session['user_id']
     print(f"load list user id: {user_id}")
     if not user_id:
@@ -201,6 +202,61 @@ def get_user_homepage():
     print(homepage)
 
     return jsonify({"success": True, "classes": homepage["classes"], "notes": homepage["notes"], "events": homepage["events"]}), 200
+
+
+ #Used to add a new workout to the past workouts text box
+@app.route("/update-fitness", methods=["POST"])
+@cross_origin(supports_credentials=True)
+def update_fitness():
+    data = request.get_json()
+
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({"success": False, "message": "User not logged in."}), 401
+
+    # creates a new workout to be added into the array of past workouts with all things included in the text boxes
+    workout = {
+        "name": data.get("name"),
+        "dateTime": data.get("dateTime"),
+        "component": data.get("component"),
+        "info": data.get("info")
+    }
+
+    # fetch the current list of past workouts for the user so that way we can add the new one to it
+    fitness_info = fitness_collection.find_one({"user_id": user_id})
+
+    if not fitness_info:
+        # if no past workouts exist, create a new array with the above workout
+        fitness_collection.insert_one({"user_id": user_id, "workouts": [workout]})
+    else:
+        # if past workouts exist, add the new workout to the array
+        past_workouts = fitness_info.get("workouts", [])
+        past_workouts.append(workout)
+        fitness_collection.update_one({"user_id": user_id}, {"$set": {"workouts": past_workouts}})
+    return jsonify({"success": True, "message": "Fitnesss updated successfully."}), 200
+
+#used to fetch all the old past workouts from the backend so that way the user can see them saved in the frontend
+@app.route("/get-user-fitness", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_user_fitness():
+
+    user_id = session['user_id']
+    print(f"load list user id: {user_id}")
+    if not user_id:
+        return jsonify({"error": "User not logged in."}), 401
+
+    # fetch the list of past workouts from the database
+    fitness_info = fitness_collection.find_one({"user_id": user_id})
+
+    if not fitness_info:
+        return jsonify({"success": False, "message": "Workouts not found."}), 404
+
+    # sets past workouts into the correct position that it needs to be
+    past_workouts = fitness_info.get("workouts", [])
+
+    return jsonify({"success": True, "workouts": past_workouts}), 200
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

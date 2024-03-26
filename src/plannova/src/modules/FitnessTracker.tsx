@@ -5,7 +5,7 @@ import React from 'react';
 import "./FitnessTracker.css";
 import { Link } from 'react-router-dom';
 import Stopwatch from "./Stopwatch";
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import SearchBar from "./fitnessSearch";
 import logopic from './logostars.png';
 
@@ -14,7 +14,9 @@ declare module '*.png'; //needed for logo
 //creates type workout so we can allow for the correct values of the workout to be added
 interface Workout {
   name: string;
+  dateTime: string;
   component: string;
+  info: string;
 }
 
 
@@ -24,12 +26,110 @@ function FitnessTracker(){
 
   //handles the useState for selectedworkout to show that it can either be a workout or null
   const [selectedWorkout, setSelectedWorkout] = useState< Workout | null>(null);
+  const [pastWorkouts, setPastWorkouts] = useState<Workout[]>([]);
+
+
+  useEffect(() => {
+    fetchFitness();
+  }, []);
+
+    // function for fetching specific user lists based on user
+    const fetchFitness = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/get-user-fitness", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: 'include',
+        });
+        const data = await response.json();
+        // if success
+        if (response.ok) {
+          // set the current list with list stored in backend for user
+          setPastWorkouts(data.workouts ?? []);
+        } else {
+          // Handle error
+          console.error("Failed to fetch fitness:", data.error);
+        }
+      } catch (error) {
+        console.error("Error fetching fitness:", error);
+      }
+    };
+
+
+  //function used for saving meal plans back to the backend
+  //input: nothing
+  //output: meal plan data saved to our mongoDB database
+  const saveFitness = async () => {
+    // Gather workout data from UI inputs
+    const nameElement = document.getElementById('textbox1') as HTMLInputElement | null;
+    const dateTimeElement = document.getElementById('textbox2') as HTMLInputElement | null;
+    const componentElement = document.getElementById('textbox3') as HTMLInputElement | null;
+    const infoElement = document.getElementById('textbox4') as HTMLInputElement | null;
+  
+    // Check if elements exist before accessing their values
+    const name = nameElement ? nameElement.value : ''; // Type of workout
+    const dateTime = dateTimeElement ? dateTimeElement.value : ''; // Time/Date
+    const component = componentElement ? componentElement.value : ''; // Stats
+    const info = infoElement ? infoElement.value : ''; // Info
+  
+    // Create a new workout object
+    const newWorkout: Workout = {
+      name: name,
+      dateTime: dateTime,
+      component: component,
+      info: info
+    };
+  
+    try {
+      // Send the new workout data to the backend
+      const response = await fetch("http://localhost:5000/update-fitness", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWorkout),
+        credentials: 'include',
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Fitness plan saved successfully:", data);
+  
+        // Update the state with the new list of past workouts
+        setPastWorkouts(prevWorkouts => [...prevWorkouts, newWorkout]);
+      } else {
+        console.error("Failed to save fitness plan:", data.error);
+        // Handle failure if needed
+      }
+    } catch (error) {
+      console.error("Error saving fitness plan:", error);
+      // Handle error if needed
+    }
+  };
+  
+
 
   //a function that takes a workout as an input and then sets the selectedworkout state to that workout to later be used
   const handleSelectedWorkout = (workout: Workout) => {
     setSelectedWorkout(workout);
   };
   
+
+  const save = () => {
+    if (selectedWorkout) {
+      setPastWorkouts(prevWorkouts => [...prevWorkouts, selectedWorkout]);
+    }
+  };
+  
+  // Function to handle clicking on a past workout
+  const handlePastWorkoutClick = (workout: Workout) => {
+    setSelectedWorkout(workout);
+  };
+
+
   return(
       <>
       <div className="grid-container">
@@ -88,7 +188,15 @@ function FitnessTracker(){
   <div className="two">
     <div className="textbox-container2">
       <label className="textbox-label" htmlFor="textbox2">time/date:</label>
-      <textarea id="textbox2" className="textbox-input" />
+      <textarea id="textbox2" className="textbox-input" 
+      value={selectedWorkout?.dateTime || ''} 
+      onChange={(e) => {
+        // Update the selected workout's component when the user types
+        const newWorkout = selectedWorkout
+          ? { ...selectedWorkout, dateTime: e.target.value }
+          : null;
+        setSelectedWorkout(newWorkout);
+      }}/>
     </div>
     </div>
 
@@ -115,7 +223,16 @@ function FitnessTracker(){
   <div className="five">
     <div className="textbox-container4">
       <label className="textbox-label" htmlFor="textbox4">info:</label>
-      <textarea id="textbox4" className="textbox-input" />
+      <textarea id="textbox4" className="textbox-input" 
+      value={selectedWorkout?.info || ''}
+      onChange={(e) => {
+        // Update the selected workout's info when the user types
+        const newWorkout = selectedWorkout
+          ? { ...selectedWorkout, info: e.target.value }
+          : null;
+        setSelectedWorkout(newWorkout);
+      }} />
+      
     </div>
     </div>
 
@@ -132,14 +249,21 @@ function FitnessTracker(){
        <Stopwatch />
   </div>
   </div>
-
-
+    {/*This is in charge of looping through the array of past workouts and then outputting their information back onto the four
+    text area boxes so that the user can look at the past workout closer if they wish*/}
   <div className="eight">
   <p className="past-text">past workouts</p>
-  <div className="past-workouts"></div>
+  <div className="past-workouts">{pastWorkouts.map((workout, index) => (
+  <div key={index} onClick={() => handlePastWorkoutClick(workout)}>
+    {workout.name} - {workout.dateTime} 
   </div>
-  </div>
+))}</div>
 
+  </div>
+  </div>
+  <div className="nine">
+  <button className="save-button" onClick={() => { saveFitness(); }}>Save Workout</button>
+</div>
   </>
   )
 

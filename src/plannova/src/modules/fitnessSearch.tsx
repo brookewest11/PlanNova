@@ -8,7 +8,9 @@ import "./fitnessSearch.css";
 // and the component of a workout which is also a string
 interface Workout {
   name: string;
+  dateTime: string;
   component: string;
+  info: string;
 }
 
 
@@ -36,26 +38,26 @@ function SearchBar({ onSelectWorkout }: SearchBarProps) {
   //initializes array called workouts and adds the corresponding name of the workout and then its component which includes
   // the elements in which you would want to keep track of for that specific workout
   const workouts = [
-    { name: "running", component: "mileage: , pace: , run type: " },
-    { name: "walking", component: "mileage: , pace: " },
-    { name: "biking", component: "mileage: , speed: " },
-    { name: "hiking", component: "mileage: , pace: " },
-    { name: "swimming", component: "distance: , pace: " },
-    { name: "lifting", component: "type: , reps: , notes: " },
-    { name: "yoga", component: "poses: , notes: " },
-    { name: "core", component: "exercises: , notes: " },
-    { name: "elliptical", component: "mileage: , pace: " },
-    { name: "pilates", component: "exercises: , intensity: " },
-    { name: "sport practice", component: "sport: , exercises: , notes: " },
-    { name: "skiing", component: "mileage: , difficulty: , notes: " },
-    { name: "snowboarding", component: "mileage: , difficulty: , notes: " },
-    { name: "iceskating", component: "mileage: , speed: , techniques: , notes: " },
-    { name: "rollerblading", component: "mileage: , speed: , notes: " },
-    { name: "rowing", component: "mileage: , speed: " },
-    { name: "martial arts", component: "techniques: , intensity: , notes: " },
-    { name: "kickboxing", component: "exercises: , intensity: , rounds: " },
-    { name: "dance", component: "choreography: , intensity: , notes: " },
-    { name: "rock climbing", component: "route(s): , difficulty: , techniques: " },
+    { name: "running", dateTime: "", component: "mileage: , pace: , run type: ", info: ""},
+    { name: "walking", dateTime: "", component: "mileage: , pace: ", info: ""},
+    { name: "biking", dateTime: "", component: "mileage: , speed: " , info: ""},
+    { name: "hiking", dateTime: "", component: "mileage: , pace: " , info: ""},
+    { name: "swimming", dateTime: "", component: "distance: , pace: " , info: ""},
+    { name: "lifting", dateTime: "", component: "type: , reps:  " , info: ""},
+    { name: "yoga", dateTime: "", component: "poses: ,   " , info: ""},
+    { name: "core", dateTime: "", component: "exercises: ,   " , info: ""},
+    { name: "elliptical", dateTime: "", component: "mileage: , pace: ", info: "" },
+    { name: "pilates", dateTime: "", component: "exercises: , intensity: ", info: "" },
+    { name: "sport practice", dateTime: "", component: "sport: , exercises:   " , info: ""},
+    { name: "skiing", dateTime: "", component: "mileage: , difficulty:   " , info: ""},
+    { name: "snowboarding", dateTime: "", component: "mileage: , difficulty:   " , info: ""},
+    { name: "iceskating", dateTime: "", component: "mileage: , speed: , techniques:   ", info: "" },
+    { name: "rollerblading", dateTime: "", component: "mileage: , speed: " , info: ""},
+    { name: "rowing", dateTime: "", component: "mileage: , speed: " , info: ""},
+    { name: "martial arts", dateTime: "", component: "techniques: , intensity:  " , info: ""},
+    { name: "kickboxing", dateTime: "", component: "exercises: , intensity: , rounds: " , info: ""},
+    { name: "dance", dateTime: "", component: "choreography: , intensity:  ", info: "" },
+    { name: "rock climbing", dateTime: "", component: "route(s): , difficulty: , techniques: " , info: ""},
   ];
   
   // Replace each comma with a new line and remove trailing commas
