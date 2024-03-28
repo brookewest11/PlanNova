@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./List.css";
 import { Link } from "react-router-dom";
-import logopic from "./logostars.png";
+import logopic from "./logostars2.png";
 
 declare module "*.png"; //needed for logos
 
@@ -208,7 +208,7 @@ function List() {
            {/* handles title and logo image */}
            <div className="logo_container_list">
              <img src={logopic} className="logopic_list" />
-             <div className="plannnova" style={{ color: '#633a7d' }}>PlanNova</div>
+             <div className="plannnova" style={{ color: 'black' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">

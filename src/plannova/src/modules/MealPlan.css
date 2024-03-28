@@ -91,8 +91,8 @@ body {
   .mealbox
   {
     padding: 0px;
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 300px;
     background-color: #fadbe6;
     color:883955;
     font-family: "Outfit";
@@ -112,11 +112,12 @@ body {
     border: 2px solid #fadbe6;
   }
 
-  .user-title
-  {
+  .user-title {
     font-family: "Outfit";
-    font-size: 45px;
+    font-size: 60px;
+    margin-top: -15px;
     margin-left: 20px;
+    font-weight: bolder;
     color: #883955;
   }
 
@@ -145,14 +146,28 @@ body {
 
 .saveMeal
 {
-  border-radius: 25px;
-  background:  #883955;
-  font-size: 20px;
+  background:none; 
+  border:none; 
+  font-family: 'Outfit';
+  font-size: 23px;
+  font-weight: bold;
   position: relative;
-  top: 100px; 
-  right: -180px;
-  width: 200px;
-  height: 50px;
-  color:  #fadbe6;
+  left: 10px;
+  top: -50px;
+  width: 190px;
+  height: 40px;
+  color:  #883955;
   font-family: "Outfit";
+}
+
+.saveMeal:hover{
+  background-color: #b38092;
+  color: #f1dce4;
+}
+
+.day-titles{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Outfit';
+  color: #883955;
 }

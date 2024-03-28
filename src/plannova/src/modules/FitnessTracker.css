@@ -19,6 +19,15 @@ body {
     padding: 0;
 }
 
+.tracker-title{
+  font-family: "Outfit";
+  font-size: 60px;
+  margin-top: -15px;
+  margin-left: 20px;
+  font-weight: bolder;
+  color: #7bab7ac6;
+}
+
 .logo_container_fitness {
   /* using flex container to handle the title and logo image*/
   display: flex;
@@ -49,11 +58,11 @@ body {
 
 }
 
-.tracker-title{
+/* .tracker-title{
   font-weight:bold;
   font-size: 35px;
   text-align: center;
-}
+} */
 
 .track-text{
   margin-bottom: -65px;
@@ -232,6 +241,27 @@ body {
 textarea {
   resize: none;
   /* Add additional positioning if needed */
+}
+
+.save-button {
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  background:none; 
+  border:none; 
+  font-family: 'Outfit';
+  font-size: 23px;
+  font-weight: bold;
+  color: #7bab7ac6;
+  left: 13px;
+  top: 130px;
+  width: 180px;
+  height: 40px;
+}
+
+.save-button:hover{
+  background-color: #b8d3b8;
+  color: white;
 }
 
 /*grid format inspired by https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout*/

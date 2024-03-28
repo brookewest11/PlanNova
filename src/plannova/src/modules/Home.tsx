@@ -6,7 +6,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import WeeklySchedule from "./Weekly";
 import { CiCircleList, CiCalendar, CiPen } from "react-icons/ci";
-import logopic from "./logostars.png";
+import logopic from "./logostars2.png";
 import CalendarComponent from "./CalendarComponent";
 
 declare module "*.png";
@@ -247,7 +247,37 @@ function Home() {
         </div>
       </div>
 
-      <hr className="line" style={{ color: "#374A67" }} />
+    <div className="grid-container">
+         <div className="grid-item">
+           {/* handles title and logo image */}
+           <div className="logo_container_list">
+             <img src={logopic} className="logopic_list" />
+             <div className="plannnova" style={{ color: 'black' }}>PlanNova</div>
+           </div>
+         </div>
+         <div className="grid-item">
+           {/* navigation bar */}
+           <div className="nav-buttons">
+             <Link to="/meal-planning" className="links" style={{ color: '#374A67' }}>
+               meal planning
+             </Link>
+             <Link to="/fitness-tracker" className="links" style={{ color: '#374A67' }}>
+               fitness tracker
+             </Link>
+             <Link to="/list" className="links" style={{ color: '#374A67' }}>
+               lists
+             </Link>
+             <Link to="/home" className="links" style={{ color: '#374A67' }}>
+               home
+             </Link>
+             <Link to="/" className="links" style={{ color: '#374A67' }}>
+               logout
+             </Link>
+           </div>
+         </div>
+       </div>
+
+       <hr className="line"  style={{ color: '#374A67' }}/>
 
       {/* add class popup */}
       {showAddClassPopup && (

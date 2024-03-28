@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Stopwatch from "./Stopwatch";
 import {useState, useEffect} from 'react'
 import SearchBar from "./fitnessSearch";
-import logopic from './logostars.png';
+import logopic from './logostars2.png';
 
 declare module '*.png'; //needed for logo 
 
@@ -137,7 +137,7 @@ function FitnessTracker(){
            {/* handles title and logo image */}
            <div className="logo_container_list">
              <img src={logopic} className="logopic_list" />
-             <div className="plannnova" style={{ color: '#7BAB7A' }}>PlanNova</div>
+             <div className="plannnova" style={{ color: 'black' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">
@@ -166,7 +166,6 @@ function FitnessTracker(){
 
   <div className="track" >
   <p className = "tracker-title">Fitness Tracker</p>
-  <p className = "track-text" >track a workout</p>
   </div>
 
 
@@ -262,7 +261,7 @@ function FitnessTracker(){
   </div>
   </div>
   <div className="nine">
-  <button className="save-button" onClick={() => { saveFitness(); }}>Save Workout</button>
+  <button className="save-button" onClick={() => { saveFitness(); }}>+ Save Workout</button>
 </div>
   </>
   )
