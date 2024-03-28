@@ -6,7 +6,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import WeeklySchedule from "./Weekly";
 import { CiCircleList, CiCalendar, CiPen } from "react-icons/ci";
-import logopic from "./logostars.png";
+import logopic from "./logostars2.png";
 import CalendarComponent from "./CalendarComponent";
 
 declare module "*.png";
@@ -212,7 +212,7 @@ function Home() {
            {/* handles title and logo image */}
            <div className="logo_container_list">
              <img src={logopic} className="logopic_list" />
-             <div className="plannnova" style={{ color: '#374A67' }}>PlanNova</div>
+             <div className="plannnova" style={{ color: 'black' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">

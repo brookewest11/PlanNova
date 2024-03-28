@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./MealPlan.css";
 import { Link } from "react-router-dom";
-import logopic from "./logostars.png";
+import logopic from "./logostars2.png";
 import { useUser } from "./User";
 
 declare module "*.png"; 
@@ -98,7 +98,7 @@ function MealPlan() {  //creates MealPlan function
            {/* handles title and logo image */}
            <div className="logo_container_list">
              <img src={logopic} className="logopic_list" />
-             <div className="plannnova" style={{ color: '#883955' }}>PlanNova</div>
+             <div className="plannnova" style={{ color: 'black' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">
@@ -126,13 +126,13 @@ function MealPlan() {  //creates MealPlan function
        <hr className="line" style={{ color: '#883955' }}/>
       <div>
         {/* heading and creates 7 meal boxes (each meal box has 3 input text boxes that change as you type in them and hold their value) */}
-        <h2 className="user-title">{`${userName}'s meals`}</h2>
+        <h2 className="user-title">Meal Planner</h2>
       </div>
       <div className="meal-grid-container2">
         {/* Monday */}
         <div className="grid-item2">
           <div className="mealbox">
-            <div style={{ fontSize: '30px' }}>Monday</div>
+            <div className='day-titles'>Monday</div>
             <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
@@ -169,7 +169,7 @@ function MealPlan() {  //creates MealPlan function
           </div>
                 {/* Tuesday */}
           <div className="mealbox">
-            <div style={{ fontSize: '30px' }}>Tuesday</div>
+            <div className='day-titles'>Tuesday</div>
             <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
@@ -208,7 +208,7 @@ function MealPlan() {  //creates MealPlan function
         {/* Wednesday */}
         <div className="grid-item2">
           <div className="mealbox">
-            <div style={{ fontSize: '30px' }}>Wednesday</div>
+            <div className='day-titles'>Wednesday</div>
             <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
@@ -245,7 +245,7 @@ function MealPlan() {  //creates MealPlan function
         </div>
         {/* Thursday */}
           <div className="mealbox">
-            <div style={{ fontSize: '30px' }}>Thursday</div>
+            <div className='day-titles'>Thursday</div>
             <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
@@ -282,7 +282,7 @@ function MealPlan() {  //creates MealPlan function
         </div>
         {/* Friday */}
           <div className="mealbox">
-            <div style={{ fontSize: '30px' }}>Friday</div>
+            <div className='day-titles'>Friday</div>
             <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
@@ -321,7 +321,7 @@ function MealPlan() {  //creates MealPlan function
         {/* Saturday */}
         <div className="grid-item2">
           <div className="mealbox">
-            <div style={{ fontSize: '30px' }}>Saturday</div>
+            <div className='day-titles'>Saturday</div>
             <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
@@ -358,7 +358,7 @@ function MealPlan() {  //creates MealPlan function
         </div>
         {/* Sunday */}
           <div className="mealbox">
-            <div style={{ fontSize: '30px' }}>Sunday</div>
+            <div className='day-titles'>Sunday</div>
             <div style={{ margin: '10px' }}>
               <br></br>
               breakfast
@@ -397,7 +397,7 @@ function MealPlan() {  //creates MealPlan function
       </div>
             {/* Button used to save the meal plan */}
             <button className="saveMeal"
-            onClick={saveMealPlan}>Save Meal Plan
+            onClick={saveMealPlan}> + Save Meal Plan
             </button>
     </>
   );
