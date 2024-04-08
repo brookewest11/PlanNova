@@ -397,7 +397,7 @@ function MealPlan() {  //creates MealPlan function
       </div>
             {/* Button used to save the meal plan */}
             <button className="saveMeal"
-            onClick={saveMealPlan}> + Save Meal Plan
+            onClick={saveMealPlan}> + save meal plan
             </button>
     </>
   );
