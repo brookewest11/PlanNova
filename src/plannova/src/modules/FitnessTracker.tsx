@@ -111,6 +111,14 @@ function FitnessTracker(){
   };
   
 
+  const deleteFitness= async () => {
+    //will delete selected workout
+    //click delete button below which triggers this event
+    //create a popup that has array of workouts that can be deleted for specific user - pull from backend
+    //when the workout is selected to be deleted then click "confirm" which then deletes the workout and removes it from the backend
+    //update the "Past Workouts" textarea as well
+  }
+
 
   //a function that takes a workout as an input and then sets the selectedworkout state to that workout to later be used
   const handleSelectedWorkout = (workout: Workout) => {
@@ -263,6 +271,9 @@ function FitnessTracker(){
   <div className="nine">
   <button className="save-button" onClick={() => { saveFitness(); }}>+ Save Workout</button>
 </div>
+  <div className="ten">
+  <button className="delete-button" onClick={() => { deleteFitness(); }}>- Delete Workout</button>
+  </div>
   </>
   )
 
