@@ -264,4 +264,26 @@ textarea {
   color: white;
 }
 
+.delete-button
+{
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  background:none; 
+  border:none; 
+  font-family: 'Outfit';
+  font-size: 23px;
+  font-weight: bold;
+  color: #7bab7ac6;
+  left: 13px;
+  top: 170px;
+  width: 200px;
+  height: 40px;
+}
+
+.delete-button:hover{
+  background-color: #b8d3b8;
+  color: white;
+}
+
 /*grid format inspired by https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout*/

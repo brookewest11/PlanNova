@@ -12,7 +12,7 @@ function AppRoutes() { // Router function to control different paging
   return (
     <Routes>
       {/* sets initial landing page to the login screen */}
-      <Route path="/" element={<Home />} />  
+      <Route path="/" element={<Login/>} />  
       {/* following sets the navigation bar functionality  */}
       <Route path="/home" element={<Home />} />
       <Route path="/meal-planning" element={<MealPlan />} />
