@@ -110,14 +110,53 @@ function FitnessTracker(){
     }
   };
   
-
-  const deleteFitness= async () => {
-    //will delete selected workout
+  
+    //Function used to delete the workout that we want
     //click delete button below which triggers this event
-    //create a popup that has array of workouts that can be deleted for specific user - pull from backend
-    //when the workout is selected to be deleted then click "confirm" which then deletes the workout and removes it from the backend
     //update the "Past Workouts" textarea as well
-  }
+    const deleteFitness = async () => {
+      // Check if there's a selected workout to delete
+      if (!selectedWorkout) {
+        console.error("No workout selected to delete");
+        return;
+      }
+    
+     //create a popup that has confirms whether or not the user wants to delete the workout
+     //when the workout is selected to be deleted then click "confirm" which then deletes the workout and removes it from the backend
+      const confirmDelete = window.confirm("Are you sure you want to delete this workout?");
+      if (!confirmDelete) {
+        return; // returns if the delete is rejected
+      }
+      
+
+      try {
+        // Send a request to the backend to then delete the selected workout
+        const response = await fetch("http://localhost:5000/delete-workout", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(selectedWorkout), 
+          credentials: 'include',
+        });
+    
+        const data = await response.json();
+    
+        if (response.ok) {
+          console.log("Workout deleted successfully:", data);
+    
+          // Update the state to remove the deleted workout from the "Past Workout" text area below
+          setPastWorkouts(prevWorkouts => prevWorkouts.filter(workout => workout !== selectedWorkout));
+          setSelectedWorkout(null); // Clear the selected workout after it is deleted so that way it isn't shown in the front end
+        } else {
+          console.error("Failed to delete workout:", data.error);
+          // Handle failures
+        }
+      } catch (error) {
+        console.error("Error deleting workout:", error);
+        // Handle errors
+      }
+    };
 
 
   //a function that takes a workout as an input and then sets the selectedworkout state to that workout to later be used

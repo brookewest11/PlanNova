@@ -256,6 +256,42 @@ def get_user_fitness():
 
     return jsonify({"success": True, "workouts": past_workouts}), 200
 
+@app.route("/delete-workout", methods=["DELETE"])
+@cross_origin(supports_credentials=True)
+def delete_workout():
+    data = request.get_json()
+
+    # make sure a user is logged in before we attempt to delete a workout so that way we know which database set to remove the wrokout from
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({"success": False, "message": "User not logged in."}), 401
+
+    # get the correct information about the workout we want to delete
+    workout_to_delete = {
+        "name": data.get("name"),
+        "dateTime": data.get("dateTime"),
+        "component": data.get("component"),
+        "info": data.get("info")
+    }
+
+    # get the current list of past workouts for the specific user
+    fitness_info = fitness_collection.find_one({"user_id": user_id})
+
+    if not fitness_info:
+        return jsonify({"success": False, "message": "Workouts not found."}), 404
+
+    # get the current list of past workouts now that we know the user has workouts to delete
+    past_workouts = fitness_info.get("workouts", [])
+
+    # removes the workout we want delete from the list
+    past_workouts = [workout for workout in past_workouts if workout != workout_to_delete]
+
+    # Update the list of past workouts in the database
+    fitness_collection.update_one({"user_id": user_id}, {"$set": {"workouts": past_workouts}})
+
+    return jsonify({"success": True, "message": "Workout deleted successfully."}), 200
+
+
 
 
 if __name__ == "__main__":
