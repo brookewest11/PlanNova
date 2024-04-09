@@ -113,7 +113,6 @@ function FitnessTracker(){
   
     //Function used to delete the workout that we want
     //click delete button below which triggers this event
-    //update the "Past Workouts" textarea as well
     const deleteFitness = async () => {
       // Check if there's a selected workout to delete
       if (!selectedWorkout) {
@@ -123,11 +122,10 @@ function FitnessTracker(){
     
      //create a popup that has confirms whether or not the user wants to delete the workout
      //when the workout is selected to be deleted then click "confirm" which then deletes the workout and removes it from the backend
-      const confirmDelete = window.confirm("Are you sure you want to delete this workout?");
+      /*const confirmDelete = window.confirm("Are you sure you want to delete this workout?");
       if (!confirmDelete) {
         return; // returns if the delete is rejected
-      }
-      
+      }*/
 
       try {
         // Send a request to the backend to then delete the selected workout
