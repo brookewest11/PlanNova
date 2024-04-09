@@ -237,7 +237,7 @@ function List() {
        <div className="list-name">Lists</div>
        {/* create list button and popup functionality */}
        <button className="create-list-button" onClick={() => setShowCreatePopup(true)}>
-        + Create List
+        + create list
       </button>
       {showCreatePopup && (
         <div className="popup">
@@ -256,7 +256,7 @@ function List() {
       )}
       {/* delete list button and popup functionality */}
       <button className="delete-list-button" onClick={() => setShowDeleteListPopup(true)}>
-        - Delete List
+        - delete list
       </button>
       {showDeleteListPopup && (
         <div className="popup">

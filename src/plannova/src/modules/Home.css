@@ -92,6 +92,11 @@ body {
   justify-content: center; 
 }
 
+.add-event-button:hover { /*change button on hover*/
+  background-color: #365f86; 
+  color: white; 
+}
+
 .add-class-button {
   position: absolute;
   top: -5px;
@@ -165,6 +170,13 @@ body {
   font-size: 30px;
   font-weight: bold;
   color: #365f86;
+}
+
+.add-class-button:hover,
+.delete-class-button:hover,
+.add-note-button:hover,
+.delete-note-button:hover {
+  color: #f0f0f0; /*add hover to these buttons*/
 }
 
 .my-notes-title {
