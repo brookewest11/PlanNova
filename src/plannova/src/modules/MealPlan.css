@@ -96,8 +96,12 @@ body {
     background-color: #fadbe6;
     color:883955;
     font-family: "Outfit";
-    
+    transition: background-color 0.3s;
   }
+    
+  .mealbox:hover {
+    background-color: #ffc0cb; 
+}
   .input
   {
     position: static;
