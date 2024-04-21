@@ -169,6 +169,28 @@ body {
   color: #f1dce4;
 }
 
+.deleteAll
+{
+  background:none; 
+  border:none; 
+  font-family: 'Outfit';
+  font-size: 23px;
+  font-weight: bold;
+  position: relative;
+  left: 10px;
+  top: -50px;
+  width: 190px;
+  height: 40px;
+  color:  #883955;
+  font-family: "Outfit";
+}
+
+.deleteAll:hover{
+  background-color: #b38092;
+  color: #f1dce4;
+}
+
+
 .day-titles{
   font-size: 30px;
   font-weight: bold;
