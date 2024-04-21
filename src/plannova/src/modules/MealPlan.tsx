@@ -90,6 +90,14 @@ function MealPlan() {  //creates MealPlan function
     }
   };
 
+    // Function to delete all meals
+    const deleteAllMeals = () => {
+      const nullInputValues = Array(numberOfInputBoxes).fill(null);
+      setInputValues(nullInputValues);
+      // Save the updated meal plan with null values to the backend
+      saveMealPlan();
+    };
+
 
   return (
     <>
@@ -398,6 +406,10 @@ function MealPlan() {  //creates MealPlan function
             {/* Button used to save the meal plan */}
             <button className="saveMeal"
             onClick={saveMealPlan}> + save meal plan
+            </button>
+            {/* Delete all button */}
+            <button className="deleteAll" onClick={deleteAllMeals}>
+            - clear all meals
             </button>
     </>
   );
