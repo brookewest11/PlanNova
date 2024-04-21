@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
 @import 'https://fonts.google.com?css?family=Outfit';
 
+/* styling for the entire body of the page */
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,13 +16,14 @@ body {
     padding: 0;
 }
 
+/* Container to hold logo */
 .logo_container_list {
-    /* using flex container to handle the title and logo image*/
     display: flex;
     align-items: center;
     margin-left: 10px
   }
 
+/* Container to hold logo image */
 .logopic_list {
     margin-right: 7px;
     margin-top: 7px;
@@ -36,6 +38,7 @@ body {
     margin-top: 7px;
   }
 
+/* Styling for logo text */
 .title
 {
   font-family: "Outfit";
@@ -45,6 +48,7 @@ body {
   margin-top: 70px;
 
 }
+
 .sub-title{
     font-family: "Outfit";
     color: #01204E;
@@ -52,6 +56,7 @@ body {
     margin-left: 10px;
 }
 
+/* Styling for page title (Lists) */
 .list-name {
   font-family: "Outfit";
   font-size: 80px;
@@ -61,6 +66,7 @@ body {
   color: #633a7d;
 }
 
+/* Styling for button to create a list */
 .create-list-button {
     border-radius: 15px;
     height: 25px;
@@ -81,6 +87,7 @@ body {
     justify-content: center; 
   }
 
+/* Styling for hover over create list button */
 .create-list-button:hover {
   border: 1px;
   border-radius: 3px;
@@ -88,6 +95,7 @@ body {
     color: white;
 }
 
+/* Styling for button to delete list */
 .delete-list-button{
   border-radius: 15px;
   height: 25px;
@@ -108,6 +116,7 @@ body {
   justify-content: center; /* Center horizontally */
 }
 
+/* Styling for hover over delete list button */
 .delete-list-button:hover {
   border: 1px;
   border-radius: 3px;
@@ -115,6 +124,7 @@ body {
     color: white;
 }
 
+/* Styling for button to edit list items */
 .edit-list-items-button{
   border-radius: 15px;
   height: 25px;
@@ -135,6 +145,7 @@ body {
     justify-content: center;
   }
 
+  /* Styling for hovering over button to edit list items */
   .edit-list-items-button:hover {
     border: 1px;
     border-radius: 3px;
@@ -146,6 +157,7 @@ body {
   margin-right: 20px;
 }
 
+/* Styling for navigation bar buttons */
 .nav-buttons {
   margin-top: 20px;
 }
@@ -167,6 +179,7 @@ body {
     margin: 10px;
 
 }
+/* Styling for each list */
 .List
 {
   padding: 0px;
@@ -182,11 +195,13 @@ body {
 
 }
 
+/* Styling for hovering over each list */
 .List:hover {
   transform: translateY(-5px);
   transition: transform 0.3s ease;
 }
 
+/* Styling list titles */
 .list-title {
     font-size: 36px;
     overflow: hidden;
@@ -195,6 +210,7 @@ body {
     color: white;
 }
 
+/* Styling for list items */
 .list-items {
     display: flex;
     flex-direction: column;
@@ -202,6 +218,7 @@ body {
 
 }
 
+/* Styling for button popups */
 .popup {
   position: fixed;
   top: 50%;
@@ -231,6 +248,7 @@ body {
   border-radius: 5px;
 }
 
+/* Styling for popup buttons */
 .popup button {
   padding: 10px 20px;
   margin-left: 10px;
@@ -239,32 +257,38 @@ body {
   cursor: pointer;
 }
 
+/* Styling for cancel button */
 .cancel {
   background-color: #c8c8c8;
   color: white;
   padding: 0px;
 }
 
+/* Styling for create list text */
 .create-list {
   background-color: #633a7d;
   color: white;
 }
 
+/* Styling for delete list text */
 .delete-list {
   background-color: #633a7d;
   color: white;
 }
 
+/* Styling for add to list text */
 .add-to-list {
   background-color: #633a7d;
   color: white;
 }
 
+/* Styling for delete from list text */
 .delete-from-list {
   background-color: #633a7d;
   color: white;
 }
 
+/* Styling for enter list name text */
 .enter-list-name-title {
   font-family: 'Outfit';
   color:#633a7d;
@@ -273,6 +297,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* Styling for delete list text */
 .delete-list-title {
   font-family: 'Outfit';
   color:#633a7d;
@@ -281,6 +306,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* Styling for dropdown to delete list */
 .dropdown {
   padding: 8px;
   font-size: 16px;
@@ -305,6 +331,7 @@ body {
   background-color: #f0f0f0;
 }
 
+/* Styling for the bullets on left hand side of list items */
 .bullet {
   width: 6px;
   height: 6px;

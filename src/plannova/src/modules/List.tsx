@@ -1,10 +1,51 @@
-import React, { useState, useEffect } from "react";
-import "./List.css";
-import { Link } from "react-router-dom";
-import logopic from "./logostars2.png";
+// Name: List
+// Purpose / what code does: This component represents a list management interface where users can create, edit, and delete lists along with their items.
+// Programmers: Gabi Kruger, Brooke West, Emily Proctor, Kenadi Krueger, Nathan Mignot
+// Date created: 10/10/2023
+// Date revised: 4/21/2024
+  // Major Revisions:
+    // Date: 10/10/2023, Author: Brooke West
+      // Modification: The router at top of page was created with working links to other pages in application.
+    // Date: 10/22/2023, Author: Emily Proctor
+      // Modification: Logo holder (simple star) was added at top of page.
+    // Date: 11/2/2023, Author: Nathan Mignot
+      // Modification: Frontend was initiated and can view multiple lists. Harded coded items.
+    // Date: 11/19/2023, Author: Nathan Mignot
+      // Modification: Added checkboxes for each list item in an array. 
+    // Date: 2/5/2024, Author: Emily Proctor
+      // Modification: Add, delete, and modify each list. Buttons created for each of these functionalities. Can add/remove items from each list and include name for list.
+    // Date: 2/7/2024, Author: Emily Proctor
+      // Modification: List backend. Connects user id with their own list and list items stored in backend.
+    // Date: 2/24/2024, Author: Gabi Kruger
+      // Modification: CSS updates.
+    // Date: 3/28/2024, Author: Emily Proctor
+      // Modification: Logo and navigation bar updated to be consistent across all pages.
+    // Date: 4/8/2024, Author: Gabi Kruger
+      // Modification: Button frontend updates.
+    // Date: 4/21/2024, Author: Emily Proctor
+      // Modification: Updated comments.
+// Preconditions: The user must be logged in.
+  // Acceptable inputs: Valid list names and list items.
+  // Unacceptable inputs: Empty list names and list items.
+// Postconditions: Lists and their items can be created, edited, and deleted.
+  // Return values: None explicitly returned. The component renders UI elements.
+// Error and exception condition values: Errors are logged to the console if there are issues with fetching, creating, updating, or deleting lists.
+// Side Effects
+  // State Updates: Changes to state variables
+  // Network Requests: HTTP requests
+  // Popup Display
+// Invariants
+  // UI Consistency (logo, navigation bar, buttons, etc.)
+  // Maximum List Limit of 4 lists
 
-declare module "*.png"; //needed for logos
+import React, { useState, useEffect } from "react"; // Import React, useState, and useEffect from react package
+import "./List.css"; // CSS styling
+import { Link } from "react-router-dom"; // Ability to link to other pages
+import logopic from "./logostars2.png"; // Logo image
 
+declare module "*.png"; // Allows import of PNG files
+
+// defines what a single List element consists of including a title and items
 interface ListItem {
   title: string;
   items: string[];
@@ -39,6 +80,7 @@ function List() {
   // function for fetching specific user lists based on user
   const fetchUserLists = async () => {
     try {
+      // Attempt to retrieve list information from backend 
       const response = await fetch("http://localhost:5000/get-user-lists", {
         method: "GET",
         headers: {
@@ -47,15 +89,17 @@ function List() {
         credentials: 'include',
       });
       const data = await response.json();
-      // if success
+      // if fetch is successful
       if (response.ok) {
         // set the current list with list stored in backend for user
         setLists(data.lists);
+      // if fetch is not successful
       } else {
-        // Handle error
+        // Push error to console
         console.error("Failed to fetch user lists:", data.error);
       }
     } catch (error) {
+      // Push error to console
       console.error("Error fetching user lists:", error);
     }
   };
@@ -66,7 +110,7 @@ function List() {
         try {
             // grabs the current list
             const updatedLists = [...lists];
-            // pushes the new item to specific list
+            // Pushes the new item to specific list
             updatedLists[Number(selectedListIndex)].items.push(item);
             // updates lists
             setLists(updatedLists);
@@ -82,13 +126,15 @@ function List() {
             });
 
             const data = await response.json();
-
+            
+            // Reset states and close popup after updating
             setListPopup(false);
             setItem("");
             setSelectedListIndex("");
-
+            // Push response to console
             console.log("Server Response:", data);
         } catch (error) {
+            // Push error to console
             console.error("Error adding item to list:", error);
         }
     }
@@ -116,14 +162,16 @@ function List() {
 
         const data = await response.json();
 
+        // Reset states and close popup after updating
         setLists(updatedLists);
         setListPopup(false);
         setItem("");
         setSelectedListIndex("");
         
-
+        // Push response to console
         console.log("Server Response:", data);
       } catch (error) {
+        // Push error to console
         console.error("Error deleting item to list:", error);
       }
     }
@@ -156,26 +204,30 @@ function List() {
       const data = await response.json();
 
       if (response.ok) {
+        // Reset states and close popup after updating
         setLists(updatedLists);
         setShowCreatePopup(false);
         setNewListName("");
+        // Push response to console
         console.log("Server Response:", data);
       } else {
+        // Push error to console
         console.error("Failed to create new list:", data.error);
       }
     } catch (error) {
+      // Push error to console
       console.error("Error creating new list:", error);
     }
     }
   };
 
-  // deletes a specific list
+  // Deletes a specific list
   const handleDeleteList = async () => {
     if (selectedListIndex !== "") {
       const updatedLists = lists.filter((_, index) => index !== Number(selectedListIndex));
 
     try {
-      // send the updated list to the backend
+      // Send the updated list to the backend
       const response = await fetch("http://localhost:5000/update-lists", {
         method: "POST",
         headers: {
@@ -188,14 +240,18 @@ function List() {
       const data = await response.json();
 
       if (response.ok) {
+        // Reset states and close popup after updating
         setLists(updatedLists);
         setSelectedListIndex("");
         setShowDeleteListPopup(false);
+        // Push response to console
         console.log("Server Response:", data);
       } else {
+        // Push error to console
         console.error("Failed to delete list:", data.error);
       }
     } catch (error) {
+      // Push error to console
       console.error("Error deleting list:", error);
     }
     }
