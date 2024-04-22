@@ -1,3 +1,11 @@
+// Home Page
+// • has a monthly and weekly schedule, an agenda, classes, notes, and notifications
+// • Programmers: Emily Proctor, Nathan Mignot, Gabi Kruger, Kenadi Krueger, Brooke West
+// • October 2nd, 2023 (first update)
+// • March 28th, 2024 (most recent update)
+// • Updated: fixed Calendar bugs
+
+
 import React, { useEffect, useState } from "react";
 import { Link, useFetcher } from "react-router-dom";
 import "./Home.css";
@@ -13,6 +21,8 @@ declare module "*.png";
 
 const localizer = momentLocalizer(moment);
 
+
+// functional component for the home page
 function Home() {
   const [toUpdate, setToUpdate] = useState(false);
   const [firstTime, setFirstTime] = useState(true);
@@ -35,6 +45,7 @@ function Home() {
     ""
   );
 
+  // used to handle changes made to toUpdate and firstTime  variables
   useEffect(() => {
     if (firstTime == true) {
       fetchUserEvents();
@@ -61,6 +72,7 @@ function Home() {
       });
       const data = await response.json();
 
+      // if we got a response from the backend then we can set classes, notes, and events with all the data from the backend database
       if (response.ok) {
         setClasses(data.classes);
         setNotes(data.notes);
@@ -74,7 +86,7 @@ function Home() {
   };
 
   // handles the calls afterwards when updating the homepage, works for classes and notes at the moment, but struggles
-  //with events on the calendar
+  // with events on the calendar
   const saveHomepage = async () => {
     const homePageData = {
       classList: classes,
@@ -82,6 +94,7 @@ function Home() {
       eventsScheduled: events,
     };
 
+    // sends a request to the url in charge of updating home page
     try {
       const response = await fetch("http://localhost:5000/update-homepage", {
         method: "POST",
@@ -92,38 +105,53 @@ function Home() {
         credentials: "include",
       });
 
+      // just used for testing
       console.log(homePageData);
 
+      // data from the backend gets stored to the data variable 
       const data = await response.json();
 
       if (response.ok) {
+        // used for testing, shows data saved correctly
         console.log("Home page saved: ", data);
       } else {
+        // if there is an error with data then it fails so this is also just used for testing and ensurance
         console.error("Failed to save home page: ", data.error);
       }
     } catch (error) {
+      // catches error if it happens
       console.error("Error saving homepage: ", error);
     }
   };
 
   // Function to handle adding a new class
   const handleAddClass = () => {
+    // checks to see if class has an actual name and isn't being stored as null
     if (newClassName.trim() !== "") {
+      // stores the new class at the end of the setClasses array
       setClasses([...classes, newClassName.trim()]);
+      // resets newClassName to be null
       setNewClassName("");
+      // sets the popup to add a class to false so then it isn't shown
       setShowAddClassPopup(false);
     }
+    // sets update to true to ensure that it is able to update when needed
     setToUpdate(true);
   };
 
   // Function to handle deleting a class
   const handleDeleteClass = () => {
+    // checks if class wanting to be deleted has an actual name instead of null
     if (selectedClassIndex !== "") {
+      // finds the index of the class wanting to be deleted
       const selectedIndex = Number(selectedClassIndex);
+      // updates the list of classes by finding the selected index and removing it
       const updatedClasses = classes.filter(
         (_, index) => index !== selectedIndex
       );
+      // updates the classes to be shown correctly 
       setClasses(updatedClasses);
+      // gets rid of the delete class pop up
       setShowDeleteClassPopup(false);
     }
     setToUpdate(true);
@@ -139,10 +167,13 @@ function Home() {
     setToUpdate(true);
   };
 
-  // Function to handle deleting a class
+  // Function to handle deleting a note
   const handleDeleteNote = () => {
+    // checks if note to be deleted isn't null
     if (selectedNoteIndex !== "") {
+      // gets index of note to be deleted
       const selectedIndex = Number(selectedNoteIndex);
+      // removes note from the notes arrat
       const updatedNotes = notes.filter((_, index) => index !== selectedIndex);
       setNotes(updatedNotes);
       setShowDeleteNotePopup(false);
@@ -151,8 +182,11 @@ function Home() {
   };
 
   // event variables
+  // used to set events array
   const [events, setEvents] = useState<Event[]>([]);
+  // used to show the add event popup
   const [showAddEvent, setShowAddEvent] = useState(false);
+  // sets up a new event with everything it needs, title (name), start (time), end (time)
   const [newEvent, setNewEvent] = useState({
     title: "",
     start: new Date(),
@@ -177,7 +211,9 @@ function Home() {
       end: new Date(newEvent.end),
     };
 
+    //sets up array for setting all events
     setEvents([...events, createdEvent]);
+    // used to create a new event and make sure it has all the associated variables
     setNewEvent({ title: "", start: new Date(), end: new Date() });
     setShowAddEvent(false);
     setToUpdate(true);

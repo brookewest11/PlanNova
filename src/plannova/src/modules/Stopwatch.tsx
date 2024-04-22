@@ -2,6 +2,12 @@
 TSX File for the Stopwatch Component
 */
 
+// Stopwatch
+// • works as a typical stop watch, can start time, stop time, pause, reset, etc.
+// • Gabi Kruger
+// • November 5th 2023 (first update)
+// • November 19th, 2023
+// • Updated: fixed some bugs
 
 import React, { useState, useRef } from "react";
 

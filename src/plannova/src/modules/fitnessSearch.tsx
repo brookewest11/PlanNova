@@ -1,3 +1,11 @@
+// Fitness Search Bar
+// • is used as a search bar so when you begin typing in the text area then workouts will show up if they match what is being searched
+// • Kenadi Krueger
+// • November 5th 2023 (first update)
+// • March 26th, 2024 (most recent update)
+// • Added More workouts to the workouts array
+// • Acceptable input kind is any string that matches a workout in the array (if invalid input is searched then the search bar will return 'null')
+
 import React, { useState } from 'react';
 import "./fitnessSearch.css";
 
@@ -79,7 +87,7 @@ function SearchBar({ onSelectWorkout }: SearchBarProps) {
   const handleWorkoutClick = (workout: Workout) => {
     //sets the selected workout so we know which one we are going to add
     setSelectedWorkout(workout.name);
-    // passes the workout variable to the function that called it (which is in fitness tracker so we can update our textboxes in ther)
+    // passes the workout variable to the function that called it (which is in fitness tracker so we can update our textboxes in there)
     onSelectWorkout(workout); 
   };
 
