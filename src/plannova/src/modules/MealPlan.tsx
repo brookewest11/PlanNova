@@ -90,12 +90,13 @@ function MealPlan() {  //creates MealPlan function
     }
   };
 
-    // Function to delete all meals
+
     const deleteAllMeals = () => {
-      const nullInputValues = Array(numberOfInputBoxes).fill(null);
+      const nullInputValues = Array(numberOfInputBoxes).fill("");
       setInputValues(nullInputValues);
       // Save the updated meal plan with null values to the backend
       saveMealPlan();
+      // updates front end to have correct values
     };
 
 
