@@ -1,4 +1,39 @@
-//Fitness Tracker component 
+// Name: Fitness Tracker
+// Purpose / what code does: This component represents a Fitness Tracker interface where users can track their workouts, use a stopwatch, search for a workout, and view past workouts.
+//Users can also save and delete workouts. 
+// Programmers: Gabi Kruger, Brooke West, Emily Proctor, Kenadi Krueger, Nathan Mignot
+// Date created: 10/10/2023
+// Date revised: 4/21/2024
+  // Major Revisions:
+    // Date: 10/10/2023, Author: Brooke West
+      // Modification: The router at top of page was created with working links to other pages in application.
+    // Date: 10/22/2023, Author: Emily Proctor
+      // Modification: Logo holder (simple star) was added at top of page.
+    // Date: 11/5/2023, Author: Kenadi Krueger and Gabi Kruger
+      // Modification: CSS file updated and textbox containers added. Stopwatch implemented. 
+    // Date: 11/19/2023, Author: Kenadi Krueger and Gabi Kruger
+      // Modification: Added search bar and adding elements into textboxes. CSS updates. 
+    // Date: 11/26/2023, Author: Kenadi Krueger
+      // Modification: Updated so there is a grid format
+    // Date: 12/05/2024, Author: Gabi Kruger
+      // Modification: CSS updates and fixing formatting
+    // Date: 2/24/2024, Author: Gabi Kruger
+      // Modification: CSS updates.
+    //Date: 03/26/2024, Author: Kenadi Krueger
+      // Modification: Backend of fitness page implemented
+    // Date: 3/28/2024, Author: Emily Proctor
+      // Modification: Logo and navigation bar updated to be consistent across all pages.
+// Preconditions: The user must be logged in.
+  // Acceptable inputs: Searching for a valid workout type. 
+  // Unacceptable inputs: Non-valid workout types
+// Postconditions: Stop watch can start, stop, and reset. Search bar utilized to pick a workout, can then be tracked, saved, or deleted. 
+  // Return values: None explicitly returned. The component renders UI elements.
+// Error and exception condition values: Errors are logged to the console if there are issues with fetching, saving, or deleting workouts.
+// Side Effects
+  // State Updates: Changes to state variables
+  // Network Requests: HTTP requests
+// Invariants
+  // UI Consistency (logo, navigation bar, buttons, etc.)
 
 //Needed imports 
 import React from 'react';
@@ -28,12 +63,12 @@ function FitnessTracker(){
   const [selectedWorkout, setSelectedWorkout] = useState< Workout | null>(null);
   const [pastWorkouts, setPastWorkouts] = useState<Workout[]>([]);
 
-
+//fetch past workouts from backend
   useEffect(() => {
     fetchFitness();
   }, []);
 
-    // function for fetching specific user lists based on user
+    //function for fetching specific user lists based on user
     const fetchFitness = async () => {
       try {
         const response = await fetch("http://localhost:5000/get-user-fitness", {
@@ -44,12 +79,12 @@ function FitnessTracker(){
           credentials: 'include',
         });
         const data = await response.json();
-        // if success
+        //if success
         if (response.ok) {
-          // set the current list with list stored in backend for user
+          //set the current list with list stored in backend for user
           setPastWorkouts(data.workouts ?? []);
         } else {
-          // Handle error
+          //Handle error
           console.error("Failed to fetch fitness:", data.error);
         }
       } catch (error) {
@@ -68,13 +103,13 @@ function FitnessTracker(){
     const componentElement = document.getElementById('textbox3') as HTMLInputElement | null;
     const infoElement = document.getElementById('textbox4') as HTMLInputElement | null;
   
-    // Check if elements exist before accessing their values
+    //Check if elements exist before accessing their values
     const name = nameElement ? nameElement.value : ''; // Type of workout
     const dateTime = dateTimeElement ? dateTimeElement.value : ''; // Time/Date
     const component = componentElement ? componentElement.value : ''; // Stats
     const info = infoElement ? infoElement.value : ''; // Info
   
-    // Create a new workout object
+    //Create a new workout object
     const newWorkout: Workout = {
       name: name,
       dateTime: dateTime,
@@ -83,7 +118,7 @@ function FitnessTracker(){
     };
   
     try {
-      // Send the new workout data to the backend
+      //Send the new workout data to the backend
       const response = await fetch("http://localhost:5000/update-fitness", {
         method: "POST",
         headers: {
@@ -98,15 +133,15 @@ function FitnessTracker(){
       if (response.ok) {
         console.log("Fitness plan saved successfully:", data);
   
-        // Update the state with the new list of past workouts
+        //Update the state with the new list of past workouts
         setPastWorkouts(prevWorkouts => [...prevWorkouts, newWorkout]);
       } else {
         console.error("Failed to save fitness plan:", data.error);
-        // Handle failure if needed
+        //Handle failure if needed
       }
     } catch (error) {
       console.error("Error saving fitness plan:", error);
-      // Handle error if needed
+      //Handle error if needed
     }
   };
   
@@ -114,7 +149,7 @@ function FitnessTracker(){
     //Function used to delete the workout that we want
     //click delete button below which triggers this event
     const deleteFitness = async () => {
-      // Check if there's a selected workout to delete
+      //Check if there's a selected workout to delete
       if (!selectedWorkout) {
         console.error("No workout selected to delete");
         return;
@@ -143,16 +178,16 @@ function FitnessTracker(){
         if (response.ok) {
           console.log("Workout deleted successfully:", data);
     
-          // Update the state to remove the deleted workout from the "Past Workout" text area below
+          //Update the state to remove the deleted workout from the "Past Workout" text area below
           setPastWorkouts(prevWorkouts => prevWorkouts.filter(workout => workout !== selectedWorkout));
           setSelectedWorkout(null); // Clear the selected workout after it is deleted so that way it isn't shown in the front end
         } else {
           console.error("Failed to delete workout:", data.error);
-          // Handle failures
+          //Handle failures
         }
       } catch (error) {
         console.error("Error deleting workout:", error);
-        // Handle errors
+        //Handle errors
       }
     };
 
@@ -169,7 +204,7 @@ function FitnessTracker(){
     }
   };
   
-  // Function to handle clicking on a past workout
+  //Function to handle clicking on a past workout
   const handlePastWorkoutClick = (workout: Workout) => {
     setSelectedWorkout(workout);
   };
@@ -179,14 +214,14 @@ function FitnessTracker(){
       <>
       <div className="grid-container">
          <div className="grid-item">
-           {/* handles title and logo image */}
+           {/*handles title and logo image */}
            <div className="logo_container_list">
              <img src={logopic} className="logopic_list" />
              <div className="plannnova" style={{ color: 'black' }}>PlanNova</div>
            </div>
          </div>
          <div className="grid-item">
-           {/* navigation bar */}
+           {/*navigation bar */}
            <div className="nav-buttons">
              <Link to="/meal-planning" className="links" style={{ color: '#7BAB7A' }}>
                meal planning
@@ -207,15 +242,17 @@ function FitnessTracker(){
          </div>
        </div>
 
+       {/*Horizontal line */}
        <hr className="line" style={{ color: '#7BAB7A' }}/>
 
+  {/*Title */}    
   <div className="track" >
   <p className = "tracker-title">Fitness Tracker</p>
   </div>
 
 
   <div className="wrapper">
-  {/* This creates the input box for the type of workout the user did */}
+  {/*This creates the input box for the type of workout the user did */}
   <div className="three">
   <div className="textbox-container1">
         <label className="textbox-label" htmlFor="textbox1">type:</label>
@@ -228,7 +265,7 @@ function FitnessTracker(){
       </div>
       </div>
 
-  {/* This creates the input box for the time and date of workout the user did */}
+  {/*This creates the input box for the time and date of workout the user did */}
   <div className="two">
     <div className="textbox-container2">
       <label className="textbox-label" htmlFor="textbox2">time/date:</label>
@@ -244,7 +281,7 @@ function FitnessTracker(){
     </div>
     </div>
 
-{/* This creates the input box for the stats of workout the user did */}
+{/*This creates the input box for the stats of workout the user did */}
 <div className="four">
 <div className="textbox-container3">
   <label className="textbox-label" htmlFor="textbox3">stats:</label>
@@ -263,14 +300,14 @@ function FitnessTracker(){
 </div>
 </div>
 
-  {/* This creates the input box for the info of workout the user did */}
+  {/*This creates the input box for the info of workout the user did */}
   <div className="five">
     <div className="textbox-container4">
       <label className="textbox-label" htmlFor="textbox4">info:</label>
       <textarea id="textbox4" className="textbox-input" 
       value={selectedWorkout?.info || ''}
       onChange={(e) => {
-        // Update the selected workout's info when the user types
+        //Update the selected workout's info when the user types
         const newWorkout = selectedWorkout
           ? { ...selectedWorkout, info: e.target.value }
           : null;
@@ -280,14 +317,14 @@ function FitnessTracker(){
     </div>
     </div>
 
-    {/* This imports the search bar that we created in fitnessSearch.tsx */}
+    {/*This imports the search bar that we created in fitnessSearch.tsx */}
     <div className="seven">
     <div className="search-bar">
         <SearchBar onSelectWorkout={handleSelectedWorkout} />
     </div>
     </div>
 
-   {/* This imports the stop watch that we created in Stopwatch.tsx */}
+   {/*This imports the stop watch that we created in Stopwatch.tsx */}
   <div className="six">
   <div className="stopwatch-container">
        <Stopwatch />
@@ -317,4 +354,3 @@ function FitnessTracker(){
 }
 
 export default FitnessTracker;
-

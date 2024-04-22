@@ -1,8 +1,9 @@
-/*this whole file is in charge of designing, resizing, and formatting the different components of the html in fitnessSearch.tsx */
+/* css styling for the FitnessSearch.tsx file */
 
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
 @import 'https://fonts.google.com?css?family=Outfit';
 
+/*Body formatting*/
 .body{
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,6 +14,7 @@
 
 }
 
+/*Results formatting*/
 .result
 {
   flex:auto;
@@ -24,6 +26,7 @@
   margin-left: 10px;
 }
 
+/*Search bar input formatting*/
 .search-input {
     /* Add more styles as needed */
     background-color: #7BAB7A;
@@ -44,6 +47,8 @@
     font-family: "Outfit"
 }
 
+
+/*Table formatting*/
 table.tbl{
     flex:auto;
     background-color: #7bab7ac6;
@@ -57,13 +62,13 @@ table.tbl{
 
 }
 
+/*Table header and table cells formatting*/
 th.search, td.search {
     border: 1px solid;
     width: 50px;
     font-family: "Outfit";
     border-color: #7bab7ac6;
   }
-
 
 
 

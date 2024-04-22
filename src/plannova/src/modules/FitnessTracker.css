@@ -1,10 +1,8 @@
-/*this whole file is in charge of designing, resizing, and formatting the different components of the html in FitnessTracker.tsx */
-
-
+/*Importing fonts */
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
 @import 'https://fonts.google.com?css?family=Outfit';
 
-
+/*Body */
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,6 +17,7 @@ body {
     padding: 0;
 }
 
+/*Title */
 .tracker-title{
   font-family: "Outfit";
   font-size: 60px;
@@ -28,12 +27,14 @@ body {
   color: #7bab7ac6;
 }
 
+/*Logo container*/
 .logo_container_fitness {
   /* using flex container to handle the title and logo image*/
   display: flex;
   align-items: center;
 }
 
+/*logo formatting*/
 .logopic_fitness {
   margin-right: 10px; /* Add some margin between the image and text */
   margin-top: 10px;
@@ -47,6 +48,7 @@ body {
   font-size: 40px;
   margin-top: 10px;
 }
+
 
 .track
 {
@@ -64,11 +66,15 @@ body {
   text-align: center;
 } */
 
+
+
 .track-text{
   margin-bottom: -65px;
   margin-left: 120px;
 
 }
+
+/*Textbox container formatting */
 
 .textbox-container1 {
     display: flex;
@@ -136,13 +142,14 @@ body {
       font-size: 30px;
   }
 
-
+/*Search bar format */
   .search-bar
   {
       display: flex;
       font-size: 25px;
   }
 
+ /*Stopwatch container format */ 
   .stopwatch-container
   {
     font-size: 20px;
@@ -156,6 +163,7 @@ body {
 
   }
 
+  /*Past workouts formrat */
   .past-workouts
   {
     width: 100%;
@@ -181,15 +189,17 @@ body {
   box-sizing: border-box;
 }
 
+/*Grid container formats */
 .grid-container{
   margin-bottom: -40px;
 }
 
-
+/*Grid item format*/
 .grid-item{
   margin-bottom: -40px;
 }
 
+/*Wrapper formatting */
 .wrapper {
   max-width: 1400px;
   margin: 20px auto;
@@ -240,9 +250,10 @@ body {
 
 textarea {
   resize: none;
-  /* Add additional positioning if needed */
+  /*Add additional positioning if needed */
 }
 
+/*Save button formatting */
 .save-button {
   padding-left: 10px;
   padding-right: 10px;
@@ -259,11 +270,13 @@ textarea {
   height: 40px;
 }
 
+/*hover*/
 .save-button:hover{
   background-color: #b8d3b8;
   color: white;
 }
 
+/*Delete button formats*/
 .delete-button
 {
   padding-left: 10px;
