@@ -1,3 +1,39 @@
+// Name: Meal Planner 
+// Purpose / what code does: This component represents a Meal Planning page where users can track their meals for each day of the week 3 meals a day. The user can add, delete, clear, and save meals which are all stored in the backend database.
+// Programmers: Gabi Kruger, Brooke West, Emily Proctor, Kenadi Krueger, Nathan Mignot
+// Date created: 10/13/2023
+// Date revised: 4/16/2024
+  // Major Revisions:
+// Date: 10/13/2023 Author: Brooke West
+// Modification: Created Page and general layout of weekly plan with mealboxes and input functionality 
+
+// Date: 2/12/24 Author: Kenadi Krueger
+// Modificiation: changed "yourname" and added notifications
+
+// Date: 2/13/24 Author: Brooke West
+// Modification: reformatted weekly layout to more dynamic grid , changed shapes and reformatted front encodeURI
+
+// Date: 2/22/24 Author: Kenadi Kruger
+// Modification: setup meal plan backend 
+
+//Date: 4/16/2024 Author: Brooke West
+//Modification: Front end updates and added hovering changes colors 
+
+// Preconditions: The user must be logged in.
+  // Acceptable inputs:valid text 
+
+
+  // Postconditions: Meals can be added for breakfast, lunch, and dinner for each day of the week. Meals can be saved, cleared, and deleted.  
+  // Return values: None explicitly returned. The component renders UI elements.
+// Error and exception condition values: Errors are logged to the console if there are issues with fetching, saving, or deleting meals.
+// Side Effects
+  // State Updates: Changes to state variables
+  // Network Requests: HTTP requests
+// Invariants
+  // UI Consistency (logo, navigation bar, buttons, etc.)
+
+//Needed imports 
+
 import React, { useState, useEffect } from "react";
 import "./MealPlan.css";
 import { Link } from "react-router-dom";

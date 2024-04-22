@@ -1,3 +1,15 @@
+// Name: Router
+// Purpose / what code does: This component controls navigation between the home, fitness tracker, meal planner, and list pages allowing for easy traversal from page to page 
+// Programmers: Gabi Kruger, Brooke West, Emily Proctor, Kenadi Krueger, Nathan Mignot
+// Date created: 10/10/2023
+// Date revised: 2024
+  // Major Revisions:
+  //Date: 10/10/24 Author: Brooke West
+  //Modification: Created Router setting intial page to Home page, added nav bar so when each respective button is clicked you are taken to that page 
+  //Date: 11/27/23 Author: Brooke West
+  //Modification: Added rough draft of Login page, changing landing page to login page for the router 
+
+//needed imports 
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 

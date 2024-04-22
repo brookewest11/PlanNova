@@ -22,35 +22,15 @@ body {
   align-items: center;
 }
 
-.logopic_meal {
-  margin-right: 10px; /* Add some margin between the image and text */
-  margin-top: 10px;
-  height: 40px;
-  width: auto;
-}
 
-.logo_meal {
-  font-family: 'Ranchers', sans-serif;
-  color: #696969;
-  font-size: 40px;
-  margin-top: 10px;
-}
-
-
-  .buttons {
-    background-color: transparent;
-    color: black;
-    border: none;
-    padding: 20px;
-    
-  }
-  
+/* hover functionality for buttons  */
   .button:hover {
     border: 1px;
     border-radius: 3px;
     background: #d9d9d9;
   }
 
+  /* grid container for info inside of meal box  */
   .meal-grid-container2 {
     margin-left: 80px;
     flex-wrap: wrap;
@@ -60,6 +40,8 @@ body {
     align-items: center;
     
   }
+
+  /* top days of the week  */
   .grid-item-top-row
   {
     display: flex;
@@ -67,20 +49,7 @@ body {
     margin: 50px;
   }
 
-  
-  .grid-container3 {
-    display: flex;
-    justify-content: start;
-  }
-  .grid-item2 > div {
-    /* text-align: center; */
-    margin: 10px;
-    flex-direction: column;
-
-}
-  
-  
-  
+  /* styling for "Meal Planner" title on page  */
   .title
   {
     font-family: "Outfit";
@@ -88,6 +57,7 @@ body {
     margin-left: 20px;
 
   }
+  /* each day of the week mealbox */
   .mealbox
   {
     padding: 0px;
@@ -98,10 +68,11 @@ body {
     font-family: "Outfit";
     transition: background-color 0.3s;
   }
-    
+    /* changes color when you hover on day of week */
   .mealbox:hover {
     background-color: #ffc0cb; 
 }
+/* input sections for each meal  */
   .input
   {
     position: static;
@@ -124,7 +95,7 @@ body {
     font-weight: bolder;
     color: #883955;
   }
-
+/* placeholder text */
   .input::placeholder {
     color: #883955;
   }
@@ -136,6 +107,7 @@ body {
     color: #883955;
   }
   
+  /* clear meals button */
   .clear-button {
     background-color: transparent; 
     border: none; 
@@ -147,7 +119,7 @@ body {
     right: 20px;
     cursor: pointer; 
 }
-
+/* save meal button */
 .saveMeal
 {
   background:none; 
@@ -164,11 +136,13 @@ body {
   font-family: "Outfit";
 }
 
+/* hover over save meal button  */
 .saveMeal:hover{
   background-color: #b38092;
   color: #f1dce4;
 }
 
+/* delete all meals button */
 .deleteAll
 {
   background:none; 
@@ -185,12 +159,13 @@ body {
   font-family: "Outfit";
 }
 
+/* hover functionality for delete all */
 .deleteAll:hover{
   background-color: #b38092;
   color: #f1dce4;
 }
 
-
+/* day of the week titles  */
 .day-titles{
   font-size: 30px;
   font-weight: bold;
